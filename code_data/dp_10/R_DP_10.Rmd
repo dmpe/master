@@ -1,0 +1,39 @@
+---
+title: "Data Science Design Pattern #10 Cloud -- Deployment to ShinyApps"
+author:
+- Dmitrij Petrov
+output: 
+  html_document: 
+    df_print: default
+    highlight: pygments
+    theme: readable
+  pdf_document: 
+    fig_caption: yes
+    highlight: pygments
+    latex_engine: xelatex
+editor_options: 
+  chunk_output_type: console
+---
+### Design Pattern #10: Cloud in R
+
+After reading `README.md` file, this allows to deploy Shiny application to <https://www.shinyapps.io>, <https://dmpe.shinyapps.io/DesignPattern10-InteractiveApplication/> respectively.
+
+**Note**: API tokens should be changed to different ones! 
+```{r, "setup", eval=TRUE, include=F}
+chooseCRANmirror(graphics=FALSE, ind=1)
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+getwd()
+```
+
+```{r eval=T, include=T}
+library(rsconnect)
+
+# set up the ShinyApps user account
+rsconnect::setAccountInfo(name='dmpe',
+			  token='820739C8B8B9DE3B', # only for illustrative example, please change here to your own API key
+			  secret='gAHFGNCdDlUtzop') 
+
+rsconnect::deployApp(appDir = "dp_9/R-Shiny", 
+          appName = "DesignPattern10-InteractiveApplication", 
+          launch.browser = TRUE)
+```

@@ -1,0 +1,300 @@
+\lettrine[lines=2]{\color{BrickRed}T}{o} round up, this chapter discusses results of the endeavour taking into consideration various threats and limitations that arose during the examination. 
+Moreover, with a perspective on future research, implications for scientists and practitioners are stated too.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion of Results}
+\label{Discussion}
+The research questions in this thesis led to formalizing ten data science design pattern candidates that were supplemented with source code examples and subsequently the identified packages were presented in the \acl{DSTM}.
+In the following, a closer look is taken on both outcomes for the purposes of a discussion. 
+
+\subsection{Design Patterns}
+\marginnote{Pattern Language}
+While each pattern was described relatively independently, as \textcite[10]{Fowler2002} has remarked, they should not be viewed \qcite{isolated from each other}. 
+Accordingly and ideally, they form a basis for a \emph{pattern language} which helps stakeholders to utilize better \ac{DS} solutions and give programmers and other engineers the knowledge to \qcite{design complex systems} and processes \parencites[15]{DPSummarySMS2016}.
+Specifically, ten patterns aid in creating a toolbox that data scientists not only need to be aware of but may actually actively use in their daily work when trying to make sense of data and produce conclusions for firm's target audience.  
+
+Through pattern's backward and forward references, their associated network was shaped and visualized in Figure \ref{problem_solution_relationships} providing a \enquote{big picture} on a spectrum of related patterns targeting the same field \parencite{DeardenHCI2006}.
+Correspondingly, what interconnects the examined group is the analytical engineering which is applied on data that are potentially of high value to the organization \parencites{GarrettGrolemund2017RData}{FosterProvost2013DataThinking}{Ayankoya2014}.
+The information from literature sources has likewise indicated that while \ac{DS} patterns are likely unique due to conceivably useful (big) data, they are in many aspects similar to the ones described in the traditional software engineering \parencites{GoF2002}{GoogleDebt1}.
+Essentially, both are dealing with the source code and sensible development practices for design and architecture of computer programs that perform specific tasks. 
+However, what depicted patterns in this thesis have additionally focused on is the process by which data are managed, prepared and utilized for extracting a wisdom as such understanding forms an integral part of \ac{DS}.
+
+In this study, the goal was not to develop a complete pattern language because of a very ambitious scope that would be necessary to consider. 
+In fact, going back to the seminal publication of \textcite[394]{GoF2002}, authors have argued that there will be hardly \qcite{ever (\dots) a complete pattern language}. 
+Therefore, theirs as well as the one of this work is \qcite{just a collection} and a family of accompanying problem and solutions pairs -- a catalogue aiming to better understand the science of gaining insights \parencites[394]{GoF2002}{Schmidt:1996:SP:236156.236164}.
+
+Indeed, the completeness is influenced by several criteria, including the target audience which in this case were primarily the aspiring data scientists. 
+Especially for them, the number of introduced patterns may be substantially larger when compared with already experienced professionals.
+Therefore, in order to develop a complete design pattern language, it would need to significantly expand the breath, aiming to cover the whole \ac{DS} life-cycle -- from business understanding to the final deployment as described by the \ac{CRISP-DM} framework in Figure \ref{fig6}.
+
+As\marginnote{Allied Patterns} mentioned previously, the relationships between patterns are visualized in Figure \ref{problem_solution_relationships} and at the epicentre of ten design patterns are two fundamental \ac{DS} elements: \emph{data frames} which are used for storing and processing information and \ac{ML} \emph{prototypes} which enable to acquire knowledge by applying supervised and unsupervised learning methods.
+Besides those examined in the \textbf{chapter \ref{chap:DSDP}}, additional four present other plausible and related candidates.
+One instance is \emph{Data Robbery} where facts are acquired in an unauthorized way, for example through data scrapping. 
+Alternatively, \ac{DS} repository has to be not only searchable, well organized and sufficiently documented but also preferably under the version control system allowing to record project's history and development. 
+However, in accordance with forty-one literature sources, due to not considering them as the most significant in the \ac{DS} domain, they were omitted in this work's deliberation as it has been limited by the scope. 
+Although only a set of ten patterns was formalized, the links between that describe a relationship such as \enquote{enhances} or \enquote{visualized in} make it possible to call them forming an incomplete \emph{pattern language} in the \ac{DS} context \parencite{DeardenHCI2006}.
+
+\marginnote{Patterns Individually}
+Going into more detail, as it was suggested by \textcite{DobleMeszaros1997}, a pair of a
+
+\noindent\begin{minipage}{\linewidth}
+\centering
+\includegraphics[width=\textwidth+2cm,height=\textheight,keepaspectratio]{images/DS_DP_Relationships}
+\captionof{figure}{Illustrates a relationship between ten DS design patterns categorized into three distinctly coloured layers.
+Four other plausible patterns in an ellipse were not examined in this work.}\label{problem_solution_relationships}
+
+\captionof{figure}{Illustrates summaries of ten design patterns, see \protect\path{Master_DS_DP.xlsx}.}
+\includegraphics[width=\textwidth+2cm,height=\textheight,keepaspectratio]{images/DS_DP_problem_solution_summary}
+\label{problem_solution_summary}
+\end{minipage} 
+problem and corresponding solution was aimed to be \emph{single-pass readable} and it was summarized in one sentence form in Figure \ref{problem_solution_summary}.
+Even though patterns were numbered, they should not be looked at to be in a specific order of use when compared to the ones by \textcite{Alexander1977}. 
+Typically, for instance, data scientists may opt to utilize \patternName{Notebook} at the very end of the modelling process when they are required to present their results and enlighten stakeholders about achieved predictions and insights. 
+
+The pattern language began first with a tool that permits data scientists to document their acquired knowledge using a consistent and simple format for description. 
+An additional advantage of \patternName{Notebook} is that when text and code snippets are executed, the input and the output of the journal is rendered in line, making it cohesive within one file. 
+Therefore, not only putting a focus on the right information being conveyed to business leaders but allowing to document the whole \ac{DS} as it has been pursued too. 
+
+The visualization and communication of outcomes is critical and developing \patternName{Interactive Applications} that tell engaging stories and let to dive deeper into the data by adjusting how graphics look like only supports managers in outlining a strategy of how to increase the value of the products and services offered. 
+Subsequently, the \patternName{Cloud} comes on the stage when created applications need to be deployed and scaled up and down to possibly thousands of employees worldwide whereby leveraging the resources and other features of cloud vendors. 
+Thus, avoiding managing own hardware infrastructure as it likely not a core competency of the company.
+
+Continuing, at the core of the knowledge discovery are naturally data, and therefore it is necessary to store them efficiently so that they can be manipulated and various mainly statistical operations can be carried out.
+After accessing them from source systems, another pattern forms a foundation through creating a two-dimensional data structure in a tabular form. 
+Consequently, the use of \patternName{Data Frames} enables to transform (\patternName{Tidy}) them with an objective to further simplify processing and their use within the targeted ecosystem of tools. 
+Exemplary for \patternName{Prototyping} purposes, the outcome of which shall be impactful and reliable predictions for co-workers.
+
+The \patternName{Leakage} is often consequential when modelling algorithms need to be applied because it can lead to conclusions which are statistically skewed and invalid, making them almost certainly not accurately reflecting the data at hand. 
+In fact, missing data should be a prime source of a concern for any \ac{KDD} professional and due to their impact, missingness needs to be dealt with early on during the information pre-processing.
+On the other hand, \patternName{Assemblage} and \patternName{Grid} leverage computing resources to optimize hyperparameters of each model as well as to create several ones and intelligently combine them to additionally improve the performance for stated aims and avoid overfitting where the \ac{ML} prototype is not generalizable to the new input.  
+Undoubtedly, to validate the power of such model, \patternName{Cross-Validation} is \emph{the} technique to split data and calculating multiple predictions and test set errors on different data sets. 
+As a consequence, average them to provide final unbiased outlook on the prototype.
+
+Going back to section \ref{ds_dp_related_research} on the pattern related research, not surprisingly some of the design patterns identified in this thesis have been formalized and proposed by several researchers as well. 
+Notably, the work of \textcite{HeffreMheer2006} is compelling as it describes for instance \patternName{Data Column} which is directly associated in this work to \patternName{Data Frames} by not only allowing to store data in a common format but permitting to administer various expressions on data themselves too -- what the same authors have described in a separate pattern called \patternName{Expression}.
+Moreover, \patternName{Interactive Application} make it easy for users to dynamically change graphics, illustratively through filtering. 
+On this matter, \textcite[859]{HeffreMheer2006} have described \patternName{Dynamic Query Binding} which automatically \qcite{refine[s] a data view through direct manipulation}.
+
+\marginnote{Categorization}
+Besides, it could have been observed that with an exception of \patternName{Notebook Design Pattern} all are mainly applicable to \ac{CRISP-DM} stages of data understanding, preparation, modelling, evaluation and deployment. 
+Unfortunately, due to a delimitation of providing R and Python code examples, it was largely avoided to examine patterns related to the business understanding even though a considerable amount of information was collected.
+Nonetheless, with regard to their grouping, patterns might be not only associated with specific \ac{CRISP-DM} phases as illustrated in Figure \ref{secondDatabaseExcel} but due to addressing different design \enquote{levels} they could be divided into three structural layers too \parencites{DeardenHCI2006}{ChenHong2004}:
+%
+\begin{enumerate}
+	\item [(a)] \emph{Data Patterns}: \patternName{Data Frame}, \patternName{Tidy Data} and \patternName{Leakage}
+	\item [(b)] \emph{Modelling Patterns}: \patternName{Prototyping}, \patternName{Cross-validation}, \patternName{Grid} and \patternName{Assemblage}
+	\item [(c)] \emph{Infrastructure Patterns}: \patternName{Notebook}, \patternName{Interactive Application} and \patternName{Cloud}
+\end{enumerate}
+
+Principally, \emph{data patterns} consistently fetch, store and prepare analysis-ready information which is the primary object dealt with in \ac{DS}. 
+Next, \emph{modelling patterns} take advantage of the previous group and enable to stepwise acquire better predictive models and with them previously not known wisdom.
+At last, \emph{infrastructure patterns} support previous two categories by offering underlying tools that allow to deliver actionable insights, for example by developing on and deploying solutions to the cloud-based production systems.
+
+As such, the above-mentioned three classes form a cohesive pattern language, in the \ac{DS} context, where its composition and interrelationships shall make it easier to derive, create and use best approaches to frequent hurdles in the knowledge discovery.
+
+\subsection{Toolkit Matrix}
+The third study question of this research has asked which open source tools are available in order to solve common pitfalls that each pattern has outlined and attempted to iron out. 
+As a result of this inquiry and the conducted qualitative survey where thirty-two packages were sampled, \acl{DSTM} was visualized in Figure \ref{DTSMmindmapWithout}. 
+This likely represents a valuable resource for researchers and practitioners because it can support them with gaining an overview of some of the essential applications for specific \ac{DS} tasks.
+Particularly, when they might not be aware of them due to being new to the domain and coming from other languages.
+
+While\marginnote{Sub-ecosystems} \textbf{chapter \ref{chap:KeyTerms}} has discussed R and Python software ecosystem from rather a high-level perspective, the outcomes presented through \ac{DSTM} also provide an extended and deeper perspective into available tools.
+In fact, during the course of \ac{DS} pattern discovery, it was observed that five packages are a part of two collections that form sub-ecosystems in both programming environments, namely the previously mentioned R's \emph{tidyverse}\footnote{\href{https://www.tidyverse.org}{https://www.tidyverse.org/ -- Tidyverse}} (\mintinline{R}/tibble/ and \mintinline{R}/tidyr/) and Python's \emph{SciPy}\footnote{\href{https://www.scipy.org/}{https://www.scipy.org/ -- SciPy}} (\mintinline{python}/pandas/, \mintinline{python}/Jupyter/ and \mintinline{python}/Numpy/).
+
+These sub-ecosystems, to which academicians have devoted so far only limited attention, provide utilities for \ac{DS} with an objective to simplify importing, processing, modelling and visualizing raw information. 
+At the same time, individual libraries available on \ac{CRAN}, \ac{PyPI} or currently in the development for instance on \emph{GitHub} are strongly interlinked with each other by possessing typical ecosystem characteristics.
+Namely, in pursuing a common philosophy around \ac{API} design and having a consistent implementation of internal components due to adopting specific conventions that allow to \qcite{guess how another different component} might work \parencite[785]{Bryan2017DataTent}.
+Building upon interoperability within the respective universe of different packages sharing common objectives, group of developers and related infrastructure, two \qcite{cohesive system[s]} were created examined next \parencite[785]{Bryan2017DataTent}. 
+
+Because\marginnote{SciPy} Python was developed as a general-purpose language and not being used for \ac{DS} intentions alone, it has aimed to offer fundamental concepts for many plausible use cases, in diverse areas including web development.
+Therefore, the community of users had to build capabilities for \ac{DS} from the ground up as they were not present in Python itself and hence SciPy ecosystem was set up by a reason of lacking an efficient array manipulation or plotting of graphics \parencite{Millman2011PythonEngineers}.
+Subsequently, due to the rise of its popularity, over the years it has become a gateway to \qcite{open-source software for mathematics, science, and engineering} -- the scientific computing -- for which it has developed a comprehensive knowledge discovery toolkit \parencites{Perez2011Python:Computing}{Oliphant2007}. 
+On the other hand, tidyverse came from a different perspective as the community around R -- given its a priory focus on the analytical domain -- already had a blueprint on top of which it could build the improvements.
+
+As mentioned\marginnote{Tidyverse} previously in section \ref{secos}, R has been in the development since 1993 and even earlier when considering its predecessor S. 
+Ever since it has tried to be correct first, fast second and maintain backwards compatibility with tools being created back in the 1980s and 1990s \parencite{BlasMartinSlow2018}.
+Resulting from this, however, is that many of the past choices in terms of what would a developer expect from a specific function may seem nowadays rather cumbersome to handle -- likewise called \qcite{historical inefficiencies and idiosyncrasies} by \textcite{RossZ2017DeclutterTools}. 
+A typical example is R's native \mintinline{R}/data.frame()/ where by default any strings are silently converted to data type factor, which represents categorical variables, unless  provided with \mintinline{R}/stringsAsFactors = FALSE/ parameter \parencite{PengStringFactor2015}. 
+While it may be a desired behaviour in many contexts, in others it causes a confusion, specifically for newcomers judged by a number of questions on websites like \emph{Stack Overflow} \parencite{WinVektro2014}. 
+When compared to Python, this overcame similar challenges by introducing a completely new version 3.x as described in the \textbf{chapter \ref{chap:KeyTerms}}.
+
+For R, where the innovation happening these days mostly in the package universe, tidyverse reimagines its already existing features in a new way by providing a consistent approach in \qcite{function syntax[, its arguments,] inputs and outputs}, thus \qcite{allow[ing] data analyses to flow naturally from one task to the next}, for instance through the \enquote{\%>\%} pipe operator while benefiting from data being in the \patternName{Tidy} format \parencite[2-3]{RossZ2017DeclutterTools}.
+By contributing feature rich improvements that cannot be easily incorporated into the languages itself by reason of its heritage, it has been often taught from the beginning in the courses of statistics and \ac{DS} due to supporting \qcite{entire end-to-end workflow} \parencites{KellyPosterUSerRBrussels2017}{Rickert2017}.
+
+Going back to the \ac{DSTM}, together with two sub-ecosystems, it has shown that users can clearly take advantages of such (and not limited to) participated packages because they are extensively documented and supported by a large and strong community of developers around them. 
+Hence, helping to overcome any potential challenges faced by the users and at the same time ensuring that there is a seamless integration and compatibility beyond the both sub-ecosystems.
+
+In general, three remarks could be made.
+For one, some packages like \mintinline{python}/pandas/ and \mintinline{R}/mlr/ are in fact universal and can be used for multiple \ac{DS} design patterns, see Figure \ref{secondDatabaseExcel} where it was attempted to link and categorize libraries with \ac{CRISP-DM} framework and its six phases.
+Indeed, these tools are not only suited of being used with their primarily associations (\patternName{Data Frame} and \patternName{Prototyping}) but with other relevant ones as well, including \patternName{Tidy Data}, \patternName{Grid} or \patternName{Cross-validation}.
+As a result, beginners and experienced professionals should seek such comprehensive applications as they cover a wide range of tasks and permit to avoid jumping between different libraries that may not interact with each other in a simple manner.
+
+Moreover, even though R's package ecosystem is approximately a tenth the size of Python's, it has shown to provide a richer set of \ac{DS}-related capabilities for diverse \ac{KDD} steps -- especially when omitting \emph{Usage Metrics} and \emph{Maintenance} criteria explained in Table \ref{tab:creteriaIncExcl}.
+Nonetheless, both programming languages offer a large collection of \ac{DS} utilities, with and without previously mentioned two sub-ecosystems.
+Given that Python's core developers have aimed to build a language that is applicable in a broader \ac{IT} landscape rather than just focusing on one particular area such as data analytics, \emph{R Core Team} could independently pursue a path of developing an open source alternative to \emph{Matlab} or \emph{Wolfram Language} that supports primarily mathematicians.
+Thus, based on the gathered observations in the course of this thesis, the discussion of choosing between R and Python proves to be inappropriate as clearly R is more advanced for the data analysis, though it also offers little flexibility outside of its domain compared to Python and its ecosystem. 
+Accordingly, the need to learn both of them, one after another, as explained by \textcites{MartijnTheuwissen2015R}{Theuwissen2016}. 
+
+Finally, while recording tools in the database and creating \ac{DSTM}, the significance of \emph{GitHub} was manifested as being \emph{the} platform for the development and programmers' collaboration. 
+Albeit arguably more feature rich alternatives like \emph{GitLab} or \emph{BitBucket} exist, all sampled packages have source code repository there and with a few exceptions make use (though to various degrees) of continues integration and deployment whereby software applications are automatically tested, build and released -- in line with Agile practises \parencites{BinasGitLab2013}{PaulGitlab2016}{AgileCI2009}.
+As such, data scientists may use \emph{GitHub} not only for monitoring team's \ac{DS} progress, developing new packages and sharing publicly the result of data analysis with the source code but when discovering new projects currently in the development too.
+
+\section{Limitations and Implications}
+\label{ImplicationsLimitations}
+The\marginnote{Repercussions} findings presented in this thesis add to the overall understanding of design patterns within the \ac{DS} field -- specifically where and how they can be applied to help distinct groups of stakeholders simplifying knowledge extraction from the diversity of data compiled.
+The implications of this examination are important for both researchers and practitioners.
+
+Firstly\marginnote{Scientists}, the contribution of this study was by providing a systematic review of extant research done in the fields of \ac{SECO}, \ac{DS} and design pattern -- all of which were put into a relationship. 
+This served as a basis for a subsequent analysis and where missing elements were also identified such as very little studies dealing with Python software ecosystem and where more in depth investigations can be worthwhile. 
+Additionally, the background research presented a solid evidence base for future inquiries as design patterns for \ac{DS} were not yet constructed and to what this study has finally devoted an attention, attempted to fill the gap and added to the body of research by extending the knowledge of design patterns which may be applied in a new interdisciplinary domain.
+All this is particularly relevant for the community of scientists who might deliberate and discuss these ten design patterns and use deliverables to formulate new ones based on the already conducted exploration \parencite{Stol:2010:CUO:1833272.1833276}.
+
+Although\marginnote{Professionals} any outcomes should be interpreted with caution, they give additional insights to various groups of stakeholders working directly with \ac{DS} teams as well as aspiring data scientists themselves. 
+For the target audience of this thesis, the formalized patterns help to better understand what best practises could be leveraged when conducting \ac{DS} as they relate to problems that often come up and need to be tackled. 
+Hence, pattern candidates shall educate and train for possible situations including in the modelling phase and case of overfitting and accordingly provide ideas and steps that may appropriately address them to minimize any negative impact. 
+For experienced professionals, this work can further strengthen their expertise by (re)discovering practises and applications that they have not used so far, and thus equip them better for future occurrences and needs too.
+
+Even though executives and \ac{UI/UX} designers might not be interested in technical details of data mining and \ac{KDD}, they can use these outcomes to become acquainted with some core principles behind the science of data as well. 
+In fact, non-technically skilled managers should benefit from this information while navigating their organizations towards greater \ac{DS} adoption and utilization. 
+As a result, they can prepare for potential challenges which it brings, for instance in terms of proper project management and data governance. 
+
+Previously, it was mentioned that R and Python have two large sub-ecosystems of tools that provide well-established capabilities for \ac{DS}. 
+Through explored applications that support each pattern candidate, \ac{DSTM} has the potential to give valuable guidelines for new (data science-oriented) programming languages such as \emph{Julia} too. 
+This in understanding of what kind of tasks it needs to be able to address, for example by offering advanced modelling capabilities within a modular \ac{API}, in order to establish itself as \emph{the} language for \ac{KDD} purposes \parencite{Krishnakumar2011}.
+Therefore, it helps a wide group of stakeholders, including vendors, individual developers, investors, and other contributors, to decide in which software ecosystem to invest their time, skills and other resources \parencite{Hoving2013Python:Ecosystem}
+
+This\marginnote{Constrains} study, by discovering data science design pattern candidates, has established a starting point on which future research can base its findings.
+Though, in the following, it is necessary to judge the conducted qualitative research as this thesis was subject to several conceptual and methodological weaknesses. 
+When these limitations are explored and devoted a renewed attention by scientists, it could additionally help to increase pattern language's quality.
+Indeed, in every step as documented in Figure \ref{figmmDesign}, unavoidable subjective choices were made which resulted into bringing a source of uncertainty on the outcomes. 
+To compensate for taken decisions, it was attempted to explain the situation and provide a broader perspective on the matter \parencite{PetrovAarhus16}.
+
+\textcite{Golafshani2003} has documented that depending on the type of study, authors had diverse views on what specific criteria should be of a concern in order to determine the quality of the research \parencite{Long2000RigourResearch}.
+Some scientists have claimed that credibility, trustworthiness and rigour are suitable lenses and of a paramount importance in the qualitative and quantitative research alike -- all of which stem from the universally accepted terms of \emph{reliability} and \emph{validity} \parencites{Golafshani2003}{Long2000RigourResearch}. 
+With regard to the former one, because of a difficulty in demonstrating it, a revision has been made to capture dependability and consistency \parencite{Golafshani2003}.
+On the other hand, validity has been explained as to whether the study \qcite{represents accurately those features (\dots) that it is intended to describe (\dots) or theorize} \parencite[31]{Long2000RigourResearch}.
+Coming next, some of the issues divided into three major categories are discussed.
+
+\paragraph*{Construct and Internal Validity}
+While construct validity deals with threats that \qcite{might arise during research design}, the internal validity investigates problems \qcite{during [the subsequent] data extraction} \parencite[13]{GoFDesignPatternsAmpatzoglou2013}. 
+
+As noted by many researchers, being limited to the availability of data from which one may derive design patterns, the quality of selected literature sources is critically important. 
+Overall, the work has shown to be able to derive ten candidates from a set of literature sources as opposed to directly for example interviewing domain experts.
+Although more qualitative and quantitative data could have been gathered, the outcomes might not have changed much as ultimately a decision was taken to formalize only an initial subset of ten design patterns. 
+On the one hand, the advantage of the approach described in section \ref{pprospecting} was that fewer restrictions and assumptions were placed on the research and on any data collected. 
+Hence, allowing to assemble a reasonable sample according to the best efforts \parencites{Krishnakumar2011}{JAN:JAN623}.
+At the same time, the study benefited from not only searching manually but also utilizing snowballing technique where additional resources were collected in order to support patterns' reliability.
+On the other hand, the process is not fully reproducible and it could be argued that because it depended on information sources some of which were later deemed unreliable, it similarly lacks further power to be representative of the field too \parencite{Hajimia2014}.
+
+While borrowing principles of \ac{SLR}, the search has been initially done through key words that were deemed appropriate by author's best judgement. 
+Yet, due to a general paucity of the relevant primary and secondary data, the search was extended on several occasions by incorporating various new terms such as \enquote{lessons learned} to raise the quality and volume of gathered literature.
+Later, the \ac{GIA} was applied to extract phrases and concepts that would lead to the discoverability of \ac{DS} pattern candidates.
+Though, it should be noted here that text labelling was not supported by an independent parallel review of the same documents by other researchers as otherwise it would gain an additional trustworthiness by possibly clarifying misinterpretations and conducting \qcite{peer debriefings and stakeholder checks} \parencite[243]{t06}.
+To increase such validity, a cautionary opinion of a fellow researcher could bring a novel angle to the most important design patterns in the \ac{DS} that shall be elucidated.
+
+With regard to the toolkit matrix, even though it was attempted to discover relevant tools through criteria listed in Table \ref{tab:creteriaIncExcl}, author's a prior knowledge and any R and Python experiences might have negatively influenced the choice of tools too. 
+This both in terms of their volume and relevancy, resulting into introducing selection and other cognitive biases into this work. 
+As a consequence, unintentionally omitting applications that are of a great significance for the particular problem.
+
+\paragraph*{Transferability}
+Likewise called \emph{external validity}, transferability deals with \qcite{generalizing the obtained results from the sample to the population} \parencite[13]{GoFDesignPatternsAmpatzoglou2013}.
+
+Naturally, patterns shall be neutral and easily applicable to other related areas, environments or technical applications.  
+In the context of this research, it could be reasonably stated that described design patterns are not specific to the \ac{DS} per se because of their broad nature that covers a wide domain of business analytics and its engineering practises which are underpinned by the \ac{KDD} process.
+Not surprisingly, given that \ac{DS} was defined as an umbrella term that covers a multitude of concepts, one may also find illustrated pairs of a problem and solution to exist in areas like \ac{ML} (\patternName{Grid} or \patternName{Cross-Validation}) or big data (\patternName{Cloud}). 
+As stated previously, \emph{data frames} are typically used for a variety of use cases across the fields. 
+
+Going back to \textcite{GoF2002}, authors have described design patterns with C++ examples. 
+However, the notion of particular issue and answer to it can and has been applied in other languages, exemplary Java or Ruby as well \parencites{OrelyJavaDP2009}{RubyDP2007}. 
+Thus, patterns in this research might have been supplemented with other programming languages, \emph{Matlab} to name one example.
+Nonetheless, usually with modifications as presented artefacts in a predefined form are just templates which have to be adjusted due to a variety of faced situations or technologies \parencite{Fowler2002}.
+
+\paragraph*{Confirmability}
+As mentioned in section \ref{patternWritEvalu}, not only candidates were outlined based on the data from the gathered literature but through additional search of their practical application it was ensured that they are indeed being used at various stages of \ac{KDD} life-cycle and by data scientists themselves. 
+Yet despite following \ac{3D2P} methodology, a triangulation of multiple methods for data collection, analysis and evaluation could potentially derive better findings and improve their confirmability. 
+
+Indeed,\marginnote{Domain Experts} further research might repeat this work by meaningfully integrating other approaches used for pattern discovery. 
+Along those listed by \textcite{InventadoPeter2015}, the knowledge of domain experts shared through in-depth interviews or writing workshops could plausibly prove to be the most relevant and valuable to have.
+Hence, increasing the obtained wisdom both in the volume as well as mainly in its quality -- stemming from direct involvement of experienced professionals who were not, unfortunately, surveyed in the study.
+Accordingly, help these design pattern candidates to acquire a more confidential status in order to spread farther their use within the community of data scientists and beyond.
+
+\subsection{Future Research}
+\label{futResearch}
+In the future studies, among others, two notable paths can be pursued to establish a more complete \ac{DS} pattern language.
+
+As it\marginnote{Different Approach} was noted, a research limitation of this study is utilizing literature works rather than interviewing experts from the domain who could likely outline problems and solutions that they apply in a more reliable fashion. 
+Consequently, based already on the conducted research, the next step would be to try to empirically confirm findings and thus enhance the quality of identified design patterns for example though a quantitative survey of \ac{DS} experts from diverse industries and countries.
+Furthermore, if a choice had been made to use mixed methods methodology, expert interviews could have been combined with a literature review leading to supposedly further increasing the value of formalized design patterns.
+
+Moreover\marginnote{Different Perspectives}, being limited by practical constraints, the thesis could not provide a comprehensive review of the whole \ac{DS} landscape. 
+This is a reason a decision was taken to describe only a number of pattern candidates linked to the domain. 
+However, during the stages of \emph{pattern prospecting} and \emph{pattern mining} large amounts of various information were gathered and this may be used to uncover and formalize new problem and solution pairs. 
+In fact, it was observed that some plausible patterns are related not only to \emph{technical} aspects (and on which this study has tried to zoom in) but also to the \emph{organizations} or the \emph{environment} -- in line with TOE framework, firm's contexts and forces influencing the adoption of any kind of technology \parencites{BakerTOE2012}{tornatzky1990processes}{OlivertraTOE2011}.
+As a result, additional pattern examples ought to include themes like how to acquire stakeholders' support for \ac{DS} initiatives, how to tackle right analytical problems in right way that encourages their involvement and how to convert and educate business analysts to become data scientists \parencites{Fern2016}{SAS2016}{CarlShan2015TheScientists}.  
+Therefore, extra research shall examine more closely collected data, seen in Figure \ref{fit-excel-database-sourcedata}, from different perspectives and attempt to discover other design patterns when considering the whole life-cycle of \ac{DS}. 
+
+At the\marginnote{Entanglement} high-level of perspective, data science design pattern may ease the complexity of interaction between \emph{technical} systems (like R and Python which simplify conducting specific tasks) and \emph{social} ones where humans participate in some organizational structure and use the technology to accomplish their goals \parencites{WandaSusan2008}{BrianSTS2009}.
+At the core of this \emph{socio-technical system} theory is the idea that a process such as data analysis has to take into account not only technical factors that influence the functionality, usage and a wisdom gained from applying \ac{DS} but a whole set of interdependent social aspects too which cannot be treated as separate parts in a complex system \parencite{BaxterST2011}.
+However, in this thesis the focus was only on the technological domain that cannot be viewed independently due to  complex linkages and mutual interactions between design patterns themselves and a developer who has to shape and adjust these templates \parencite{Fowler2002}. 
+Thus, in the future research it could be interesting for example to formulate \ac{DS} design patterns as seen from the social angle and considering expanding the above-mentioned TOE framework with a socially based individual dimension \parencite{PetrovAarhus16}. 
+Exemplary, make an inquiry of how identified patterns are applied differently, though being in similar circumstances.
+The reason for this might be the impact stemming from various organizational and individual aspects, from the cultural influence to Hofstede's power distance between employees \parencites{Holfstede1993}{Holfestede2011}.
+
+Besides\marginnote{Multidimensionality}, going back to section on delimitations of this work, further studies  extending design pattern by presenting corresponding anti-patterns would be very interesting as well.
+Additionally, with recent advancements in the artificial intelligence it is clear that one will need to explore applications that support multidimensional data and associated patterns which this thesis has intentionally omitted when it was focusing only on the tabular ones. 
+Illustratively, the work of \textcite{PerezBook2017} already attempts to put an attention on the concept of \emph{deep learning} and design patterns that can be practically applied in the robotics or self-driving vehicles.
+
+To summarize, what has been described in the \textbf{previous chapter} helps data scientists to become better equipped with technical and theoretical knowledge of processing data stored in various quality and granularity when producing business relevant, actionable results to themselves and other internal and external co-workers.
+At the same time, novel studies in the area of design patterns for analytical purposes shall not only use gathered data in Figure \ref{fit-excel-database-sourcedata} to develop new candidates but also try to qualitatively validate those described in this thesis for instance though expert interviews. 
+Indeed, when this and other supplementary research is pursued and conducted, it can foster effective management of company's expectations in relation to the broader and inseparable \qcite{technology, techniques, and people} \parencite[68]{Bhatt2001}.
+
+%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{Conclusion}
+To conclude, given the scarcity of information in the current literature regarding \emph{data science design patterns}, the quest of this work was to address this lack by exploring and describing their first, known to the author, systematic account. 
+As a result, the inquiry has tackled frequently arising problems and their best solutions in the interdisciplinary field of \ac{DS}.
+Essentially, the goal was to qualitatively note a \qcite{common solution, look for its core, and then write down the resulting pattern} \parencites[10]{Fowler2002}{Schmidt:1996:SP:236156.236164}.
+
+Focusing on \ac{DS} design patterns, a devised research gap led to formulating the main objective of uncovering solutions to identified issues and secondary aim of supplementing drafted artefacts with practical examples using utilities from R and Python ecosystem.
+Subsequently, this translated into three study questions, the first of which was to understand key terms.
+
+As such, the work began with an exploration of software ecosystems of R and Python.
+Characterized by different actors, though appearing and collaborating as a group on the same technological platform, these were later surveyed in order to identify libraries and provide source code examples to each design pattern. 
+Certainly, both environments offer a wide range of applications supporting researchers and practitioners in analysing data in different disciplines, with R having an edge by reason of its rather domain-specific focus. 
+While two programming languages are also distinct, they share a large, often interacting, community of users and developers who participate in their common aspirations -- be it for advancing the analysis and visualization of data or for development of web applications and system-level scripting. 
+
+Although \ac{DS} may not have been a novelty because of absorbing other existing concepts like \ac{ML} and big data, section \ref{termsDef} explained that it has become associated with loosely defined analytics where not only sound mathematical foundations are necessary but software engineering experience too.
+By cause of a diversity of conducted tasks, data scientists have been needed who combine a multitude of critical skills in their work such as the proficiency in statistics, deep domain know-how and among others the ability of programming with R and Python. 
+Even though the field may have roots in the academia and research where different information has always been analysed, skilled data scientists are these days difficult to identify and come by.
+Therefore, for example, if business analysts want to advance their career and move into more technical field, the presented \ac{DS} design patterns may benefit them by gaining an initial understanding of best practises that can solve common issues when acquiring insightful knowledge. 
+
+After key phrases were reviewed in detail, a research methodology was presented in the \textbf{chapter \ref{chap:Method}} incorporating qualitative methods under the stewardship of the \emph{data-driven design pattern production} framework.
+By using a systematic \ac{GIA} for gathered data, major themes were mined from a final set of forty-one literature sources -- all that in order to discover and formulate yet-to-be-verified design pattern candidates.
+As a result, based on the understandings of three concepts, the illustrated methodology helped to systematically accumulate data, analyse them and codify these patterns in a simple to understand template form.
+Unfortunately, while many potential candidates could have been found dealing for instance with data normalization, it was beyond the scope of this work to describe them all in a complete language.  
+Not coincidently where more research remains to be pursued as there is no silver bullet to work out each encountered problem.
+Hence, only a set of ten pieces was elucidated together with gaining a larger picture into R and Python ecosystems and how they can solve arising \ac{DS} issues. 
+
+Overall, the results of this thesis should help professionals in the \ac{DS} and associated fields to more easily document and share their wisdom and best practises through used vocabulary and benefiting from a specific form that was applied for their formalization. 
+As discussed earlier, the artefacts could be categorized into three groups according to the primary subject matter being dealt with, namely data, \ac{ML} prototype or infrastructure. 
+Therefore, this classification shall further aid in decomposing \ac{DS} problems into manageable parts and offer a matching tool for avoiding \qcite{wasting time and resources reinventing the wheel} both in terms of creating new duplicate tools as well as questionable, yet-to-be-verified approaches to a particular \ac{DS} problem \parencite[20]{FosterProvost2013DataThinking}.  
+
+When equipping ten design patterns in the \textbf{chapter \ref{chap:DSDP}} with a collected sample of thirty-two R and Python packages, some libraries were used for displaying source code examples too. 
+In this manner, supporting target audience in showing a reliable set of tools capable of addressing outlined issues that occur when following a process methodology such as \ac{CRISP-DM}.
+Within the sample, five tools were also identified stemming from two R and Python sub-ecosystems, named tidyverse and SciPy.
+Documented in \textbf{this chapter}, these aim at providing a complete end-to-end toolbox that might be beneficial for any emergent \ac{DS} purpose and use cases, from managing (big) data using in-memory data frames to building predictive models that power business forecasts through applying comprehensive, well-known \ac{ML} libraries.
+
+The collected utilities from two (sub-)ecosystems for each design pattern permit to answer the third study question whereby creating \acl{DSTM}. 
+From this map, undoubtedly, newcomers to \ac{DS} can gain a starting point into R and Python environments by reason of visualizing some of the fundamental, arguably \enquote{most useful and popular}, tools like \mintinline{r}/caret/, \mintinline{python}/pandas/ or \mintinline{r}/Shiny/.
+Subsequently, it can lead researchers and practitioners to utilize most appropriate applications for a particular situation that is being faced in their work.
+
+Indeed, designing \ac{IT} architecture for analysing data requires significant human efforts whereby mistakes in the process are learned with the experience over a period of time. 
+In order to avoid pitfalls, the knowledge of dedicated design patterns examined in this thesis, coupled with others like big data or cloud computing, can greatly simplify employees' working intentions and help to take educated decisions right from the beginning. 
+Nonetheless, \textcite[13]{Fowler2002} writes that one should \qcite{never forget that [they are] a starting point, not a final destination}. 
+Even though design patterns give a common ground to \qcite{communicate, document, and explore design alternatives}, it is always necessary to see them in the context of specific work assignments, usually within a constrained business structure and its available technology and resources \parencite[389]{GoF2002}.
+Thus, when tackling \ac{DS} challenges, due to internal systems and processes, data complexity or surrounding organizational environment, ten design patterns will nearly always require further adjustments to a particular case, applications used and possibly developer experiences and preferences too.
+As such, pattern candidates need to be thoroughly understood by practitioners before being applied.
+Otherwise there is a risk of running into a situation where methods and solutions are exercised without fully realizing why they are needed, what is their impact and how they contribute to the acquisition of the wisdom in the first place. 
+
+Overall, the described design patterns contribute in better understanding of how they can address and solve, together with source code examples that employ tools from R and Python software ecosystem, ten frequently arising \ac{DS} problems.
+Almost certainly more research will be pursued, for instance by \textcite{Todd2019}, however, as the outlined aims from the introduction were achieved, a conclusion is made here.

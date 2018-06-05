@@ -1,0 +1,207 @@
+\lettrine[lines=2]{\color{BrickRed}I}{n} the following pages, the reader is introduced to this thesis. 
+At the beginning, the subject matter is delineated, followed by laying out the problem statement, objectives, methodology and delimitations of the endeavour.
+Finally, document's structure is described too.
+
+\acused{FOSS}
+\acused{ETL}
+\acused{DS}
+\acused{ML}
+\acused{BI}
+\acused{KDD}
+\acused{DSTM}
+\acused{SECO}
+\acused{GIA}
+\acused{IT}
+\acused{UI/UX}
+\acused{3D2P}
+\section{Overview}
+\label{motfac}
+A term \emph{pattern} embodies a multitude of concepts which can be used in a variety of contexts, for example in nature to describe wavelike shapes on sand dunes in the desert.
+Besides its use in the art or in the fashion for decorative purposes, patterns in mathematics are commonly known as \emph{fractals} which are never ending geometric shapes that exhibit the \qcite{same \enquote{type} of structure on all scales} (\emph{self-similarity}; \cite{Fractal2017}). 
+
+From the \emph{knowledge discovery in databases} (\ac{KDD}) perspective, diverse algorithms are applied to uncover \qcite{interesting, [insightful,] unexpected and useful patterns in} data \parencites{PatternMining2013}{Witten2011}{GoebelMichGru1999}. 
+In accordance with a \emph{data pyramid}, ultimately turning such information into a wisdom \parencite{Rowley2007TheHierarchy}.
+Yet the focus of this study considers the meaning of patterns being first formulated in a book entitled \emph{A Pattern Language} by \textcite{Alexander1977}. 
+
+Since Christopher Alexander's profound publication in the field of architecture, patterns have become a topic of a great interest and have had a large influence in a wide range of areas as well.
+Perhaps the most important classical literature work appeared some twenty years later by \textcite[11]{GoF2002} who introduced twenty-three \emph{design patterns} for developing \qcite{reusable object-oriented software} applications.
+The authors known as \emph{\ac{GoF}} described their abstract approaches as a \qcite{recurring solution to a standard problem}, essentially concerned with \qcite{a way to solve a specific problem of design} \parencites[37]{Schmidt:1996:SP:236156.236164}{Werner2006}. 
+
+Over\marginnote{Importance of Patterns}, the past four decades, a growing body of research in the computer science has recognised the importance of patterns as useful techniques facilitating for instance better communication and collaboration between engineers and their managers \parencite{Schmidt:1996:SP:236156.236164}.  
+Rooted and validated in the practise, they are \qcite{identified and verified through careful observation} providing a reliable, \qcite{orderly resolution of software development problems (\dots) and help new developers ignore traps and pitfalls that have traditionally been learned only by costly experience} \parencites{Werner2006}[37]{Schmidt:1996:SP:236156.236164}.
+Therefore, their adoption for \qcite{documenting complex architectural designs} gave them a firm place during the phases of software analysis, design and implementation \parencites[47]{Stefan2017}{Chetan2016}.  
+
+\marginnote{Data Science $\land$ Design Patterns}
+Stepping aside for a moment, companies nowadays collect digital information that over time has grown both in volume and its variety.
+In order to realize its full potential, in cases like preventing financial fraud, new technologies are used to transform captured data from various internal and external locations with a goal to extract valuable knowledge and gain a wisdom for business operations through data visualizations and storytelling \parencite{NicolausHenke2016TheWorld}.
+Thus, eventually, making corporate processes, products and services more data-driven.
+However, unfortunately as it has been documented in countless instances, when raw data are translated into actionable insights for employees, reoccurring issues are often faced \parencites{HolleyKerrir2014}{Hossam2017}.
+
+Subsequently, one of the challenges encountered by many researchers, \emph{data scientists} and other \emph{big data} engineers has been how to effectively share among each other best practises and gained experiences to frequently confronted obstacles.
+The answer, which has been suggested, involves applying design patterns not only for communication and documentation purposes but also for the entire knowledge management. 
+This due to their capability of addressing hurdles efficiently by means of having a narrow scope with defined structure that captures a problem and offers a solution \parencites{Hossam2017}{DeardenHCI2006}. 
+
+\marginnote{Research Gap}
+As later shown in the \textbf{chapter \ref{chap:KeyTerms}}, to date, a significant pattern research has been carried out in the education, sociology or in the multidisciplinary field of information technology (\ac{IT}). 
+There, patterns have been examined for the enterprise architecture or targeting specific software applications such as \emph{Hadoop} \parencites{Fowler2002}{MinerDonald2012}. 
+Surprisingly, however, little research has formally studied design patterns in relation to data science (DS) or machine learning (ML) -- the research gap that is identified and addressed.
+Indeed, to the best of author's knowledge, design patterns have been so far undocumented in a broad \ac{DS} domain which is the main focus of this work.
+
+Arguably, one of the reasons has been an ambiguity of such umbrella term \ac{DS} and its dynamic nature which is manifested in the ever-evolving technologies and approaches to business analytics \parencite{CarlShan2015TheScientists}.
+Therefore, the goal of this thesis is to systematically discover and describe such general, \qcite{time-tested design solutions} to common problems that appear during the data analysis \parencite[853]{HeffreMheer2006}.  
+The significance of this subject matter is also underscored by a forthcoming book entitled \emph{Data Science Design Patterns} by \textcite{Todd2019}.
+
+\marginnote{R $\land$ Python}
+To further complement the intended research, in the past decade academicians and practitioners have tried to determine what programming language and its ecosystem is \enquote{more valuable} to learn, \enquote{more powerful} to work with and generally \enquote{better} to use for \ac{KDD} purposes \parencites{DavidMa2016RAdvances}{PeterWayner2017PythonShare}{MartijnTheuwissen2015R}{ChengHanLee2015HowFirst}.
+According to different questionnaires, forum discussions and rankings, there seems to be an agreement that two programming languages -- R and Python -- are especially important for \ac{DS} \parencites{Muenchen2017TheSoftware}. 
+
+\marginnote{Intentions}
+In this study, firstly, the objective is to devote an attention to the research gap faced by the interdisciplinary talented practitioners when they conduct typical analyses of data. 
+Through identifying and describing best practises in a design pattern form and being consistent with authors such as \textcite{DPCPQT2011}, \emph{pattern candidates} are then supplemented with R and Python code examples and tools from their ecosystems. 
+These utilities can be chosen by a next generation of quantitative analysts to support their work on data-driven knowledge discoveries \parencite{MosaicDataScience2017}. 
+As a result, it also permits to gain a better understanding of what computer programs from two \ac{DS} environments are available to solve domain specific hindrances.
+
+Because the current research has so far lacked surveys of applications from either programming landscape, the second aim of this inquiry is to develop \emph{Data Science R and Python Toolkit Matrix}, henceforth referred to as \ac{DSTM}.
+This can be used as a guideline by all interested stakeholders to obtain a larger overview of applications capable of addressing their needs during the analysis of continuously growing data.
+
+Consequently, this thesis intends to have an impact not only by creating a reference point for \ac{DS} design patterns but also offering R and Python utilities developed in mind with them.
+
+\section{Problem Statement} 
+The difficulty being dealt with is that while numerous design patterns for object-oriented programming and enterprise IT architecture already exist, no previous studies were identified looking at patterns in the field of \ac{DS} and data analytics.  
+Indeed, due to a lack of such formalized approaches supplemented with R and Python code examples, practitioners often struggle to fully leverage the potential of presently known solutions to commonly occurring problems.
+As a result, causing for instance fragmentation because of creating own programs and reinventing the wheel instead of identifying applications from well-developed ecosystems.
+
+\section{Objectives}
+\label{objectives}
+Even though \emph{Goal-Question-Metric} technique is most commonly applied in the software engineering for specifying \qcite{a measurement system}, the overall research objective of this work can be described in accordance with it too \parencite[2]{caldiera1994goal}.
+As \textcite{koziolek2008goal} explains, goals are stated on the conceptual level and operationalized by respective study questions that use objective and subjective data to answer them.
+In short, the guiding principle throughout this thesis is formulated:
+
+\begin{displayquote}
+The goal is to formalize and expand the understanding of \ac{DS} design patterns and available free and open source (\ac{FOSS}) tools from R and Python ecosystem that can address reoccurring problems in the data analysis. 
+All this from a perspective of data science beginners as well as experienced professionals, both of whom aim to derive a value from raw information in the enterprise contexts.
+\end{displayquote}
+
+\marginnote{What is to be achieved?}
+As it was outlined, attempting to advance the research gap, this study broadly formulates three central and open-ended questions that it intends to investigate:
+%
+\begin{enumerate}
+\item [RQ1:] \ObjectivesQOne
+\item [RQ2:] \ObjectivesQTwo
+\item [RQ3:] \ObjectivesQThree
+\end{enumerate}
+%
+The main outcome of this work, besides establishing an overview of key terms, is an identification and description of \ac{DS} design patterns that can be employed for typical \ac{KDD} tasks \parencite{GoebelMichGru1999}.
+Concurrently, for each pair of a problem and solution, code examples are provided from sampled software tools in order to understand how both landscapes support users during a life-cycle of information discovery.
+
+\marginnote{Targeted Audience}
+The primary target audience of this work are \ac{DS} newcomers to the field. 
+Thus, the choice of a tailored language that should make it easy for them to understand each pattern even if they are not entirely familiar with related \ac{DS} terms.
+Nonetheless, the results of this study ought to be useful to already experienced practitioners as well because it facilitates a better comprehension of best practises in association with key \ac{FOSS}-based R and Python packages and frameworks, henceforth referred to as \emph{tools}. 
+Notwithstanding this group, big data engineers and other experts such as user interface and experience (\ac{UI/UX}) designers can benefit from the used terminology in this work too, when communicating with \ac{IT} professionals as well as project managers.
+
+Through documenting well-proven approaches, the ambition is to provide a common vocabulary to help users analyse data more efficiently and effectively, thus avoiding common pitfalls in the \ac{DS} process and inventing \enquote{sophisticated new solutions} instead of leveraging simple and existing ones \parencite{Lara2015BigData}.
+With this in mind, the contribution to a small body of existing research carried out in the subject of domain-specific design patterns and software ecosystems (\ac{SECO}) of programming languages, all being at the cornerstone of this work, is following:
+%
+\begin{enumerate}
+  \item Analytical \emph{design pattern candidates} are discovered to illustrate proven solutions to repetitive obstacles which are faced by data scientists allowing them to reuse already well-known practises and techniques.
+  \item A state-of-the-art survey is conducted into R and Python software ecosystems seeking to record relevant open source programs in the toolkit matrix which may act as a reference point to an initial perspective into both universes for insights discovery from data.
+\end{enumerate}
+%
+
+Given the observed research gap, the objective of this work is to pursue a higher-level perspective where \ac{DS} design patterns shall on the one hand generally focus on various stages of \ac{KDD} process while at the same time they are supported with practical examples from R and Python ecosystem.
+To the best of author's knowledge, this work is first of its kind which provides a comprehensive examination into domain-specific design patterns by putting them in the context of two programming ecosystems.
+
+%%%%%%%%%%%
+\section{Research Methodology}
+\label{researchmethod}
+A brief outline of the methodology is introduced next which together with a research design is extensively explained in the \textbf{chapter \ref{chap:Method}}.
+
+This graduate thesis follows an \emph{interpretivist philosophical} approach to science in which qualitative methods of inquiry are used to understand the context and answer research questions, see also Table \ref{tab:researchQuestionsTable} \parencites{Mayers1997}{Saunders2015}. 
+Having an examination that is descriptive, narrative and investigative in nature, the aim is to stay more flexible, be exploratory and not being bounded with strict formalities of purely quantitative methods. 
+Hence, allowing to potentially document impressions during data collection and analysis whereby, at first, common obstacles and their solutions are observed and formulated to which specific programs from both open source ecosystems are collected and presented \parencite{Mayers1997}. 
+
+\marginnote{\acs{3D2P} $\land$ \acs{GIA}}
+Fundamentally, it is necessary to understand key terms used in this study through reviewing a literature on \emph{software ecosystems}, \emph{data science} and finally \emph{design patterns} themselves.  
+Once these concepts are defined, what comes next is an inductive discovery of \ac{DS} design patterns, essentially theoretical artefacts. 
+For this, Inventado's and Scupelli's (2015) \emph{data-driven design pattern production} (\ac{3D2P}) methodology is followed where diverse sources of information are \emph{prospected}, namely collected and screened.
+Subsequently, in the \emph{pattern mining}, by applying \emph{general inductive approach} (\ac{GIA}), sources are thoroughly inspected, coded and interpreted in order to develop prevailing themes \parencites{t06}{Mayers1997}{SeamanC1999}.
+At last, by following guidelines of \textcites{DobleMeszaros1997}{AndreseasWellhausenTim2011}{BruseDougals2002}, pattern candidates are described using a pattern template which demonstrates a set of wisdom in a structured format and an easy-to-understand form.
+
+\marginnote{\acs{DSTM}}
+After outlining a design pattern candidate, in line with the third research question, a sample of relevant R and Python packages and frameworks is \emph{purposefully} identified and presented in code snippets \parencites{JansenHarrie2010}{PattonMQ1990}{Trochim2006}.
+Because of such concurrent process, the knowledge acquired leads to developing \ac{DSTM} that visualizes data science-related software applications.
+In this matter, one can inspect software landscapes of two formal languages within the realm of formalized design patterns and \ac{KDD} steps.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Delimitations
+\section{Delimitations}
+\label{delimitations}
+To stay within the boundaries, it is necessary to further clarify and restrict this work due to facing time and scope constrains.
+Among others, these manifest into not pursuing to identify a final and exhaustive list of design patterns, but instead, rather a smaller group of pattern candidates that are most important to learn about. 
+
+\marginnote{Anti-patterns}
+This research focuses exclusively on design patterns which provide time-tested, reusable solutions and best practises to typical \ac{DS} tasks during the analysis of data large and small in volume and variety. 
+Therefore, their counterparts, the anti-patterns describing \qcite{poor design practice together with descriptions of how the design could be repaired} are naturally omitted \parencite[59]{DeardenHCI2006}.
+
+\marginnote{FOSS}
+Moreover, a restriction is made to demonstrate sample examples by only collecting (stand-alone) open source programs that are found in the R and Python ecosystem and which are not build into languages themselves.
+As such, proprietary products and on-line services -- developed for example by business intelligence (\ac{BI}) vendors like Informatica or Qlik offering commercial off-the-shelf software used for extraction-transformation-loading (\ac{ETL}) pipeline, data management or visualizations -- are not considered.
+Indeed, this research targets strictly \ac{FOSS} which is accompanied by an open source license to the source code and has its \qcite{machine instructions available publicly, in the plain text} -- a distinguishing feature to the closed source software \parencite[1]{PetrovAarhus16}.
+Although there are differences between \emph{free} and \emph{open source} software, because of the insignificance to this thesis, both terms are used interchangeably \parencite{PetrovAarhus16}. 
+Consequently, accepting only such type of software, identified packages and frameworks should fit \ac{KDD} purposes and be available (or with a vision to be released there) on two repositories named \emph{\ac{CRAN}} and \emph{\ac{PyPI}}.
+
+Furthermore,\marginnote{Tabular data} a limitation is put to survey applications which work with what \textcite[2]{ShusenLiu2017} have described as \qcite{table-based data} or in other words \qcite{classical format, [where] a dataset consists of a set of $N$ [observations] (\dots) with $s$ features} \parencite[3]{Mikut2011}. 
+These tools supporting two-dimensional type of structured data have been fundamental in the \ac{BI} which -- until the arrival of big data -- has exclusively worked with dimensional modelling and processing of transactional information.
+Due being developed since at least 1980s, such programs have been well established both commercially as well as in open source communities \parencite{GoebelMichGru1999}.
+As a result, software applications targeting computer vision and operating with images, video or other type of high-dimensional data are not taken into consideration in this investigation.
+Although being of significance, they are often field specific to biology, speech or object recognition \parencite{Mikut2011}.
+From this follows that software that is nowadays applied for instance in the \emph{deep learning} goes initially beyond the study's scope.
+
+Because\marginnote{Difference to other studies} of such delimitations, the research differs from others in two central items, namely having a distinct and a narrow focus. 
+Even though there is a growing body of literature concerned with a concept of design patterns, the examination to date into related areas of \ac{DS} has been scarce, scattered across separate locations and targeting different themes. 
+Thus, it is attempted to provide a holistic look into \ac{DS} domain by putting a spotlight on the most influential tasks and problems arising during the analysis of information.
+
+Secondly, solutions to frequent obstacles are not only presented on the theoretical level through their rather generic conceptualization but importantly also put into a practical perspective with specific examples that use R and Python tools from their software ecosystems.
+By answering the third study question, it allows to gain an initial perspective into their technical landscapes via \acl{DSTM}.
+
+%%%%%%%%%%%%%%%    Structure
+\section{Document Structure}
+The desire of this work is to present \emph{data science design patterns} with R and Python examples in easy-to-understand format.
+Therefore, together with this introduction, the overall structure consists of five chapters, see Figure \ref{structureFig}.
+A brief overview of each part of the document is provided next.
+
+\textbf{Chapter \ref{chap:KeyTerms}}: To resolve the first research question, the thesis begins by attempting to clarify \emph{software ecosystem} with relation to two programming languages.
+It then goes on to provide explanation of other major terms, namely \emph{data science} and \emph{design patterns}.
+
+\textbf{Chapter \ref{chap:Method}}: Subsequently to the understanding of two formal systems and other phrases, an outline of the methodology for discovery of design patterns and respective tools is made.
+
+\textbf{Chapter \ref{chap:DSDP}}: Immediately next and addressing two research questions, pattern candidates are established, described and a survey of relevant \acs{FOSS} utilities is conducted. 
+As a result, \acl{DSTM} is developed too.
+
+\textbf{Chapter \ref{chap:summary}}: Finally, results are summarized and conclusions are made with drawing together key findings of the research by critically discussing it.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth+3cm, height=\textheight+3cm,keepaspectratio]{images/Thesis_structure}
+\caption[Illustrates structure of the thesis.]{Illustrates thesis' structure in accordance with slightly renamed chapters up to level three.}
+\label{structureFig}
+\end{figure}
+
+\newpage
+{ % vertical spacing of tables
+\renewcommand{\arraystretch}{2.2}
+\begin{landscape}
+\begin{table}
+  \begin{tabular}{| L{8cm} | C{7cm} | C{7cm} |}
+    \hline
+    \theadCenterText{Research Questions} & \theadCenterText{Methodology} & \theadCenterText{Data Sources} \\ \hline
+    RQ1: \ObjectivesQOne & Literature review & Reputable journal articles and conference proceedings found in Scopus and Google Scholar databases \\ \hline 
+    RQ2: \ObjectivesQTwo & Qualitative: Utilize \ac{3D2P} methodology to mine patterns using a general inductive approach & Similarly, a variety of information sources such as reports, books and grey literature is collected and analysed \\ \hline 
+    RQ3: \ObjectivesQThree & Qualitative: Conduct a purposeful sampling & Primarily from \acs{CRAN} and \acs{PyPI} repositories \\ \hline 
+  \end{tabular}
+  \caption{Presents research questions, methods and data sources used.}
+  \label{tab:researchQuestionsTable}
+\end{table}
+\end{landscape}
+}
+

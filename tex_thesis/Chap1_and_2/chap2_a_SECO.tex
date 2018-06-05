@@ -1,0 +1,280 @@
+\lettrine[lines=2]{\color{BrickRed}T}{his} chapter, being narrative and descriptive and subdivided into two main sections, is designed to clarify this work and develop an in-depth understanding of the subject matter.
+Due to later sampling R and Python applications from their landscapes, a concept of \emph{software ecosystems} is first elucidated. 
+Next, before concluding with a summary, it is aimed to describe in adequate detail available information on \emph{data science} and associate it with \emph{design patterns}.
+
+%%%%%%%%%%%%%%%%%%  Software Ecosystems
+\acused{IDE}
+\acused{SLR}
+\section{Software Ecosystems}
+\label{secos}
+Term \emph{ecosystem} has been introduced in the early \nth{20} century by a botanist Arthur Tansley.
+With an origin in ecology, it has been used to denote \qcite{the physical and biological components of an environment when considered in relation to each other as a unit} \parencite[4]{Franco-Bedoya2017OpenMapping}.
+Accordingly, many authors have confirmed that although having differences to a biological ecosystem, the software one \qcite{can be in some way mapped to phenomena in nature} too \parencites[101]{Dhungana2010SoftwareNature}{Jansen2013DefiningGovernance}.
+For instance, landscape's growth and decline due to changing conditions or a need for \qcite{a continuous input of energy in the form of new development or maintenance} \parencites[98]{Dhungana2010SoftwareNature}{Mens2014}.
+
+\marginnote{Business Ecosystem}
+In 1999, James Moore has been first who extended the phrase to the \emph{business ecosystem} describing it as \qcite{an economic community supported by a foundation of interacting organizations and individuals -- the organisms of the business world} \parencites[45]{JamesF.Moore1999TheEcosystems}{Jansen2013DefiningGovernance}.
+Simplified, it is a dynamic, constantly developing structure which revolves around producing goods and services to the benefit of customers and where three core characteristics have been identified.
+For one, a network of various stakeholders such as distributors and producers \qcite{coevolve their capabilities and roles} together by creating leaders, niche and bridge players -- all moving towards the same vision \parencites[45]{Jansen2013DefiningGovernance}{LiYanRu2009}.
+Secondly, it is an important notion of a \emph{platform} that gives a common ground for interaction between community members, examples of which are Microsoft Windows operating system, a vehicle manufactured by Ford or Eclipse integrated development environment (\ac{IDE}; \cite{JamesF.Moore1999TheEcosystems}).
+Consequently, these platform holders become \emph{keystone companies} in the ecosystem because they can exercise their power whereby others will depend on them.
+Lastly, \textcite{LiYanRu2009} has explained that a business setting allows synergic cooperation between stakeholders that results into pursuing shared interests together, while if acting alone they might be individually never successful.
+
+Building\marginnote{Software Ecosystem} upon Moore's understanding, around 2000 a conception of \emph{digital business ecosystem} has emerged and this gave birth to a \emph{software} one which is considered by some to be its subset \parencites{Peltoniemi2004BusinessEnvironments}{Plakidas2017EvolutionQualities}.
+Being a \qcite{very wide and arguably complex} phrase, it embodies a multitude of concepts that have been proposed by academicians \parencite[29]{Manikas2016RevisitingStudy}.
+In principle, however, \acp{SECO} \qcite{are made of software vendors, suppliers, and users} who are put into a socio-economic context to interact with each other on a familiar technology that provides \qcite{possibilities for the actors to benefit from their participation} \parencites[1298]{HansenManikas2013}{Christensen2014AnalysisEcosystem}.
+
+Since the introduction, scholars have significantly advanced the understanding of software ecosystems.
+While the research took off approximately in 2005, only eight years later \textcite{HansenManikas2013} have conducted a large scale systematic literature review (\ac{SLR}) of ninety papers from the field published between 2007 and 2012 -- a fundamental study in this research \parencite{Manikas2016RevisitingStudy}.
+Trying to answer questions as to how was the term defined or what were reported results, scientists have concluded that not only there has been \qcite{little consensus on what constitutes a software ecosystem} per se but also \qcite{little research (\dots) [has been] done in the context of real-world ecosystems} \parencites[1294]{HansenManikas2013}.
+
+\marginnote{Classification}
+Besides attempting to define rather nebulous term, literature has dealt with various categorization efforts.
+In another significant study, \textcite{Jansen2009AEcosystems} has identified several \ac{SECO} challenges and argued that vendors should \qcite{separate ecosystems in three levels}:
+%
+\begin{compactitem}
+    \item [(a)] software \emph{ecosystem level} (for example developing strategies and policies on how companies should cooperate in the environment to maximize their profitability),
+    \item [(b)] software \emph{supply network level} (for example establishing relationships with buyers and suppliers through promoting events) and 
+    \item [(c)] software \emph{vendor level} (for example forming blueprints and guidelines for product line planning, knowledge management and software extensibility).
+\end{compactitem}
+%
+As a consequence, levels should be addressed individually in order to build, strengthen and maintain company's position and role in the engaged software landscape \parencites[1477]{Christensen2014AnalysisEcosystem}. 
+
+On the other hand, \textcite[55]{Jansen2013DefiningGovernance} have produced and applied a classification model \qcite{to identify four different classes of software ecosystems}.
+Scientists have called their factors: 
+%
+\begin{compactitem}
+    \item [(a)] the \emph{underpinning (base) technology} (for example Apple iOS platform),
+    \item [(b)] \emph{coordinators} (where it is controlled by a private company),
+    \item [(c)] \emph{extension markets} (offering its users a commercial depository) and 
+    \item [(d)] \emph{accessibility to an ecosystem} (paid submissions to the App Store).
+\end{compactitem}
+%
+After governance tools have been described, authors have contributed by proposing a model for environment's health preservation and improvement \parencite{Jansen2013DefiningGovernance}. 
+In fact, this area of ecosystem's health and its impact on the quality has been a significant sub-domain of \ac{SECO} that was extensively researched by studies including \textcites{Iansiti2004TheSustainability}{denHartigh2006TheEcosystem}{Jansen2014MeasuringHealth}.
+
+\textcite{Bosch2009FromEcosystems} has further provided an important \qcite{basic categorization between ecosystems centred on operating systems, applications, or end-user programming}. 
+Besides, differentiating them according to the platform \qcite{(desktop, web, mobile) the ecosystem is deployed on} \parencite[4]{Plakidas2017EvolutionQualities}.
+
+Because \acp{SECO} are a part of information systems research, they are closely related to other areas too. 
+They \qcite{include [organizational] theories and methods from a variety of different fields such as software engineering (\dots) or network analysis} \parencites{Barbosa201359}[29]{Manikas2016RevisitingStudy}.
+
+While covering a \emph{platform-centric} perspective which \qcite{highlights technical and social aspects of a set of software projects, technical platforms and communities}, \textcite[3]{Franco-Bedoya2017OpenMapping} have put \ac{SECO} into a relationship with \ac{FOSS}.
+Subsequently, the phenomenon of \emph{FOSS ecosystem} has been defined as \qcite{a SECO placed in a heterogeneous environment, whose (\dots) keystone player is (\dots) [a FOSS] community around a set of projects in an open-common platform} \parencite[24]{Franco-Bedoya2017OpenMapping}.
+In their article, authors have systematically mapped the current state of \acs{FOSS} ecosystem research and have stated that even though \ac{FOSS} has been playing a strategic role in many public and private sectors, the body of knowledge about its relationship within a holistic universe is still scarce and in its infancy \parencites{Franco-Bedoya2017OpenMapping}{PetrovAarhus16}.
+
+Although \marginnote{Key Components} definitions have varied among researchers, two fundamental features could be conceptualized across all studies \parencite{HansenManikas2013}.
+On the one side, it is a network of actors like individuals and organizations with different roles, variable business structures and models \parencite{Joshua2013SoftwareChallenges}.
+On the other hand, it is a common interest in using a specific technology \parencite{Christensen2014AnalysisEcosystem}.
+These are then supported by establishing interactions, the connecting relationships that include promoting activities during conferences, sharing openly development resources or providing training and consulting services \parencites{HansenManikas2013}{Dhungana2010SoftwareNature}. 
+All of which further grow and strengthen the ecosystem, building a sustainable environment.
+
+Sketched\marginnote{Perspectives} out previously, in terms of \ac{SECO}'s views, it has become a commonplace to distinguish a \emph{platform-centric} angle which is technologically oriented dealing with software projects and a \emph{business-centric} one that sees the ecosystem rather as a socially-oriented \qcite{network of actors (\dots) and companies} interacting with each other \parencites[3]{Franco-Bedoya2017OpenMapping}{Eleni2017}.
+For the research goals, by studying distinct definitions and explanations of aforementioned concept, the term is referred to as following:
+
+\begin{displayquote}
+\textbf{Software ecosystem} is a symbiotic relationship between a set of different actors and a collection of software projects that operate on a common technological platform as a unit. 
+Hence, evolving together and sharing the same information, environment, resources and group of users and developers whose goal is to address their universal interests and needs.
+\end{displayquote}
+
+To summarize, software projects are increasingly co-developed in parallel, becoming more interdependent on each other, and thus attracting new participans \parencites{Eleni2017}{Mens2014}.
+Within the forming community, resources are combined to experience the outcomes collectively by benefiting from economies of scale and diversity of members, resulting into achieving stated objectives faster.
+
+With regard to widely used programming languages, these exhibit strong relationships between various stakeholders which manifests into the quality and maturity of their \acp{SECO}.
+In the case of R and Python, both environments extending base languages have also been a critical factor and if not \emph{the one} why two formal systems have become popular in the \ac{DS} and \ac{ML}. 
+
+%%%%%%%%%%%%%%%%%%%%%% R language
+\acused{CPU}
+\acused{DW}
+\subsection{The R Project}
+\label{rlang}
+R being a \qcite{system for statistical computation and graphics} began as a research project in 1993 lead by Ross Ihaka and Robert Gentleman at the University of Auckland in New Zealand \parencites{RCoreTeam2017R:Computing}{RCoreTeam2017RDefinition}{RProject2017WhatR, DavidSmith2016OverHistory}.
+Heavily influenced by two programming languages designed in the 1970s named S and Scheme, scientists have adopted a syntax of the former one and continued to maintain backwards compatibility with it. 
+Additionally, investigators' aim was to modernize it for purposes of data analysis, and thus \qcite{the underlying implementation and semantics [were already] derived from Scheme} \parencites[299]{Ihaka1996R:Graphics}{RossIhaka2009TheFuture}.
+For this reason, R is oftentimes called a dialect of S, a modern implementation in a new, vastly improved and enlarged language \parencite{RCoreTeam2017AnR}.
+
+\marginnote{CRAN}
+Naturally, R, formally governed by R Foundation that supports its development overseen by \emph{R Core Team}, can be extended by wrapping a set of functions (its main building blocks), documentation, data and tests into a unit of distribution called \emph{package} \parencite{DavidSmith2016OverHistory}.
+As a result, this can be uploaded to software repositories such as \ac{CRAN}\footnote{\href{https://cran.r-project.org/}{https://cran.r-project.org -- The Comprehensive R Archive Network}} being the largest central extension market and from which R community can download and use developer-contributed tools.
+In December 2017, because of language's growing popularity, \ac{CRAN} has reached a milestone of providing 12\,000 packages on the network with many more in development at \emph{R-Forge}, \emph{GitHub} and available for example on \emph{Bioconductor} that focuses only on utilities for genomic data \parencites{DavidSmith2017CRANNeed.}{German2013TheEcosystem}{Sylvia2014}{HenrikBengtsson2017Subject:CRAN}. 
+
+\marginnote{Association with \acl{DS}}
+Supporting multiple programming paradigms including object-oriented and mainly the functional style, R has become \qcite{the lingua franca of statistical computing [(\dots),] reproducible statistical research} and one of the dominant forces in field of data analytics \parencite[7]{Everitt:2006:HSA:1213890}.
+In part, this has been attributed to \ac{CRAN} with a vast number of packages that provide powerful yet flexible applications, for instance for data visualizations or imputation of missing data \parencite{Plakidas2017EvolutionQualities}.
+Likewise, being an interpreted language that can interface complied ones (C++ or Fortran), R executes various operations on data sets by storing them in \ac{RAM} instead of on a hard-disk \parencites{Kane2013ScalableData}{Hornik2016FrequentlyR}{DavidSmith2013AR}.
+Last but not least, R specifically targets scientific and statistical computing and having its roots in the academia, it is being used across various disciplines \parencites{GarrettGrolemund2017RData}{TeachingDS2016}. 
+Among others, in the biostatistics, finance and psychometrics.
+
+Additionally, even though not being a novelty compared to other languages, in the \emph{interactive mode} user types in various R expressions into its command line shell (R console), where they are parsed and evaluated by the interpreter and results are immediately returned (so-called read-evaluate-print-loop; \cite{SmithDavid2009159}).
+This allows to quickly iterate on manipulating the data set and applying various functions to it.
+Although \qcite{by default R is command-line driven}, it naturally supports the \emph{batch mode} as well where R scripts can be created and executed in \acp{IDE}, \emph{StatET} or \emph{Visual Studio} to name a few \parencite[29]{Pabinger2014}. 
+
+\marginnote{Dynamically Typed Languages}
+Together with Python, both languages are \emph{dynamically-typed} where it is not necessary to indicate if a variable is of a data type integer or a string, see listing \ref{lst:dynamicstatictyping} for an example \parencites{PythonCoreTeam2012}{Lutz2013}.
+Indeed, because typing is linked with a value rather than a variable, developers can change variables to diverse types \parencite{NinaBookR2014}.
+On the contrary, \emph{statically-typed} languages require indicating data types and once a variable has been set to a specific type, it cannot be changed due to being associated with a variable rather than the value.
+The reason being mentioned is that the choice of a typing system has important consequences for the programmer, prominently the beginner \parencite{JakeVanderPlas2016PythonHandbook}.
+While the dynamic typing allows programs to be more flexible and compact, and thus these languages are perceived easier to start with, a disadvantage is having some evidence suggesting it negatively affects the runtime efficiency because of a type interference and prevents detection of programming errors by reason of decreased readability \parencites{Ousterhout1998}{FieldCadyDSBook}.
+
+R\marginnote{Drawbacks} is nowadays used in many research fields as it claims to have a mature ecosystem of packages, which are \qcite{developed primarily by non-software engineers}, and support provided by keystone players -- notably RStudio Inc.\ that develops arguably the most prominent and homonymously named \ac{IDE} \parencite[244]{German2013TheEcosystem}.
+Nonetheless, there are two important shortcomings that various groups of practitioners often talk about.
+Being created and maintained largely by statisticians and mathematicians, it is considered to be a domain specific formal system where in addition commonly cited weakness is difficult to pick-up and somewhat inconsistent syntax, resulting into having a steeper learning curve \parencites{LearningCurveR2010}{HarderToLearn2017}.
+Moreover, R and Python are both -- in their native implementations -- single-threaded programming environments \parencite{SimonBGDRAMR2016}.
+Therefore, even though third-party alternatives such as Microsoft R Open or packages exist supplementing some parallel functionality and taking advantage of multi-core central processing units (\acp{CPU}), there are still limitations when compared to C++ and its multithreading capabilities \parencite{limrperf2015}.
+
+%%%%%%%%%%%%%%%%%% 	Python
+\subsection{The Python Language}
+\label{pylang}
+Python was conceived by Guido van Rossum in the 1980s when he was working at the Dutch research institute gaining his first experience with a programming language called ABC \parencites{Perez2011Python:Computing}{BillVenners2003TheRossum}.
+By advancing his knowledge during its development and feeling inspired by others, a decision was taken to apply some design principles when creating a new one \parencite{TimPeters2004ThePython}.
+
+\marginnote{Vision}
+The goal was set to develop a formal system which would \qcite{serve as a second language for people who were C or C++ programmers} along with focusing on code readability, software quality and developer productivity \parencites{BillVenners2003TheRossum}{Sanner1999Python:Development}{Lutz2013}.
+As a result, Python's syntax is \qcite{a remarkably simple and elegant} to follow making the language overall easy-to-read and easy-to-write \parencites[3]{Sanner1999Python:Development}.
+To guide the core team during its further improvements, many of these design principles were later summarized in the philosophical text named \emph{Zen of Python} \parencite{TimPeters2004ThePython}.
+
+Being specified in the \emph{Python Language Reference}, several compatible implementations have been developed with \emph{CPython}, written in C, being a referenced one as well \parencites{PythonCoreTeam2017Python:Language.}{PythonCoreTeam2017TheReference}.
+Additionally, there are for instance \emph{PyPy} or \emph{Jython} -- where the former is focusing on performance providing just-in-time compiler and parallelism while the latter \qcite{compile[s] Python source code (\dots) to provide direct access to Java components} allowing Python to \qcite{script Java applications} as much as CPython allows to do the same with C(++) \parencite[34]{Lutz2013}.
+
+Even\marginnote{Evolution} though first publicly released in 1991, only starting with version 2.x published in 2000 Python has grown to become a popular programming choice by being supported through \acp{IDE} and nowadays covering many use cases in the computer vision, Internet of Things and offering
+
+\begin{listing}[H]
+  \begin{minted}{R}
+# in R (and in Python - not shown here), types are dynamically inferred
+> exA <- 5       # assign an integer value to a variable
+> print(exA) 
+[1] 5
+> exA <- "hello" # overwrite an earlier value with a string 
+> print(exA) 
+[1] "hello"
+  \end{minted}
+  \begin{minted}{java}
+// in Java, types need to be declared before a variable is bound to value
+public class StaticTyping {
+ public static void main(String[] args) {
+  int exB = 6;   // declare and assign an integer variable a value
+  System.out.println(exB); 
+  exB = "a car"; // when compiled, an error is raised because variable was declared as an integer
+ }
+}
+  \end{minted}
+\caption{Example of dynamic typing in R and static typing in Java.}
+\label{lst:dynamicstatictyping}
+\end{listing}
+
+\noindent an array of web development frameworks.
+
+In comparison to R, over the time the language has also evolved more significantly manifested by addition of new high-profile features.
+However, being able to afford them, a backwards incompatible version 3.x had to be released in 2008 \parencites{GuidovanRossum2009APython}{Lutz2013}.
+Its objective has been to get back closer to the \emph{Zen of Python} by eliminating design flaws and removing duplicate ways of programming, thus making only \qcite{one obvious way to do it} \parencites{BerndKlein2017HistoryPython}{TimPeters2004ThePython}{Lutz2013}.
+Although a native 2to3 translation tool has been available to ease the migration pain, for some time the community was split due to many developers resisting to refactor their programs for what many have considered to be a new language \parencites{Raschka2016Python:Learning}{PythonCoreTeam20172to3Translation}{Lutz2013}.
+
+\marginnote{General-Purpose Language}
+A major distinguishing characteristic from R is that Python together with C(++) are consider to be \emph{general-purpose languages} \parencite{Cass2017,TeachingDS2016}.
+R targets out of the box only the analytical domain with a substantial focus on statistical analysis. 
+Hence, it does not offer any exemplar toolkits that support web development with \ac{HTML}, Cascading Style Sheets and JavaScript -- with an exception of RStudio's \emph{Shiny} framework. 
+Yet its aim is to only help interactive data analysis and it cannot be used to build large-scale web applications that Python enables to create by using \emph{Web Server Gateway Interface} and its compatible packages akin to \emph{Django}.
+
+Besides having capabilities for development of web, gaming applications or system-level scripting, Python community has developed a rich ecosystem for numeric programming as well \parencite{PythonCoreTeam2017GraphicFAQ}. 
+Therefore, the language has been increasingly used these days for a scientific computing. 
+Particularly, it was adopted for artificial intelligence applications such as \emph{TensorFlow} as their \enquote{first-class citizen} becoming de facto a \enquote{go-to} utility for working with multi-dimensional data \parencite{PDLMLRaschka2016}.
+Similarly supporting multiple programming paradigms including primarily object-oriented style with some elements of the functional one too, it has found its place in many organizations covering multiple use cases and objectives \parencite{RamlhoLucFPython2015}.
+
+A\marginnote{Obstacle} downside of Python is that its execution speed may not be the fastest when compared to low-level languages like Fortran \parencite{Lutz2013}.
+On the other hand, R and Python allow calling a complied and optimized C(++) and Fortran source code either through native approaches or third-party packages -- for instance \emph{Rcpp} for R and \emph{Cython} for Python. 
+As a result, developers can combine advantages of low-level and high-level programming. 
+Whereas the former allows engineers to be close to the hardware speeding up compute-intensive calculations, the latter one permits to experience the ease of programming and use -- both of which have contributed to languages' popularity in the \ac{DS} universe \parencites{Perez2011Python:Computing}{JakeVanderPlas2016PythonHandbook}.
+
+In the same way to R, the Python Software Foundation maintains \ac{PyPI}\footnote{\href{https://pypi.org/}{https://pypi.org -- The Python Package Index Warehouse}} which is currently serving over 130\,000 packages on its network.
+Even though it has been further beyond the scope of this work to compare in depth two languages and possibly their ecosystems, a brief overview with essential characteristics is presented in Table \ref{tab:RvsPython} and next section.
+
+\subsection{Summary of Previous Research}
+\label{relResearch}
+\acused{GUI}
+\subsubsection{R and Python Landscape}
+\label{rpythonlandscape}
+While some studies from the beginning of section \ref{secos} are considered pioneering in the field, they have only dealt with \ac{SECO}'s theoretical conceptualization, modelling and categorization \parencite{Christensen2014AnalysisEcosystem}.
+To better understand two programming ecosystems, a closer practical perspective was taken through an inspection of several relevant articles, see Figure \ref{fig-literature-programLandscape}.
+
+\begin{sidewaystable}
+    \begin{tabular}{|C{5cm}|C{0.37\textwidth}|C{0.37\textwidth}|}
+    \hline
+    \theadCenterText{Factors} & \theadCenterText{R (in version 3.4.4)}  & \theadCenterText{Python (in version 3.6.4)} \\ \hline
+    Initial public release -- Foundation & 1993 -- R Foundation in Austria since 2002 & 1991 -- Python Software Foundation in the United States of America since 2001 \\ \hline
+    License & GNU General Public License v2.0 & Python Software Foundation License (BSD-style) \\ \hline
+    Language paradigms & \multicolumn{2}{|c|}{Procedural, functional, object-oriented and imperative, see \textcites{FieldCadyDSBook}{PDLMLRaschka2016}} \\ \hline
+    Object-oriented system & 3 natively: S3, S4, RC (Reference Classes) and others via packages such as \mintinline{R}/R6/ and \mintinline{R}/R.oo/ & Only one \enquote{default} object-oriented system \\ \hline
+    Compiled or Interpreted Language & \multicolumn{2}{|c|}{Both are considered to be interpreted languages, executing source code line by line} \\ \hline
+    Level of Abstraction & \multicolumn{2}{|c|}{High-level languages, with an ability to interface low-level ones, mainly C(++) and Fortran} \\ \hline
+    Focus/Target Audience & \emph{Domain-specific}: its core focus lies on domains of mathematics, statistics and analysis of data due to being traditionally used in the academia and research & \emph{General-purpose language}: used by a wider audience because of covering a variety programming use cases including web \& graphical user interface (\ac{GUI}) development, system-level scripting or scientific computing \\ \hline
+    Code blocks -- control flow defined by & Curly-brackets \{ \} & Indentation (\enquote{off-side rule}) \\ \hline
+    Support for 64-bit integers & Not natively, some limited support through \mintinline{R}/bit64/ package & Native support (\enquote{int} datatype) \\ \hline
+    Support for two-dimensional data structures & Natively \mintinline{R}/data.frame()/ and \mintinline{R}/matrix()/ & Natively only limited \mintinline{python}/lists = []/, \mintinline{python}/tuples = ()/ and \mintinline{python}/dictionaries = {}/, thus packages like \mintinline{python}/numpy/ or \mintinline{python}/pandas/ are necessary \\ \hline
+    Package format and installation & One common format supported natively \mintinline{R}/install.packages(pkgs = 'car', ...)/ & \emph{Egg} used by \enquote{easy\_install} or newer and natively supported \emph{Wheel} by \enquote{pip} \\ \hline
+    Extension markets (besides \emph{GitHub} and similar) & \ac{CRAN} and \href{https://www.bioconductor.org/}{Bioconductor} & \ac{PyPI}, \href{https://conda-forge.org/}{conda-forge} \\ \hline
+    Available implementations (besides the referenced one) & \href{https://mran.microsoft.com/}{Microsoft R Open}, \href{http://www.oracle.com/technetwork/database/database-technologies/r/r-enterprise/overview/index.html}{Oracle R Enterprise} & \href{https://pypy.org/}{PyPy}, \href{http://www.jython.org/}{Jython}, \href{http://ironpython.net/}{IronPython}, \href{https://www.activestate.com/activepython}{ActivePython} \\ \hline
+    \end{tabular}
+    \caption{Presents a high-level overview of two programming languages and how can they be characterized.}
+  	\label{tab:RvsPython}
+\end{sidewaystable}
+%%%%%%%%%
+Notwithstanding\marginnote{Data Sources} scholars' best effort in collecting available quantitative data for instance on a number of downloaded \ac{CRAN} and \ac{PyPI} packages which would be used to gauge a popularity, health and growth of the ecosystem, \emph{reliable} statistics have been hard to acquire for both platforms.
+In fact, a lack of historical data from various open source extension markets has contributed to little research analysing other programming languages as well.
+A thorough search in \emph{Google Scholar} and \emph{Scopus} databases, in addition to inspecting a sample of \ac{SECO} literature, has revealed that only Ruby with \mintinline{HTML}/RubyGems.org/ has been extensively looked at in the academia, see \textcite{Syed2013OnEcosystems}.
+At the same time, examinations of software environments such as Java or Node.js have also been published \parencite{Eleni2017}. 
+Though, they have been largely a domain of blog posts and magazine articles which have used them to answer how has a specific language been popular compared to others \parencites{ErikWittern2016AnNpm}{KristianPoslek2015OverviewJavaScript}{DavidStackOverflow2017}{CharlesHumble2012OracleEcosystem}.
+
+For analysing R, the situation has been complicated by the fact that only one \ac{CRAN} mirror, created by a keystone player RStudio, can provide anonymized data about package downloads from October 2012 onwards \parencite{HadleyWickham2013TheMirror}.
+However, public statistics to more than forty other mirrors are not available due to maintainers' lack of interest, capacity to provide them or simply accessible technology.
+In comparison, Python community and \ac{PyPI} have renewed offering download figures only since January 2016 through means of Google's \emph{BiqQuery} warehouse \parencite{DonaldStufft2016PubliclyStatistics}.
+Consequently, both data sources have been used as a proxy to gain an initial insight into R and Python userbase.
+
+While\marginnote{Examination of R} some data have in recent years become ready to use, there is nonetheless a paucity of empirical research analysing software ecosystems and tools within them.
+R's landscape, and what \textcite{MattAsay2016ExponentialCompetitors} has claimed to be a super-linear or an exponential growth of contributed \ac{CRAN} packages, has been studied by several scientists including \textcites{German2013TheEcosystem}{Plakidas2017EvolutionQualities}.
+
+Specifically, the former have focused on understanding \qcite{code characteristics and dependency relationships between the R platform and externally developed} programs \parencite[90]{K.Plakidas2016HowEcosystem.}.
+They found that not only there have been differences in the frequency of releases and maturity of different sets of packages but similarly in the quantity and quality of their documentation \parencite{German2013TheEcosystem}.
+At the same time, they have observed that all libraries have been well maintained, their size was stable across above-mentioned types and additionally there has been a persisted drift towards having fewer dependencies too.
+
+Likewise, building upon a previous study of \textcite{K.Plakidas2016HowEcosystem.}, a recent quantitative analysis by the same author has examined the \qcite{evolution of the R ecosystem's dependency network and the contribution and collaboration patterns of the developer community} through \ac{CRAN} and Bioconductor metrics \parencite[3]{Plakidas2017EvolutionQualities}.
+Moreover, they have investigated environment's health concluding that increasingly, as R's adoption has grown, newcomers have emerged \qcite{display[ing] a \enquote{selfish} behaviour, feeding off the ecosystem without much involvement on their part} \parencite[62]{Plakidas2017EvolutionQualities}.
+Overall, by comparing two main repositories, authors' analysis has shown \qcite{a broad but relatively shallow network, dominated by a few \enquote{big} actors that supply fundamental extensions, and which once established retain their position} \parencite[62]{Plakidas2017EvolutionQualities}.
+
+Python's ecosystem\marginnote{Examination of Python} has been to date studied only by \textcite[13]{Hoving2013Python:Ecosystem} who have focused on the \emph{supply-network level} attempting to investigate \qcite{which characteristics [could be] identified within} the \ac{FOSS} ecosystem when examining Python's universe. 
+Through analysing \ac{PyPI}, they have described attributes such as \ac{SECO}'s growth and evolution over the time and compared their results to a similar study done by \textcite{RubyJaapJansen2011} about Ruby.
+Additionally, scholars have discovered significant relationships between different groups of developers (\enquote{lone-wolfs} and \enquote{one-day flies}), third-party packages (\emph{Eggs}) and communities of users \parencite{Hoving2013Python:Ecosystem}.
+
+When looking at other reports and at the same time updating a study by \textcite{HansenManikas2013}, in a longitudinal work \textcite[2]{Manikas2016RevisitingStudy} has extended theoretical and empirical knowledge by \qcite{analyz[ing] 231 papers from 2007 until 2014} from the field.
+Going into a greater detail, the author has categorized available literature where various software environments have been discussed concluding that research into \acp{SECO} has noticeably matured over the years, \qcite{both in volume and empirical focus} that has contributed to a deeper understanding of this concept \parencite[2]{Manikas2016RevisitingStudy}.
+Furthermore, it has extended itself to other areas including previously mentioned \acs{FOSS} too.
+Nonetheless, even though there has been a considerable amount of studies showing \qcite{signs of maturity}, it has been argued that they have lacked specific \qcite{theories, methods and tools (\dots) to software ecosystems} as well \parencite[28]{Manikas2016RevisitingStudy}.
+
+\subsubsection{Surveys of Tools}
+\label{surveyofTools}
+Because\marginnote{Importance} of later having a purpose to review available R and Python libraries for \ac{DS} design patterns, another decision was taken to investigate existing studies that have conducted (qualitative) surveys of software applications.
+The goal was not only to become familiar with a process of gathering and analysing tools but also developing a critical look on what was done in the past and could have been improved when carrying out similar research in this work. 
+
+Predominantly, diverse programs have been assessed by academicians in domains of biology and computer science, see Figure \ref{fig-literature-database}. 
+Within the latter group, due to a complexity and size of big data and data mining, a particular focus has been put on providing practitioners an overview of different \ac{ML} frameworks, storage systems, processing engines or applications for orchestration of server clusters. 
+Notably, \emph{Hadoop} and its related toolbox has been thoroughly studied. 
+
+However, long before \emph{Hadoop} was developed, already in 1999 Goebel and Gruenwald have conducted a review of knowledge discovery software.
+They have identified forty-three software applications and discussed numerous challenges that are necessary to be addressed including having a seamless integration with databases or providing extensibility to offered algorithms.
+
+Similarly, \textcite{Mikut2011} have surveyed 195 \ac{FOSS} and commercial programs according to seven criteria and have categorized them into nine types ranging \qcite{from (\dots) data mining suites, (\dots) business-centred data warehouses [(DW)]} and to what they have called \emph{solutions} -- technology for a specific purpose or a field \parencite[11]{Mikut2011}.
+Scholars have concluded by suggesting that although there has been \qcite{a wide range of software products} covering many different use cases, \qcite{generalized mining [utilities] for multidimensional datasets such as images and videos} had been missing so far \parencite[11]{Mikut2011}.
+Although a variety of libraries have been developed since then, not coincidentally, the previous factor was a motivating reason for focusing only on the two-dimensional data format as outlined in section \ref{delimitations} too. 
+
+Once \emph{Hadoop} has arrived in 2006, an extensive examination by both practitioners as well as scholars has been conducted into its ever-growing family of big data open source software.
+From recent times, \textcite{Liu2014} have investigated real time processing systems and compared their architectures and use cases. 
+On the other hand, \textcite{Lara2015BigData} have put their attention on the ecosystem of frameworks for \emph{\ac{ML}} whereby this term has been associated with applying \qcite{induction algorithms to data} which allow computers to learn from past patterns and by that improve future predictions \parencites[357]{FosterProvost2013DataThinking}. 
+Consequently, scientists have evaluated four applications according to criteria such \emph{scalability}, \emph{speed} and \emph{coverage} of different classes of algorithms.
+Before identifying potential areas for improvements, they have \qcite{assigned a rating to each of the four} utilities in a qualitative manner based on their \qcite{exposure to each [application] and related [literature] works} -- as they have not conducted any experiments \parencite[27-28]{Lara2015BigData}.
+
+Even though primarily targeting data analytics and processing of big data with \emph{Hadoop}, naturally surveys of programs have been conducted in other closely-interlinked domains too.
+For instance, \textcite{Acetp2013} have surveyed commercial and \ac{FOSS} cloud monitoring tools in addition to considering their properties, open issues and challenges.
+Alternatively, \textcite{ThomasSterling2010} have reviewed software for network analysis in molecular biology.
+Furthermore, visualization programs for life sciences have been studied by \textcite{PavlopoulosBio2008} and \textcite{Pabinger2014} as well. 
+
+%%%%%%%%%%% 		DS + DP
+\input{Chap1_and_2/chap2_b_DS_DP}

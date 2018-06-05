@@ -1,0 +1,50 @@
+\begin{landscape}
+\begin{longtable}{|C{3cm} |C{3cm}| C{10cm} | C{2cm} | C{2cm} |}
+    \caption[Presents steps by which information sources are collected and processed.]{Presents steps by which information sources are collected and processed. 
+    For more, see the methodology in Figure \ref{figmmDesign} too.} \label{tab:creteriaIncExclDocuments} \\
+    \hline
+    \theadCenterText{Step} & \theadCenterText{Source} & \theadCenterText{Description} & \theadCenterText{Used for ...} & \theadCenterText{Total \# of resources} \\ \hline
+    \endfirsthead
+    \multicolumn{5}{|c|}{\tablename\ \thetable\ -- \emph{Continued from previous page}} \\
+	\hline
+    \theadCenterText{Step} & \theadCenterText{Source} & \theadCenterText{Description} & \theadCenterText{Used for ...} & \theadCenterText{Total \# of resources} \\ \hline
+    \hline
+    \endhead
+    \hline
+    \multicolumn{5}{r}{\emph{Continued on next page}} \\
+    \endfoot
+    \endlastfoot
+    Keywords (initial search) & Scopus, Web of Science, Google (Scholar) & Material, including grey literature, where following keywords were found: \enquote{(best/good) approach(es)/advice(s)/practise(s)/
+    solution(s)/recommendation(s)}, \enquote{data science/\ac{ML}/\ac{BI}/big data}, 
+    \enquote{data analytics/analysis/mining}, \enquote{(abstract/common/frequent) problem(s)/mistake(s)}, \enquote{lesson(s) learned}, \enquote{(design) pattern(s)} & Inclusion & \multirow{2}{*}{26} \\ \cline{1-4}
+    Practical Screen & \noindent\rule{1cm}{0.4pt} & Documents must have a clear purpose and addressing objectives of the study. & Exclusion & \\ \hline
+    Snowballing & Sample of 26 resources & Additional information is collected by means of inspecting identified documents and extending an initial sample through iteratively snowballing  other studies. & Inclusion & 66 \\ \hline
+    Quality assurance & Sample of 66 resources & A number of documents, which were classified as \enquote{poor} and \enquote{fair} on a four-step scale (very good, good, fair and poor), are excluded. & Exclusion & 41 \\ \hline
+    \end{longtable}
+\end{landscape}
+
+\begin{landscape}
+\begin{longtable}{|C{1cm} | C{3cm} | C{2.5cm} | C{11cm} | C{2cm} |}
+    \caption[Presents criteria which are used for tool's inclusion and exclusion.]{Presents, in order of importance, criteria which are used for tool's inclusion and exclusion in the study.} \label{tab:creteriaIncExcl} \\
+    \hline
+    \theadCenterText{\#} & \theadCenterText{Criteria} & \theadCenterText{Type} & \theadCenterText{Description} & \theadCenterText{Used for ...} \\ \hline
+    \endfirsthead
+    \multicolumn{5}{|c|}{\tablename\ \thetable\ -- \emph{Continued from previous page}} \\
+	\hline
+    \theadCenterText{\#} & \theadCenterText{Criteria} & \theadCenterText{Type} & \theadCenterText{Description} & \theadCenterText{Used for ...} \\ \hline
+    \hline
+    \endhead
+    \hline
+    \multicolumn{5}{r}{\emph{Continued on next page}} \\
+    \endfoot
+    \endlastfoot
+    1 & Release on \ac{CRAN} or \ac{PyPI} & Qualitative & At the point of survey, included packages should be released on either central repository -- hence being open sourced in nature. 
+    If a package has not yet been published due to being in development, upon author's own discretion it might be considered as well. & Inclusion \\ \hline
+    2 & Purpose & Qualitative & A package is excluded if it does not have a clear purpose and addressing the needs of each data science design pattern. & \multirow{3}{*}[-32mm]{Exclusion} \\ \cline{1-4}
+    3 & Website & Qualitative & A package is excluded if it does not have a dedicated website (including a public source code repository) where users can find more information, for example  documentation. & \\ \cline{1-4}
+    4 & Usage Metrics & Quantitative & A package is excluded if does not have a recognizable number of downloads or other metrics supporting being used in the community, made available for instance by \mintinline{html}{Rdocumentation.org}, \mintinline{html}{anaconda.org} or \mintinline{html}{Depsy.org}. & \\ \cline{1-4}
+    5 & Maintenance & Quantitative & A package is excluded if it seems to be abandoned in terms of changes to the source code repository -- in fact it should have a publicly released version during a time period since January 2016 until \monthdataMyOwn\@. & \\ \hline
+    \end{longtable}
+\end{landscape}
+
+

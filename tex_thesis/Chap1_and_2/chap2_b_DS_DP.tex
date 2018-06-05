@@ -1,0 +1,380 @@
+\acused{ETL}
+\acused{SQL}
+\acused{CRISP-DM}
+\acused{KPI}
+\acused{OLAP}
+\section{Data Science}
+\label{termsDef}
+After introducing the concept of software ecosystems including R, Python and related research, it is necessary to narrow down and put into a relationship two critically important terms -- \emph{data science} and \emph{design patterns}.
+Therefore, to begin this segment, an evolution which has led to \ac{DS} being a \qcite{hot career choice} and the \qcite{sexiest job of the \nth{21} century} is provided first \parencites{Davenport2012DataCentury}[51]{Provost201351}.
+
+%%%%%%%%%%% 	"BI"
+Discussing\marginnote{Historical Roots} data science, a frequently arising topic these days is its origin and how it was born to be a new discipline and a job position in many enterprises.
+While practitioners as well as scholars such as \textcites{Provost201351}{Carbone2016ChallengesPerspective} have argued that a newly established term stands on its own to realize its full potential, others like \textcites{Larson2016AScience}{Vasconcelos2017} have seen \ac{DS} evolving from business intelligence and being a next step in the data-driven decision making.
+Not coincidentally is \ac{DS} considered by some to be under the same umbrella of the \ac{BI} which dates back to 1958 when Hans Peter Luhn has for the first time introduced a concept of this system.
+According to \textcites{DavidRostcheck2016DataCareer}{Chen2012}, both ultimately refer to gaining actionable knowledge by analysing raw data, though from somewhat different perspectives.
+
+\textcite[314]{5392644} has defined\marginnote{\acl{BI}} \ac{BI} as \qcite{an automatic system (\dots) to disseminate information to the various sections of any industrial, scientific or government organization}.
+Even though in the past sixty years a precise definition of \ac{BI} has proven to be elusive as manifested in the study of \textcite{Al-Eisawi2012BusinessReview}, a general understanding of it has been given in the late 1980s \parencite{Tutunea2015BusinessOverview}.
+At that time Howard Dressner has attributed it to \qcite{concepts and methods to improve business decision making by using fact-based support} \parencite[176]{Negash2008}.
+Thereupon, the associated technological means have led to become strategically and tactically important part of reaching informed conclusions across all company levels and industries \parencite{ArnottDAvidBIPat2017}. 
+
+Since the end of 1960s, \ac{BI} has also gone through multiple advancements and saw \qcite{a progression in the development of such information systems} that support business activities and enable decision-makers to gain a business value from the data \parencite[342]{Shollo2016TowardsKnowing}.
+Initially, managers have commonly used management information systems \parencites{realTimeBIContinental2006}{Shollo2016TowardsKnowing}{ArnottDAvidBIPat2017}.
+These produced \qcite{standardised, (\dots) period reports that did not allow (\dots) on-line queries} and there was no integration between different data sources \parencites[342]{Shollo2016TowardsKnowing}{Larson2016AScience}. 
+Although authors have identified and described \emph{generations} differently, two periods of time can be nonetheless clearly observed \parencites{Brian2015Gent}{Kohl2016}. 
+Both of them have led to professionals nowadays demanding interactive and personalized reports available on their mobile devices to better understand customer behaviour and make predictions about future sales in the real time \parencites{Wilkerson2016CISB5941}{Boris2015}{2015arXiv151103085K}.
+
+%%%%%%%%%%% 1+2
+\paragraph*{First and Second Generation}
+During 1980s and 1990s, \ac{BI} 1.0 was characterized by deploying solutions on-premise, at company's servers, where such tool-centric systems were owned, maintained and further developed by \ac{IT} departments \parencite{Kohl2016}.
+Unfortunately, they were responding to business requirements by providing the knowledge and wisdom about its operation in an inadequate fashion, and thus added little to no agility which company undertakings really needed \parencite{Chen2012}.
+
+The back-end\marginnote{Single Source of Truth} and foundation of \ac{BI} 1.0 system has been laid out in the \ac{DW} which has finally allowed to store data from heterogeneous and legacy \ac{IT} sources producing \qcite{a central repository with integrated [and cleaned] data for analysis} (\enquote{getting data in}), see an architectural sketch of such system in Figure \ref{fig-bi-dw-schema} \parencites[704]{Larson2016AScience}{Hejdanek2016NavrhIntelligencequot}{WatsonBiDatagettingIN2007}.
+As a result, it has unified a way of extracting, transforming and presenting data to business users and has established a single source of truth acting as a \qcite{primary [origin] for BI information} in the company \parencites{Heinze2014HistoryIntelligence}{Negash2008}{WarrenThornthwaite2012MicrosoftApproach}.
+
+Yet \ac{BI} front-end applications such as portals were complex and inflexible to manage even by \ac{IT} professionals, nota bene by managers and other end-users \parencites{Collier2011}.
+Moreover, the industry has been dominated by conglomerates akin to SAP or Oracle who brought with them a vendor lock-in due to solutions being proprietary, expensive and demanding to implement, maintain and use for enterprises \parencite{Joly2016}. 
+All this culminated into many projects turning out to be unsuccessful, not being used and ultimately abandoned \parencite{Collier2011}.
+At the same time, even if they were implemented, employees could only create limited reports and conduct narrow exploratory data analyses.
+In essence, they had no capability to make advanced predictions by applying statistical models as these were not widely available and easily exploitable.
+
+When \ac{BI} 2.0 has arrived in early 2000s, it has started to embrace a new platform, namely the web \parencite{BI2.0Ov2012}.
+Whereas \ac{BI} 1.0 has been dominated by analysing structured, internal information stored in relational databases, the advent of web brought semi-structured and unstructured data generated for example on social media \parencite{realTimeBIContinental2006}.
+This gave rise to \qcite{a new class of [non-relational] databases known as NoSQL} offering new processing, storing and querying paradigms to real time data \parencites[5]{Davenport2013Analytics3.0}{loukides2011data}.
+
+In addition,\marginnote{Self-Service BI} observing a market opportunity, vendors have begun focusing on business employees allowing them to tell engaging stories around user-friendly, interactive dashboards and creating actionable reports coupled for instance with geospatial data (\enquote{getting data out}; \cite{Firtik2017VizualizaceNastroju, Hejdanek2016NavrhIntelligencequot, loukides2011data, WatsonBiDatagettingIN2007}).
+By offering self-service \ac{BI} programs and targeting non-experts who could complete their work without the interference from technical personnel, it has enabled business users to become less dependent on \ac{IT} units \parencite{Heinze2014HistoryIntelligence}. 
+Leading to making the entire process more agile and business-centric instead of IT-centric \parencite{Joly2016}.
+
+All this prompted to exploring data in a new fashion, making statistics more attractive and visual for end-users, and therefore providing them better than just simple static reports \parencite{IndBIHistory2013}.
+Similarly, as the volume of collected data from the web continued to rise, analyses have been enhanced by the introduction of \emph{cloud computing} which permitted companies to move from limited on-premise hardware to flexible and instantaneously deployable, on-demand services \parencite{BI2.0Ov2012}. 
+Moreover, studying data has been moving from purely historical to more experimental and increasingly -- by using advanced statistical models -- predictive one as well, attempting to answer questions such as \enquote{what if} and \enquote{why} \parencites{Chen2012}{Boris2015}.
+
+However, even larger potential of \emph{big insights} through the richness of available data was not sufficiently realized and delivered on -- resulting into remaining an ongoing struggle gaining actionable knowledge, unresolved with \ac{BI} 2.0 \parencite{Kohl2016}.
+Even though acquisition costs for \ac{BI} solutions have decreased over time because of the competition from new entrants and availability of cloud solutions, the vast array of gathered information has not yet been fully transformed into bringing a valuable understanding to business operations \parencite{Chen2012}.
+
+Seen as a transition, \ac{BI} 2.0 has stipulated creation of new user-friendly tools while also looking increasingly into the future as opposed to just into the past.
+Indeed, for some time it was considered as \qcite{the latest in a long line of technologies that have been developed} for the same purpose of \qcite{creat[ing] knowledge useful for decision-making} \parencites[341-343]{Shollo2016TowardsKnowing}{Boris2015}.
+Albeit difficult to pinpoint to a specific year, since approximately 2010 new buzzwords such as big data or \ac{ML} have emerged and these have further accelerated changes in the \ac{BI} landscape \parencites{Chen2012}{Larson2016AScience}.
+
+\subsection{The New Era of Analytics}
+\label{dssection}
+\marginnote{Genesis}
+According to \textcite[10]{DavidDonoh2015Years50}, the origins of data science could be traced all the way back to 1962 when a mathematician John Tukey noted \qcite{that something like today's Data Science moment would be coming}. 
+Decades later, after William Cleveland in 2001 and since 2008, D.J.\ Patil with Jeff Hammerbacher have become credited with describing and giving the term a complete meaning \parencites{Jifa2014DataScience}{Davenport2012DataCentury}{DavidDonoh2015Years50}{NinaBookR2014}.
+Principally, they have all argued that the goal of science of data is finding interesting and robust patterns with great predictive powers that could be practically useful by incorporating \ac{ML} and computational statistics \parencites{Dhar:2013:DSP:2534706.2500499}{Vasconcelos2017}.
+Hence, finally delivering on \emph{big insights} through utilizing scientific methods of inquiry to understand the vast array of gathered information -- \qcite{the realm of data science} \parencite[1]{FosterProvost2013DataThinking}. 
+
+\textcites{LongCao2016}{CaoLong2017} has described that \ac{DS} has evolved from a paradigm shift in statistics which occurred when \enquote{elementary} analysis has transformed into advanced data analytics.
+Building on top of that, data \qcite{analysis has shifted from descriptive (\dots) to predictive and prescriptive} one \parencites[708]{Larson2016AScience}{Provost201351}.
+While it has continued to draw from the traditional concept of \ac{DW}, it has started to combine data from other external sources -- being diverse in quality and type.
+With a continuing increase in produced and captured information, providing \ac{DS} in the enterprises is nowadays seen as \emph{the} latest in the development of information systems, technologies, processes and employee's roles that support company's data-driven decision-making \parencites{DavidRostcheck2016DataDifference}{JelaniHarper2014DistinguishingScience}.
+
+As mentioned previously, some authors see \ac{DS} as a natural evolution of \ac{BI} which in the corporate environments has long been foundational at supporting mostly explorative and descriptive data analysis and that has become impacted by the emergence of data large in volume \parencites{JBL:JBL12010}{Larson2016AScience}.
+As a matter of fact, \textcite{Davenport2013Analytics3.0} has called \ac{BI} \enquote{Analytics 1.0} focusing on preparing data for rather short and ad hoc analyses. 
+On the contrary, \ac{DS} has been viewed as \enquote{Analytics 2.0} and a step towards developing data-enriched applications and services, see Table \ref{tab:BIvsDS} too (\enquote{Analytics 3.0}; \cite{Larson2016AScience, CaoLong2017}). 
+
+\marginnote{Meaning of Data Science}
+Although attempting to introduce the umbrella term of \ac{DS}, there has been little consensus about what it actually means -- in part because of \qcite{being a relatively young discipline itself, [which includes] facets from multiple other traditional fields of science} \parencites[6]{Carbone2016ChallengesPerspective}{CathyONeil2013DoingScience}{CarlShan2015TheScientists}.
+Nonetheless, even though diverse definitions have been proposed, authors including \textcites{CharlesRoe2013ThePioneers}{FrancescoCorea2016DataMyths} have defined it in similar ways. 
+Exemplary, \textcite[2151]{Dichev2017TowardsLiteracy} has viewed it \qcite{as an interdisciplinary field about scientific processes and systems to extract knowledge or insights from data in various forms}.
+A comprehensive review of the concept has also been provided in the series of articles by \textcites[8]{CaoLong2017}{LongCao2016} describing the domain \qcite{that synthesizes and builds on statistics}, computing and communication \qcite{to study data and its environments (\dots) in order to transform [them] to insights and decisions}. 
+Accordingly, it is viewed as:
+%
+\begin{displayquote}
+\textbf{Data Science}, combining computer science with statistics, \ac{ML} and domain understanding, is a systematic process of studying data to extract knowledge and actionable insights. 
+This, in order to communicate engaging and enlightening stories to stakeholders and develop data-enriched, value-added, products and services.
+\end{displayquote}
+
+Despite\marginnote{Portrayal} the stated definition, it has been challenging to characterise such multifaceted phrase due to for example \textcite[443]{AgarwalDhar2014} arguing that many of its pieces \qcite{have been around for a long time}, in various forms, since at least 1980s \parencite{LongCao2016}. 
+Additionally and importantly, other similar terms related to data mining or \ac{KDD} have not been clearly differentiated by the scholars \parencites{Ayankoya2014}{Provost201351}. 
+However, particularly data mining has been commonly assumed to be one subcomponent of a more general \ac{KDD} process whereby it lies between the data transformation and data interpretation and where specific algorithms are applied for extracting the knowledge \parencite{GoebelMichGru1999}. 
+On the other hand, \ac{DS} acting as a catch-all subject matter incorporates a handful of data-oriented research fields such as big data and \ac{ML} as well as data-independent ones like stakeholder communication with project management \parencite{LongCao2016}. 
+\begin{spacing}{1.0}
+\begin{landscape}
+    \begin{longtable}{|C{2.5cm}|L{8cm}| L{8cm}|L{4cm}|}
+    \caption[Presents a synopsis of a historical and a modern approach to data analysis and how can they be compared to each other.]{Presents a synopsis of a historical and a modern approach to data analysis and how can they be compared to each other. 
+    Even though being different in nature, usually elements from both strategies are used at various stages of the knowledge discovery process.} \label{tab:BIvsDS} \\
+    \hline
+    \theadCenterText{Dimensions} & \theadCenterText{Business Intelligence/Analytics 1.0}  & \theadCenterText{Data Science/Analytics 2.0} & \theadCenterText{References} \\
+    \hline
+    \endfirsthead
+    \multicolumn{4}{|c|}{\tablename\ \thetable\ -- \emph{Continued from previous page}} \\
+	\hline
+  	\theadCenterText{Dimensions} & \theadCenterText{Business Intelligence/Analytics 1.0}  & \theadCenterText{Data Science/Analytics 2.0} & \theadCenterText{References} \\
+    \hline
+    \endhead
+    \hline
+    \multicolumn{4}{r}{\emph{Continued on next page}} \\
+    \endfoot
+    \endlastfoot
+    Years & 1980s-1990s & Since 2010 & \textcites{Chen2012}{Davenport2013Analytics3.0} \\ \hline
+    View of data analysis & Retrospective \& Descriptive & Predictive \& Prescriptive & \textcites{BillSchmarzo2014BusinessDifference} \\ \hline
+    Perspective & Looks backwards in the history & Looks forwards in the future & \textcites{DavidSmith2013StatisticsBI} \\ \hline
+    Role of \ac{BI} analysts \& Data Scientists & Focuses on exploration of past trends -- applied mainly by business users & Uses past data to predict the future -- applied by technology-skilled employees with interdisciplinary skills & \textcites{SaintJosephsUniversity2017BusinessDifference}{IanSwanson2016DataDifference} \\ \hline
+    Objectives/ Goals & Assists employees in decision-making by providing access to high-quality, historical data by means of designing \ac{DW} & Uses hybrid data to develop predictive models that could drive the business by implementing data-driven functionality, for instance recommendations & \textcites{Larson2016AScience}{DavidRostcheck2016DataCareer} \\ \hline
+    Typical techniques and outcomes & Executes slice and dice or roll-up/down operations on on-line analytical processing (\ac{OLAP}) cubes to develop visualizations with key performance indicators (\ac{KPI}), standard and ad hoc reports & Through experimental \& exploratory data mining, creates predictive models and analyses. 
+    Develops interactive visualizations, forecasting reports and story-telling presentations & \textcites{DavidDietrich2014BuildingTeams} \\ \hline
+    Targeted questions & What has happened\dots, how much did\dots \newline $\Rightarrow$ already known questions are answered & What will happen if\dots, why\dots \newline $\Rightarrow$ helps to discover and answer new questions & \textcites{MikeMerritt-Holmes201610Intelligence}{DavidDietrich2014BuildingTeams} \\ \hline
+    Data Sources & Relational databases; flat files; enterprise resource planning, customer relationship management and other (legacy) \ac{IT} systems -- all of which are integrated into the central \ac{DW} to provide a single source of truth with structured, well-defined information & In addition to the previous ones, uses externally generated data from the web which are often stored in NoSQL and graph databases & \textcites{DavidDietrich2014BuildingTeams}{DavidSmith2013StatisticsBI} \\ \hline
+    Data Age & Processing and propagation of captured data across the whole \ac{BI} system (as in Figure \ref{fig-bi-dw-schema}) can take several hours due to complex \ac{ETL} processes -- users query historical data (older than 1 day) & Data processing, propagating and querying usually happens instantaneously -- users often work with real time data & \textcites{Larson2016AScience} \\ \hline
+    Data Quality & Detailed, preplanned architecture of \ac{DW} is aimed to present only complete, cleaned and formatted data of high-quality & Works with data sets which are of diverse quality, hence it relies considerably on probabilities and confidence levels & \textcites{MikeMerritt-Holmes201610Intelligence}{DavidSmith2011HowIntelligence} \\ \hline
+    Used applications & Most commonly acquires commercial off-the-shelf software, typically for back-end and front-end applications; \newline Uses of \ac{SQL} for querying relational databases and spreadsheets files & Prevalence of \ac{FOSS} for (No)SQL databases and \ac{ML} frameworks, though oftentimes supplemented with commercial add-ons; \newline In addition to \ac{SQL}, uses other programming languages including R, Python or Java for end-to-end manipulation & \textcites{DavidRostcheck2016DataCareer}{DavidSmith2011HowIntelligence}{Fern2016} \\ \hline
+    Role of Agile analytics and methodology & Adopting agility in a diverse team has not been simple, and thus not widely practised -- largely due to a complexity of \ac{IT} systems and projects & Due to iterative approach, workflow and the speed of having early results, it is naturally predisposition to take advantage of agility with far greater extent & \textcites{Collier2011}{Larson2016AScience}{krawatzeck2013agile} \\ \hline
+    \end{longtable}
+\end{landscape}
+\end{spacing}
+
+To help outlining this interdisciplinary conceptualization that applies to a variety of sciences, its three fundamental components are introduced next. 
+At the core, the innovative \emph{technology} has been developed by a heterogeneous \emph{team} of engineers and scientists.
+Then, by following particular \emph{processes}, the group is led to iteratively establish the \qcite{data-to-knowledge-to-wisdom thinking} \parencites[72]{LongCao2016}{FrancescoCorea2016DataMyths}{Dhar:2013:DSP:2534706.2500499}{Provost201351}.  
+
+\paragraph*{Big Data}
+With arrival of web\marginnote{3Vs}, companies have been focused on acquiring competitive advantage in their industries by exploiting the availability of gathered information not only from internal transaction systems but increasingly from new external sources, too, sensors and internet connected devices to name a few \parencite{Provost201351}. 
+To describe a large amount of data collected, a vague term has been coined by the end of \nth{20} century named \emph{big data} which has been associated with three key properties \parencites{Carbone2016ChallengesPerspective}{Larson2016AScience}{Jifa2014DataScience}{MauroGreco2015}. 
+Namely, data have become large in \emph{volume}, large in \emph{variety} (unstructured text and video) and of high \emph{velocity} (speed at which they are captured and need to be acted upon; \cite{Fern2016,ChenMinMao2014,2014BigChallenges}).
+These characteristics are also known as 3Vs with additional dimensions being added which have been most frequently \emph{veracity} (quality and trust) and \emph{value} (potential insights gained; \cite{LongCao2016}). 
+
+Principally, the phrase refers to raw information that is too \emph{large} and mainly \emph{complex} to be stored by the traditional data management tools \qcite{within a tolerable time} -- typically where conventional applications known from \ac{BI} would work well due to keeping more consistent and structured type of data in the \ac{DW} \parencites{CaoLong2017}{Provost201351}[173]{ChenMinMao2014}.
+Accordingly, to facilitate their transformation, it has been required to develop new analytical technologies such as \emph{Hadoop} and \emph{Spark}, majority of which are open source further opening up the vendor lock-in and lowering the costs of acquisition and maintenance \parencites{Provost201351}{mcafee2012big}{MauroGreco2015}. 
+Hence, new processing and storage paradigms have allowed to leverage big data with advanced \ac{ML} algorithms that are applied to extract previously unknown facts. 
+All that by using for instance the power of \emph{cloud computing}, and thus effectively serving audiences with better advertising or supporting manufacturing companies in the supply-chain during their forecasting needs as well \parencite{JBL:JBL12010}.
+
+The \emph{data deluge}, a situation when complexity and volume of information is overwhelming companies to manage and make use of it, has resulted into ever greater possibilities in understanding and profiling customers in a deeper way as well as tailoring services precisely to their wishes \parencites{LongCao2016}{ChenMinMao2014}.
+As a result, \textcite{Davenport2013Analytics3.0} has argued that no longer should big data just help managers in business decisions but instead take a leading role and \qcite{drive the business} itself -- through developing more valuable personalized services and products \parencite[704]{Larson2016AScience}.
+
+Yet, despite\marginnote{DS $\neq$ Big Data} being often used interchangeably, \emph{data science} is not equal to \emph{big data} \parencite{Fern2016}.
+The distinctive factor lies in the latter one focusing on managing enormous amounts of information with help of for example distributed file systems, while the former one uses it together with \ac{ML} when it tries to produce actual value from data large and small \parencite{Sean2015}. 
+
+\paragraph*{Data Scientists}
+With regard to professionals, a novel field has also brought new requirements for a \qcite{next-generation [of] quantitative analysts} who need to have a broader and a multidisciplinary skillset with analytical mind \parencites{JBL:JBL12010}[5]{Davenport2013Analytics3.0}{Provost201351}. 
+However, even though many engineers are calling themselves \emph{data scientists}, because of a multitude of technologies needed to work with analysing (big) data, enterprises have been faced with a shortage of right human talent who could acquire \qcite{evidence (\dots) from data by undertaking diagnostic, descriptive, predictive, and prescriptive analytics} \parencite[73]{LongCao2016}.
+All this with the aim to provide actionable insights and intelligence for business operations \parencites{Dichev2017TowardsLiteracy}{TeachingDS2016}.
+
+\marginnote{Required Knowledge}
+According to scholars, one of the reasons for such lack has been a necessary skillset where data scientists need to learn diverse technologies ranging from applying \emph{Hadoop}'s \ac{ML} frameworks in the cloud to being capable of developing predictive models using R and Python ecosystem \parencites{Lara2015BigData}{CaoLong2017}.
+As illustrated by Venn diagrams of \textcites{DrewConway2013TheDiagram}{Variousauthors2015WhatAnalyst}, these specialists must have programming skills as well as a proficiency in the mathematics, statistics and business analytics \parencites{loukides2011data}{Jifa2014DataScience}{Dhar:2013:DSP:2534706.2500499}.
+At the same time being creative problem solvers, curious and have excellent communication and writing skills \parencites{Provost201351}{CaoLong2017}.
+Consequently, by possessing domain understanding and an ability to set up processes for transformation and integration of various sources of information, they shall be qualified for uncovering deep business insights through descriptive, predictive and increasingly the \emph{prescriptive} modelling as well.
+This is used for telling stories about future courses of action and anticipate and simulate in advance what might happen, and therefore taking proactive responses \parencite{CaoLong2017}.
+
+\textcite[6]{JurneyRus2013} has described that these\marginnote{Roles and Responsibilities} experts have a role to \qcite{explore and transform data in novel ways (\dots) and combine [them] from diverse sources to create new value}.
+Ultimately, data scientists look for unknown, ask improbable questions and make explorations into diverse data sets. 
+Among others, they make visualizations to expose \qcite{early and often} hidden facts and patterns around which business stories can be told and issues solved \parencite[6]{JurneyRus2013}.
+
+It has been further noted that data scientists have diverse responsibilities during the \ac{KDD} life-cycle \parencite{CaoLong2017}.
+Once understanding the objectives, they need to formulate research questions, transfer business problems into analytical tasks and subsequently understand data they intent to work with. 
+When this has been collected and potentially enriched with other sources, they build complex pipelines which prepare data for applying \ac{ML} algorithms to create powerful models aiming to turn raw data into information, later into insight and at last in \qcite{business decision-making actions} \parencites{GoebelMichGru1999}[30]{CaoLong2017}.
+Furthermore, the role involves typical project management duties, including careful project planning, resource allocation, reviewing requested changes,  mitigating risks and last but not least ensuring a proper project closure.
+Thus, by leveraging the predictive modelling and big data, data scientists have become a centrepiece to many, these days, data-driven businesses -- be it in the finance or marketing. 
+In fact, through the results of data analytics, they are competent to transfer them \qcite{into benefits for society} at large and companies alike \parencites{Dhar:2013:DSP:2534706.2500499}[6]{Carbone2016ChallengesPerspective}.
+
+\paragraph*{Iterative, team-based development}
+\textcite[705]{Larson2016AScience} have further reported that \ac{DS} \qcite{involves iterative [and incremental] development of analytical models where [they] are created, validated, and altered until the desired results are achieved}.
+Hence, the importance of \ac{ML} that gives computers the ability to learn by themselves without being preprogrammed doing so \parencite{IBMMLSamuel1959}.
+Because of this interactivity during which (big) data are transformed and prototypes are developed, tested and adjusted, any novel discoveries may lead into changing earlier results, thus being in constant feedback loops \parencite{GoebelMichGru1999}.
+
+Nonetheless, even though desired, one single person often does not possess necessary skills to cover all areas of \ac{DS} which span analysis, development and deployment of solutions \parencite{Carbone2016ChallengesPerspective}. 
+On these grounds, a continues collaboration and communication within usually a smaller analytical team of data engineers, product managers, \ac{UI/UX} designers and researchers is necessary for successful value-based driven knowledge extraction in enterprises \parencites{JurneyRus2013}{Domino2017DS}{CarlShan2015TheScientists}. 
+
+According to the\marginnote{Agility} literature, when compared to the traditional \ac{BI} that has usually applied a waterfall method for development, \ac{DS} has also been better predisposition to benefit from using agile practises due to inherently practising them with far greater frequency and success \parencites{Collier2011}{krawatzeck2013agile}.
+As described by \textcite{Larson2016AScience}, the nature of \ac{DS} encourages persistent interaction with stakeholders to confirm the direction and quickly respond to changes and results rather than following a strict plan. 
+Moreover, the aim is to work on smaller and shorter releases while at the same time have a valuable and usable documentation -- precisely where design patterns can have a noticeable impact \parencite{Larson2016AScience}. 
+
+While\marginnote{CRISP-DM} the technological landscape has advanced profoundly with arrival of big data, the methodological approach to \emph{data discovery}, which starts as soon as raw data have been acquired, has not changed significantly over the past decades \parencites{Larson2016AScience}{Lara2015BigData}. 
+Indeed, a host of models has been developed and one of these processes \qcite{with reasonably well-defined stages} for acquiring knowledge and delivering actionable business information has been \acl{CRISP-DM} (CRISP-DM; \cite[56]{Provost201351}).
+Claiming to be one of the most frequently applied and adjusted frameworks, it has been published in 1999 to service the needs of data mining community by helping them to solve common pitfalls in data-driven projects in terms of understanding, preparing and analysing their information \parencites{PeteChapman2004CRISP-DMGuide}{ThomasZeutschler2016ITAnalytics}{Firtik2017VizualizaceNastroju}{GarrettGrolemund2017RData}.
+
+As shown in Figure \ref{fig6} and seen next, the cyclical and iterative \ac{KDD} process model consists of six phases which according to researchers such as \textcite{JurneyRus2013} should also fit all within one to four weeks of development, named \emph{sprints}:
+\begin{compactitem}
+    \item [(a)] \emph{business understanding} (assessing situation and determining objectives),
+    \item [(b)] \emph{data understanding} (collecting and exploring data),
+    \item [(c)] \emph{data preparation} (data cleaning and formatting presenting the largest effort overall),
+    \item [(d)] \emph{modelling} (selecting, designing and building statistical models),
+    \item [(e)] \emph{evaluation} (of results and reviewing the process) and finally
+    \item [(f)] \emph{deployment} (of solutions, making use of outcomes and finalizing the project).
+\end{compactitem}
+Each of these stages has other \emph{general} and \emph{specialized} tasks and by following these steps, the framework providing \qcite{the overview of data mining life-cycle} should help businesses to reduce operational costs, increase time-to-market and support knowledge transfer within organizations through appropriate, domain-specific management of analytical projects \parencites[16]{ThomasZeutschler2016ITAnalytics}{Horvath2011}.
+Ultimately, providing a tool-, industry- and technology-neutral model in the business context \parencites{PeteChapman2004CRISP-DMGuide}.
+
+%%%%%%%%%%%%%%%%%
+\acused{API}
+\subsection{Design Patterns}
+\label{dp-intro}
+Attempting to put into a relationship \ac{DS} and a concept of \emph{design patterns}, the last key term is introduced. 
+As briefly outlined in the introduction, in 1977, a civil engineer named Christopher Alexander has published a literature work, nowadays a perennial seller, entitled \emph{A Pattern Language} which gave a birth to a pattern movement \parencites{SalingarosSOMEALEXANDER}{DongPan1998TheEngine}. 
+Being grounded in the domain of architecture, the profound work of \textcite{Alexander1977} has defined each pattern portraying a \qcite{problem which occurs over and over again (\dots), and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice} \parencites[93]{Spinellis1999}. 
+
+Patterns described in prose are useful means \qcite{of capturing time-tested[, optimized and generalized] design solutions and facilitating their reuse} -- thus helping \qcite{people reason about what they do and why} through provided terminology \parencites[853]{HeffreMheer2006}[37]{Schmidt:1996:SP:236156.236164}{BruseDougals2002}.
+In the words of \textcite[13]{DongPan1998TheEngine}, they establish the ability to discuss and \qcite{record design tradeoffs}. 
+
+Unfortunately, a single pattern may be insufficient to describe a wide-ranging challenge and there might be even alternative solutions too.
+Therefore, \textcite[37]{Schmidt:1996:SP:236156.236164} has stated that \qcite{when related [context-dependant] patterns are woven together they form} a system of \emph{standard vocabulary} and effective pieces of advice to \qcite{recurring problems} in various fields \parencites[10]{Fowler2002}{InPaulPeter2016}{InventadoPeter2015}{geist2012patterns}{Wilson2008PatternsEnvironments}. 
+As a result, a \emph{pattern language} such as the one for planning and construction purposes or in the \textbf{chapter \ref{chap:DSDP}} represents a network of relationships to resolve the complexity in specific situations \parencites{HeffreMheer2006}{DeardenHCI2006}.
+
+Correspondingly, the\marginnote{Value} advantages of using systematic approaches to commonly occurring problems for instance in phases of software analysis, design and implementation are several fold. 
+First and foremost, according to \textcite[93]{Spinellis1999}, design patterns \qcite{offer a convenient way to capture, document, organise, and disseminate existing knowledge from a given area in a consistent and accessible format}.
+Furthermore, the use of patterns in a conscious way can improve the overall understanding of sophisticated concepts and provide a better transfer of experience within a company as part of keeping and enhancing its organisational memory \parencites{Chetan2016}{Schmidt:1996:SP:236156.236164}{DeardenHCI2006}. 
+The existing body of research has also suggested that they \qcite{lower total cost of ownership} due to fostering communication of ideas, coordination and collaboration of work between stakeholders \parencites[1]{Adriadno2016}{Fowler2002}.  
+Principally, however, patterns are responsible for making better design decision through using \qcite{simpler, [scalable,] more flexible, modular, reusable, and [generally] understandable} techniques, best practises and proven solutions \parencite[1]{ChenHong2004}. 
+
+Nonetheless\marginnote{Drawbacks}, while having benefits of improving project documentation and being a \emph{lingua franca} in communication with domain experts, at the same time patterns might prolong time required for development of applications as well \parencite{Hossam2017}. 
+Moreover, if used improperly, they can decrease source code understandability due to a larger complexity of the implementation \parencite{DeardenHCI2006}.
+Besides, \textcite[2]{Hossam2017} has listed that they could limit design options and \qcite{leave some important details unresolved}, thus acting more like templates that demand further refinement and which cannot be blindly used \parencite{Fowler2002}. 
+For these reasons, as noted by \textcite[37]{Schmidt:1996:SP:236156.236164}, \qcite{all solutions have costs, and pattern descriptions should state the[se] clearly}.
+From the supplementary perspective of their characterization, \textcite[4]{PeterNorvig1996DesignProgramming} has likewise reported that because they are invisible, they are difficult to notice and formalize as it is a human who shapes them to \qcite{explicitly appeal to aesthetics and utility}.
+On the other hand, once established they can become an invaluable resource for stakeholders' daily tasks.
+
+Both\marginnote{Pattern Structure} \textcites{BruseDougals2002}{DongPan1998TheEngine} have remarked that writing a pattern consists of three core components. 
+Namely establishing a relationship between a \emph{problem} it is supposed to address, a \emph{solution} which is the pattern itself describing various \qcite{elements that make up the design} and a specific domain context in which it would be applied \parencites[13]{GoF2002}{DobleMeszaros1997}. 
+In addition, researchers have stated that patterns should have an evocative \emph{name} forming a common vocabulary for effectively sharing experiences and knowledge, a \emph{diagram} or \emph{sketch} for instance in the \ac{UML} and a \emph{summary} describing its purpose \parencites{Fowler2002}{HeffreMheer2006}{PeterNorvig1996DesignProgramming}.
+Last but not least, there are \emph{forces}, \emph{implementation details}, \emph{consequences} of its use and \emph{examples} demonstrating the application \parencites{ChenHong2004}{Stefan2017}{GuerreroLuisFuller2001}{DobleMeszaros1997}. 
+
+\marginnote{Application}
+Not being invented but rather discovered \qcite{by trial and error and by observation}, design patterns were applied in various domains from education, e-learning and communication to over being applied for game design, sociology or in the business \parencites{Gwendolyn2010}{EducationPatterns2012}[63]{DeardenHCI2006}. 
+Focusing in this work on their use in the \ac{IT}, numerous documents have already been published summarizing widely used approaches in many computer science disciplines.
+Case in point, books by \textcites{Brich1995}{Mattson2005} have identified patterns for concurrent, parallel and distributed programming.
+Works of \textcites{Erl2015}{Fehling2014}{Blaha2010} have dedicated their attention to cloud computing and database modelling. 
+\textcite{Fowler2002} with \textcite{BobbyGregor2012} have presented related best practises when integrating and developing enterprise, service-oriented middleware applications where such patterns have an impact on the whole system due to their extensive scope \parencite{BruseDougals2002}.
+
+\marginnote{\ac{GoF}}
+However, perhaps the most important pattern-related publication has been released in the software engineering by Gang of Four authors in 1994 who popularised twenty-three patterns for object-oriented software design, categorizing them into \emph{structural} (examining relationships), \emph{behavioural} (dealing with object interaction) and \emph{creational} ones (handling object formation; \cite{DongPan1998TheEngine}). 
+Having a clear proposition and being local in scope, practitioners have explained in the \qcite{collection of relatively independent solutions} that their patterns describe a communication and collaboration of objects and classes \qcite{that are customized to solve [issues] within a particular [programming language independent] context} \parencites[853]{HeffreMheer2006}[39]{Schmidt:1996:SP:236156.236164}.
+
+It has been only since Gamma's et.\ al (1994) fundamental text that the study of design patterns has gained a momentum in the research and has extended itself into other areas of human-computer interaction including \acs{UI/UX} design \parencites{DongPan1998TheEngine}{DeardenHCI2006}.
+This effort has been also spearheaded by \emph{The Hillside Group} through which participating scholars have developed an extensive body of knowledge that is being shared on \emph{\ac{PLoP}} conferences.
+Indeed, given their importance for the community, both information sources have been an instrumental gateway in this understanding of design pattern research.
+
+When\marginnote{Bridge Pattern} looking at a typical example described by \ac{GoF}, a structural \patternName{bridge pattern} has been illustratively implemented in the Java Database Connectivity application programming interface (\ac{API}).
+Its intent has been to solve a problem of \qcite{decoupling abstraction from implementation so that the two can vary [easily and] independently}, essentially separating two concerns, and therefore improving their extensibility \parencite[171]{GoF2002}.
+Hence, the goal of such pattern is assuring that there is a class separation where the developer does not call a platform- or vendor-specific implementation but instead uses its abstraction, a general and independent interface.
+Besides, \ac{GUI} frameworks like \emph{Qt} have adopted it to provide a set of consistent interface elements that could be used across all supported hardware platforms while at the same time considering various specificities of operating systems. 
+
+\marginnote{Context} 
+Turning now the attention to design patterns used for \ac{DS} and encompassing domains of \ac{BI}, big data and \ac{ML}, these shall be capable of capturing \enquote{big ideas} and best practises across different levels of abstraction -- providing both theoretical and technical solutions \parencites{MosaicDataScience2017}{Chetan2016}{DeardenHCI2006}{DelibasicBKirchnerK2008AApproach}. 
+As such, the discovered \emph{data science design patterns} should offer effective and efficient means to problems found in the \ac{DS} life-cycle. 
+This, when following for instance \ac{CRISP-DM} and its stages of preparing, modelling and evaluating information which might be large in volume, variety, velocity and is often of a great uncertainty \parencite{Hossam2017}.
+The objective of these \emph{higher-order abstractions} is to symbolize the knowledge that is implicitly understood by the experts in order to share the wisdom with other \ac{KDD} professionals and stakeholders in the organization \parencite{HeffreMheer2006}.
+Thus, precisely describe a solution to an issue \qcite{in a given context}, see next \parencite[93]{Spinellis1999}. 
+
+\begin{displayquote}
+\textbf{Data Science Design Patterns} represent reusable design solutions that solve a frequently occurring problem in the interdisciplinary field which studies data by means of applying scientific methods to extract valuable and actionable knowledge and insights.
+\end{displayquote} 
+
+\subsubsection{Related Research}
+\label{ds_dp_related_research}
+Moving\marginnote{\acp{SLR}} on now to consider related research in the field of design patterns, several mapping studies have been conducted and one of possibly the most comprehensive ones has analysed 637 articles published between 1995 and 2015. 
+\textcite{DPSummarySMS2016} have broadly classified the research into six pattern categories dealing with: 
+%
+\begin{compactitem}
+    \item [(a)] \emph{development} (also the most frequent objective),
+    \item [(b)] \emph{usage} (pattern utilization and application), 
+    \item [(c)] \emph{mining} (techniques for their detection), 
+    \item [(d)] \emph{quality evaluation} (assessing their impact), 
+    \item [(e)] \emph{specification} (methods and notation for their description) and 
+    \item [(f)] \emph{miscellaneous issues} (for example their use in refactoring).
+\end{compactitem}
+
+Earlier, \textcite[14]{GoFDesignPatternsAmpatzoglou2013} have arrived to a similar taxonomy when they have specifically targeted \ac{GoF}-related \qcite{studies that deal[t] with the effect of pattern application on quality} features. 
+Consequently, they have concluded that patterns \qcite{enhance one quality attribute [for instance the functionality and usability] in the expense of another} one -- hence they \qcite{cannot be characterized as universally \enquote{good} or \enquote{bad} } \parencite[14]{GoFDesignPatternsAmpatzoglou2013}.
+
+After having discussed two general studies that were conducted to analyse the field of pattern research, an extensive search in scholarly databases such as Scopus and Google (Scholar) has revealed that \emph{data science(-oriented) design patterns} have so far received little attention as suggested by the paucity of studies that have been dedicated to them.
+According to \textcite[2]{CaoLong2017}, one possible explanation for this lack could be attributed to \ac{DS} being a broad concept and \qcite{at a very early [exploration] stage}.
+Though, on the other hand, once being further narrowed down to its individual sub-fields like big data processing or prediction utilizing \ac{ML} methods, a handful of relevant studies as well internet resources have been identified and catalogued in Figure \ref{fig-literature-database-ds-dp-research} too.
+Therefore, following paragraphs consider numerous subject areas, one of which is the information visualization -- the outcome of data analysis and arguably the primary focus of \ac{DS} by which stories can be told and action can be taken.
+
+\marginnote{Visualization}
+Indeed, this has already been extensively studied by scholars who have documented various approaches to \qcite{model[ing], design[ing] and perform[ing]} decorative tasks on data, see \textcites[5]{ChenHong2004}{WareColin2013}{HeffreMheer2006}.
+A classical literature work by \textcite{Tutfe1883} has laid out foundational grounds and inspired both designers and programmers in incorporating visual thinking processes into common design practices.
+Therefore, maximizing information value for the end-user while at the same time minimizing a development effort for software engineers or \ac{UI/UX} creators \parencite{WareColin2013}.
+Specifically, \textcite{ChenHong2004} has presented nine high-level solutions for interactive visualization which have been categorized into \emph{data}, \emph{structural} and \emph{behavioural} patterns illustrated on examples of \patternName{visual encoding}, \patternName{graphic grid} and \patternName{brushing}.
+On the other hand, at a lower-level \textcite{HeffreMheer2006} have proposed a pattern language consisting of twelve problem and solution pairs including \patternName{scheduler} and \patternName{camera} which have been observed in various \ac{GUI} frameworks and applications.
+
+\textcite{MinerDonald2012} have\marginnote{MapReduce} classified over twenty design patterns into six overarching themes dedicated to \emph{Hadoop} and \emph{MapReduce} paradigm. 
+Moreover, they have stated, not surprisingly and in line with findings of this study too, that research has heretofore been scarce and scattered across diverse, often unreliable blogs, websites or hidden in books and articles where a small chapter is devoted to recurring issues and their solutions in data analytics. 
+
+While\marginnote{Big Data} \textcite{GoF2002} have been dealing with classes and objects, from an architectural point of view, patterns discovered in big data have been touching multiple different components \parencites{Fabian2013}{Fowler2002}. 
+Hence, trying to understand how complementary enterprise systems have been designed, \textcite{Forrester2013} of Forrester Research have interviewed professionals in eleven companies and have uncovered four architectural concepts. 
+Ultimately arguing that \emph{hub-and-spoke approach} has been providing best capabilities and extensibility through having a common low-cost storage layer to which various \ac{DW}, \ac{BI} tools or mathematical packages could be connected and later used by company's departments for their specific needs.
+
+The on-line catalogue at \mintinline{html}/BigDataPatterns.org/ has given further insights into necessary \ac{IT} artefacts describing diverse processing and query engines and other applications that have been found within the current analytical systems in organizations \parencites{Arcitura2017BiDataPatterns}{erl2015big}.
+Once \emph{technological mechanisms} have been presented, the same authors have introduced thirty-five big data design patterns which have been later grouped into a new perspective of compound patterns. 
+These combine a set of stand-alone ones to create models or technology-sets -- for example \patternName{analytical sandbox} or \patternName{big data processing environment}.
+
+Being\marginnote{Layered Architecture} known from the enterprise \ac{IT} architecture, \patternName{layered design} pattern has suggested to separate systems into logical, discrete \qcite{groupings of the functionality}, irrespective of hardware's \qcite{physical location} \parencite{MicrosoftPatterns2017}.
+Analogous to authors such as \textcites{Hossam2017}{Lara2015BigData}, \textcite{IBM2013DeveloperWorks} have described four building blocks of a solution platform for insights discovery, see Table \ref{IBMtable}.
+Going more in depth, it has been suggested for company employees \qcite{to think in terms of big data requirements and scope} instead of layers \parencite{IBM2013DeveloperWorks}.
+Thus, \emph{atomic}, \emph{composite} and \emph{solution patterns} have been proposed. 
+
+Addressing specific requirements, the first group has been further divided into patterns for \emph{data consumption}, \emph{processing}, \emph{storage} and \emph{access}.
+On the other hand, the composite ones such as \patternName{store and explore} encapsulate several dimensions to solve \qcite{a given business problem} and together with atomic ones contribute to establishing the final category dealing with business scenarios, for instance \patternName{take the next best action} \parencite{IBM2013DeveloperWorks}. 
+Overall, layers are important because it is them which programmers and researchers look at when mapping existing software tools and identifying gaps that need to be addressed by developing new technology \parencites{Fowler2002}{IBM2013DeveloperWorks}. 
+As a result, they should enable better understanding of what (non-)functional requirements and tasks are necessary to perform in these contexts too.
+
+\begin{spacing}{1.0}
+\begin{table}[ht]
+\centering
+\caption{Presents logical layers as they have been described by \textcite{IBM2013DeveloperWorks}.}
+\label{IBMtable}
+\begin{tabular}{|l|l|}
+\hline
+\theadCenterText{Tier} & \theadCenterText{Meaning/Examples} \\ \hline
+Big Data sources & Format and point of data location and collection \\ \hline
+Data massaging and store layer & Distributed file systems, relational databases \\ \hline
+Analysis & Recommendation engine \\ \hline
+Consumption & Presentation/visualization capabilities \\ \hline
+\end{tabular}
+\end{table}
+\end{spacing}
+
+The\marginnote{Deep Learning} yet-to-be-published book by \textcite{PerezBook2017} entitled \emph{Design Patterns for Deep Learning Architectures} concerns a biologically inspired concept within the artificial intelligence called deep learning \parencite{ArelDL2009}.
+In author's ongoing research, patterns have been categorized into seven thematic areas ranging from the \emph{representation} (\qcite{how neural networks represent data}) and \emph{explanation} dealing with \qcite{different kinds of output from neural networks} to \emph{serving} (deployment of models; \cite{PerezBook2017}).
+
+Besides\marginnote{Data Science} another forthcoming book by \textcite{Todd2019} mentioned already in the introduction, up to now very little works have included phrases of \ac{DS} and design patterns together. 
+Illustratively, \textcite{MosaicDataScience2017} has defined this compound concept as \qcite{reusable computational pattern[s] applicable to a set of data science problems having a common structure, and representing a best practice for handling such problems}. 
+In their five technical blog posts, supplemented occasionally with R code examples, authors have looked at approaches that transform and combine individual variables or handle the missingness in data.
+
+Last\marginnote{Data-Oriented Patterns} but not least, \textcite{Fabian2013} has written a chapter in his work on data-oriented software design where he listed, among others, eight specific patterns like \patternName{in place transformation} which modifies data (structures) within the same container or \patternName{tasker} that concurrently runs transformation tasks on many data pieces without considering other parts. 
+Being foundational, both have been implemented in many programming languages including R and Python and within their ecosystems as their primary object of concern are raw data.
+
+%%%%%%%%%%%%%%%%%%%%%% 
+\section{Summary} 
+To summarize, by pursuing a first study question, the goal of \textbf{this chapter} has been to provide a background to important concepts in this thesis.
+
+\marginnote{SECO and R \& Python}
+It has begun with section \ref{secos} which has not only allowed to gain a better understanding of two programming languages but also familiarize the audience with previous research in the field.
+Consequently, its importance lies in deepening and broadening the knowledge that is further needed for answering the second and third study question. 
+
+Albeit having strengths in different areas, one of the main reasons why two formal systems are applied in the \ac{DS} community is their ecosystem offering a wide range of cutting edge algorithms that are indispensable in order to effectively mine data for obtaining a wisdom.
+As touched upon in the introduction, R and Python have been often compared to each other trying to identify which is a preferred choice to accomplish all developer's demands and use cases.
+Nonetheless, it is usually required to use a multitude of tools, and therefore \textcite{Theuwissen2016} has highlighted the need to learn one programming language after another as they also share parallels in terms of orientation and functionality.
+
+While both have been actively evolved by their core team of contributors, Python has continued to attract larger attention due to being generally purposeful and having more visible changes between the releases \parencite{Cass2017}.
+On the contrary, R has aimed for a backwards compatibility all the way back to its roots, and therefore has followed a more conservative approach whereby relying on community efforts and particularly \ac{CRAN} more significantly.
+
+Additionally, when looking to gain a deeper understanding of programming ecosystems and especially those of R and Python, section \ref{rpythonlandscape} has uncovered that research has been done largely on the \emph{software ecosystem} and \emph{supply network level}. 
+In fact, taking a holistic look at their tools, conducting analyses of used packages and principally studying the \emph{vendor (developer) level} has been avoided. 
+Unsurprisingly, due to a lack of necessary data and complexity of their acquisition, existing studies have primarily analysed R. 
+Moreover, only the work of \textcite{Eleni2017} has attempted to examine ecosystems in combination and no other studies were found mapping available tools for \ac{DS} purposes or interconnecting them with \emph{design patterns} as well.
+This is where this thesis aims to intersect between subject matters when aggregating rather specific R and Python application universes with a more generic conceptualization of \ac{DS} design patterns.
+
+When taking a deeper look at various surveys of utilities published to date, their review in section \ref{surveyofTools} has demonstrated shortcomings when observing that only higher-level inquiries of diverse types of programs were made. 
+Indeed, a strong focus has been put on \emph{Hadoop} family, meanwhile, R's and Python's specific features and \ac{KDD} ecosystem capabilities have not yet been thoroughly investigated.
+Furthermore, scholars have usually inadequately explained how their surveys have been methodologically conducted in terms of tools' discovery and selection -- other than according to their defined objectives. 
+This lack of details has been pointed out by \textcite{JansenHarrie2010} and as a result it is aimed to sufficiently explain how a concurrent collection of applications is done in section \ref{collectionOfTools}.
+
+With an exception of design patterns, after investigating \ac{SECO} and \ac{DS} and attempting to understand their exact meaning, an unfortunate fact could be highlighted that none can be defined with one simple and common definition covering all aspects and views.
+This is due to terms' ambiguity, often labelled as \enquote{umbrella} phrases, and thus creating a number of rationales and interpretations by researchers.
+To have an overview and overcome this challenge, an attempt was made to relevantly define each concept taking into account different understandings that have been proposed in the literature.
+
+As\marginnote{\acl{DS}} seen throughout the segment \ref{termsDef}, \ac{DS} is difficult to pinpoint exactly because it is interconnected with other related fields such as \ac{BI} and statistics from which it was born and evolved into nowadays being indispensable for companies to preserve their competitive advantage in the business \parencite{Provost201351}.
+Accordingly, it was defined as an overarching concept that inherently encompasses technology for big data and \ac{ML} techniques as well.
+Similarly, \textcite{Ayankoya2014} have refereed to \ac{DS} as a convergence of three themes, namely \ac{BI}, advanced analytics which is typically manifested in the form of domain-specific \ac{ML} capabilities and big data.
+In this work, once three typical characteristics were described -- the use of big data by a new class of professionals who create statistical models utilizing Agile principles and following frameworks like \ac{CRISP-DM} -- it has additionally allowed to illustrate and compare what \textcite{Davenport2013Analytics3.0} has called Analytics 1.0 with Analytics 2.0 in Table \ref{tab:BIvsDS}.
+
+Subsequently\marginnote{Design Patterns}, design patterns were finally introduced and being at the core focus of this work it was attempted to put them into a relationship with aforementioned process of extracting insights by applying scientific procedures.
+Taken together, the investigation has established that to date little research was found in the academic literature with regard to design patterns and their application in the \ac{DS}. 
+Although some works and internet resources have touched upon related patterns in one way or the other, they were narrow in focus on one particular stage of data analysis, paradigm or for example attempted to provide a perspective by way of layers and components of big data systems.
+
+Continuing the quest of addressing the research gap, the \textbf{next chapter} details the methodology of how patterns are discovered.

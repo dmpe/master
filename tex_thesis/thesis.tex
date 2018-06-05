@@ -1,0 +1,252 @@
+%& -shell-escape
+\documentclass[reqno,12pt,oneside,dvipsnames,svgnames,table,x11names]{report} % 12 point font, print one-sided
+\usepackage{pdfpages}  % https://tex.stackexchange.com/a/23776
+\usepackage{amsmath}
+\usepackage{amsxtra}   % Use various AMS/math packages
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{rac}       % Use Rackham style file
+% https://texblog.org/2014/12/04/continuous-figuretable-numbering-in-latex/
+\usepackage{chngcntr}
+%https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+\usepackage{xcolor}    % from above document class - https://tex.stackexchange.com/a/83102
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
+\usepackage{subcaption}
+\usepackage{lscape}
+\usepackage{tocbasic}
+\setuptoc{toc}{totoc}
+\usepackage{breakcites}
+% https://anjalorenz.wordpress.com/2012/02/14/biblatex-kurz-im-ueberblick/
+% https://tex.stackexchange.com/a/134544
+% https://www.overleaf.com/help/218-which-bibtex-styles-are-available-on-overleaf
+% https://tex.stackexchange.com/questions/34934/add-a-new-empty-page
+\usepackage{graphicx}  % Add some packages for figures
+\graphicspath{{images/}{custom_fonts/}}
+% http://mirror.unl.edu/ctan/macros/latex/contrib/csquotes/csquotes.pdf
+\usepackage[autostyle,english = american]{csquotes} 
+\usepackage[american]{babel}
+\usepackage{verbatim}
+\usepackage[bibstyle=apa,citestyle=authoryear-comp,dashed=false,uniquelist=false,uniquename=false,maxcitenames=2,backend=biber,sortcites=false,sorting=nyt,isbn=false]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{Mley.bib}
+\usepackage{rotating}
+\usepackage{array}
+\usepackage{pdfpages}
+% http://www.khirevich.com/latex/microtype/
+\usepackage[protrusion=true,expansion=false,final,tracking=false,kerning=false,spacing=false,factor=1100,stretch=5,shrink=5]{microtype}
+\usepackage{breakcites}
+\usepackage{verbatim} 
+\usepackage[printonlyused]{acronym} % For the List of Abbreviations
+\usepackage{setspace} % Allows you to specify the line spacing
+\usepackage{textcase}
+\usepackage{titlesec} % https://tex.stackexchange.com/a/60212
+\usepackage{enumitem} % https://tex.stackexchange.com/a/43747
+\usepackage{floatrow} % https://tex.stackexchange.com/questions/22751/how-to-force-table-caption-on-top
+\floatsetup[table]{capposition=top}
+\usepackage[cache=false]{minted}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{longtable}
+% https://tex.stackexchange.com/questions/4118/whats-the-quickest-way-to-write-2nd-3rd-etc-in-latex
+\usepackage[super]{nth} % 21st, etc.
+\usepackage{mathspec}
+\usepackage[driverfallback=dvipdfm]{hyperref}
+\usepackage[bottom]{footmisc}
+\usepackage{marginnote} % side notes
+\usepackage{dtk-logos}  % latex logos
+\usepackage{xpatch}
+\xpatchnameformat{labelname} % GIT, https://tex.stackexchange.com/a/97212
+  {\ifciteseen}{\ifnumcomp{\value{listtotal}}{>}{\value{maxnames}}}{}{}
+\usepackage{lettrine}
+\usepackage[export]{adjustbox}
+\usepackage{makecell}
+
+%%%%%%%%% Set manually splitting of words, otherwise may not work properly
+\hyphenation{Ma-ni-kas}
+\hyphenation{emer-ged}
+\hyphenation{re-us-able}
+\hyphenation{mod-el-ling}
+\hyphenation{ge-ne-ral}
+\hyphenation{prob-lem}
+\hyphenation{of-fer-ing}
+
+\onehalfspacing           % \onehalfspacing for 1.5 spacing
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% thesis topic -------------- change only here
+\newcommand{\MyOwnTopicName}{Discovering Data Science Design Patterns with Examples from R and Python Software Ecosystem}
+%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%% Set custom fonts for body text and code
+\setmainfont{GaramondPro}[Extension = .ttf, Path = custom_fonts/,UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-It, BoldItalicFont = *-BoldIt]
+\setmonofont{SourceCodePro}[Scale=0.90, Extension = .ttf, Path = /usr/share/fonts/opentype/scp/TTF/, UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-It, BoldItalicFont = *-BoldIt] 
+%%%%%%%%%%%%%%%%%%%%%%
+% https://tex.stackexchange.com/a/69477
+\makeatletter                           
+\providecommand*{\toclevel@thm}{0}%
+\makeatother
+
+% https://tex.stackexchange.com/a/344711
+% https://tex.stackexchange.com/a/236657
+% https://tex.stackexchange.com/a/26530
+\def\UrlBreaks{\do\/\do-}
+% https://tex.stackexchange.com/questions/102792/create-table-with-only-header-bold-and-center
+\newcommand*{\theadCenterText}[1]{\multicolumn{1}{|c|}{\bfseries #1}}
+\urlstyle{same}
+
+% https://www.sharelatex.com/learn/Using_colours_in_LaTeX
+\definecolor{quo}{RGB}{110,110,110}
+\definecolor{darkor}{RGB}{207, 147, 113}
+
+% qcite macro
+\newcommand{\qcite}[1]{\enquote{\emph{\textcolor{quo}{#1}}}}
+% patternName macro
+\newcommand{\patternName}[1]{\emph{\textcolor{darkor}{#1}}}
+
+\newcommand{\mynameDP}{Dmitrij Petrov}
+
+% current month https://tex.stackexchange.com/a/212264
+\newcommand{\monthdataMyOwn}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi\space \number \year}
+
+% https://tex.stackexchange.com/a/10449
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{footnote}{chapter}
+
+% for tables
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% https://tex.stackexchange.com/a/406872
+\makeatletter
+\newcommand{\currentfontsize}{\fontsize{\f@size}{\f@baselineskip}\selectfont}
+\makeatother
+
+% https://tex.stackexchange.com/a/35547
+\setminted{fontsize=\footnotesize,baselinestretch=1,linenos,breaklines}
+\setmintedinline{fontsize=\currentfontsize}
+
+% https://www.sharelatex.com/learn/Hyperlinks#Linking_local_files
+% https://tex.stackexchange.com/questions/100905/best-practice-for-hyperref-link-colours
+\hypersetup{pdfencoding=auto,colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black, pdfpagelayout=TwoPageLeft,pdfstartpage = 1, pdffitwindow = true,pdfpagemode=UseNone,pdfauthor={\mynameDP},pdftitle={\MyOwnTopicName},breaklinks=true,pdfkeywords={R, python, data science, software ecosystems, design patterns}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If printing two-sided, this makes sure that any blank page at the
+% end of a chapter will not have a page number.
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+\AtEndPreamble{\usepackage[autoprint=true]{pythontex}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% Begins the real document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\cleardoublepage
+
+\Coverpage{\MyOwnTopicName}{\mynameDP}
+
+\includepdf[pages={1}]{images/Wi2_Deckblatt_DP_Thesis.pdf}
+\cleardoublepage
+
+\titlepage{\MyOwnTopicName}{\mynameDP}{Master of Science}
+{International Information Systems}{\monthdataMyOwn\@}
+{Prof.\ Dr.\ Freimut Bodendorf, Chair of Institute of Information Systems II, FAU\\
+Research Assistant Isabella Eigner, Institute of Information Systems II, FAU\\
+Research Assistant Alexander Piazza, Institute of Information Systems II, FAU}{Student ID: 21998127}
+\cleardoublepage
+
+% Begin the front matter as required by Rackham dissertation guidelines
+\initializefrontsections
+
+\copyrightpage{\mynameDP}
+
+\statutoryDeclaration
+\input{Abstract_Ack_StatDec/statutoryDeclaration}
+
+\dedicationpage{Dedicated to my parents,}{my thesis committee,}{my reader,}{and myself.}
+
+% Page numbering. If you don't include a frontispiece or copyright page, you'll need to change this for two-sided printing.
+\makeatletter
+\if@twoside \setcounter{page}{4} \else \setcounter{page}{1} \fi
+\makeatother
+
+\startacknowledgementspage
+\input{Abstract_Ack_StatDec/Acknowledgements}
+\label{Acknowledgements}
+
+\startabstractpage
+\input{Abstract_Ack_StatDec/Abstract}
+\label{Abstract}
+
+% Table of contents, list of figures, etc.
+\tableofcontents     % Required
+\listofappendices    % Required if there is more than one appendix
+\listoffigures       % Required if there is more than one figure
+\listoftables        % Required if there is more than one table
+\listoflistings      % for code
+\listofabbreviations % Abbreviations should be stored in a file named abbr.tex
+
+\startthechapters
+%%%%%%%%%%%%%%%%%%%%%%%%%%% For later in chapter 1
+\newcommand{\ObjectivesQOne}{How do scientists understand the concepts of \emph{software ecosystem}, \emph{data science} and \emph{design pattern}?}
+\newcommand{\ObjectivesQTwo}{Based on the additionally reviewed literature, which data science-oriented design patterns can be recognized?}
+\newcommand{\ObjectivesQThree}{Surveying R and Python \acs{FOSS} ecosystems, what are the specific tools that solve common problems when discovering knowledge from data?}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\clearpage
+\vspace*{\fill}
+\hfill
+\begin{center}
+This page is intentionally left blank.
+\end{center}
+\vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\clearpage
+\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{1}
+ \chapter{Introduction}
+   \label{chap:Intro-Chap1}
+   \input{Chap1_and_2/chap1_Intro}
+
+ \chapter{Background and Related Work}
+   \label{chap:KeyTerms}
+   \input{Chap1_and_2/chap2_a_SECO}
+
+ \chapter{Research Approach}
+   \label{chap:Method}
+   \input{Chap3/chap3}
+
+ \chapter{Data Science Design Patterns}
+   \label{chap:DSDP}
+   \input{Chap4/chap4_a_DP15}
+
+ \chapter{Reflection}
+   \label{chap:summary}
+   \input{Chap5/chap5}
+
+\startappendices
+\appendix{Figures}
+\label{app:figures}
+\input{Appendices/Figures}
+
+\appendix{Tables}
+\label{app:tables}
+\input{Appendices/Tables}
+
+% https://tex.stackexchange.com/a/112886
+\startbibliography
+ \begin{singlespace}
+  \renewcommand*{\UrlFont}{\rmfamily}
+  \printbibliography[title={REFERENCES}]
+ \end{singlespace}
+
+\end{document}

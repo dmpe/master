@@ -1,0 +1,313 @@
+---
+title: "Data Science Design Patterns -- Source Code Examples in R"
+author:
+- Dmitrij Petrov
+output: 
+  html_document: 
+    df_print: default
+    highlight: pygments
+    theme: readable
+  pdf_document: 
+    fig_caption: yes
+    highlight: pygments
+    latex_engine: xelatex
+editor_options: 
+  chunk_output_type: console
+---
+### Design Pattern #1: Notebook in R
+
+The application of `Notebook` design pattern can be seen throughout this `.Rmd` file, underpinned by the `RMarkdown` package <https://rmarkdown.rstudio.com/>.
+
+### Design Pattern #2: Data Frame in R
+
+Create a 3-by-2 data frame using `tibble` library. 
+
+```{r}
+library(tibble) # loads the package
+tibble(col1 = 1:3, col2=c("e", "f", "g"))
+```
+
+Alternatively using `data.table`.
+
+```{r}
+library(data.table)
+data.table(col1 = 1:3, col2=c("e", "f", "g"))
+```
+
+Unload packages in order to avoid conflicts.
+
+```{r}
+detach("package:data.table", unload=F)
+```
+
+### Design Pattern #3: Tidy Data in R
+
+Using `Data Frame Design Pattern` and `tibble` library, create a 3-by-4 table.
+
+```{r}
+library(tibble) 
+dp_4 <- tibble(Types = c("Sedan", "SUV", "Sports car"), 
+               William = c(1,0,2), Monica = c(0,2,NA), 
+               Johan = c(0,1,1))
+head(dp_4) # display a dataset
+```
+
+Next, reshape the data using `tidyr` package.
+
+```{r}
+library(tidyr)
+tidy_df <- gather(data = dp_4, key = "first_name", 
+                          value = "cars_owned", 2:4)
+head(tidy_df, n = 6) # display first 6 rows
+```
+
+Same functionality provided by `reshare2` library.
+
+```{r message=FALSE, warning=FALSE}
+library(reshape2)
+reshape_df <- melt(dp_4, id = "Types", variable.name = "first_name", value.name = "car_owned")
+head(reshape_df, n = 3)
+```
+
+```{r}
+detach("package:reshape2", unload=F)
+detach("package:tidyr", unload=F)
+```
+
+### Design Pattern #4: Leakage in R
+
+Topic/Task: Imputing missing data in the `air quality data set`. 
+
+```{r}
+library(mice)
+library(datasets)
+set.seed(32018)
+data("airquality")
+```
+
+Inspect what is missing in the dataset.
+
+```{r}
+summary(airquality)
+md.pattern(airquality)
+```
+
+44 observations contain missing data of some sort, specifically only in 2 variables `Solar.R` and `Ozone`.
+Now, let's try to impute them using `predictive mean matching` method.
+
+```{r}
+imp <- mice(airquality, m = 5, maxit = 5, method = "pmm") 
+completeAirQuality <- complete(imp)
+summary(completeAirQuality)
+```
+
+The summary statistics have remained very similar. 
+
+### Design Pattern #5: Prototyping in R
+
+Data come from <https://archive.ics.uci.edu/ml/datasets/pima+indians+diabetes>
+
+Topic/Task: Classifying whether females of Pima Indian heritage have diabetes, from medical records data.
+
+```{r, eval=T, include=T, warning= F, message=F}
+library(caret)
+library(mlbench)             # for the dataset
+library(pROC)
+
+set.seed(32018)              # ensure reproducibility of results
+data(PimaIndiansDiabetes)    # contains train + test data
+```
+
+Which data type are variables?
+Source: <https://stackoverflow.com/a/23907642> 
+
+Select only those which are integer & numeric.
+
+```{r}
+df_variables <- split(names(PimaIndiansDiabetes), 
+                      sapply(PimaIndiansDiabetes, function(x) paste(class(x), collapse=" ")))
+input_colNames <- unlist(df_variables[2])
+```
+
+After acquisition, data are split into training (75%) and testing (25%) subsets using `caret` library.
+
+```{r, eval=T, include=T, warning= F, message=F}
+library(caret)
+splitIndex <- createDataPartition(PimaIndiansDiabetes$diabetes, p = .75, 
+                    list = FALSE, times = 1)
+trainDataFrame <- PimaIndiansDiabetes[ splitIndex,]
+testDataFrame  <- PimaIndiansDiabetes[-splitIndex,]
+
+training <- trainDataFrame[,input_colNames] # select only input variables
+trainDiabetesCl <- trainDataFrame$diabetes  # store output class separately
+
+testesting <- testDataFrame[,input_colNames]
+testDiabetesCl <- testDataFrame$diabetes
+```
+
+Train a classification model using `k-nearest neighbors` algorithm and predict new values that can be used later in the confusion matrix.
+
+```{r, eval=T, include=T, warning= F, message=F}
+trMod <- train(
+          y=trainDiabetesCl, x=training, # training dataset -- vector and variables
+          method ='kknn',                # k-nearest neighbors from kknn package
+          metric = "ROC",                # metric for evaluation
+          trControl=trainControl(classProbs = TRUE, 
+                                 summaryFunction = twoClassSummary))
+
+predictions <- predict(object=trMod, newdata=testesting, type='raw')
+```
+
+```{r, eval=T, include=T, warning= F, message=F}
+print(postResample(pred=predictions, obs=testDiabetesCl))
+pROC::multiclass.roc(testDiabetesCl, predict(object=trMod, testesting, type='prob')[[2]])
+```
+
+Evaluation is done using accuracy (~ 0.73%), Kappa (~0.40) and area under curve (~0.81).
+
+### Design Pattern #6: Cross-validation in R
+
+Continuation with above data set.
+Using `caret` library, one can specify a training control function which includes how to split data, see next.
+
+```{r eval=T, include=T, warning=F, message=F}
+ctrlFunc1 <- trainControl(
+              method = "cv", number = 5,        # 5-fold cross validation
+              summaryFunction = twoClassSummary,# binary classification  
+              classProbs = T)                   # task
+```
+
+### Design Pattern #7: Grid in R
+
+Training a naive Bayes classification model and applying `Cross-validation Design Pattern`.
+
+```{r eval=T, include=T, warning=F, message=F}
+library(caret)
+ctrlFunc1 <- trainControl(
+              method = "cv", number = 5,        # 5-fold cross validation
+              summaryFunction = twoClassSummary,# binary classification  
+              classProbs = T)                   # task
+
+predModel <- train(
+              y=trainDiabetesCl, x=training,  # training dataset -- vector and variables
+              method='nb',              # naive Bayes from klaR package
+              trControl=ctrlFunc1,      # training control function
+              metric = "ROC",           # metric for evaluating the model
+              tuneGrid=expand.grid(     # search 2^3 = 8 combinations in the grid
+                fL=c(0.1,0.2),          # 2 values for penalty
+                usekernel=c(TRUE,FALSE),# whether kernel or normal density
+                adjust=c(0.4,0.5)))     # bandwidth adjustment
+```
+
+Now, evaluate prediction using AUC ROC.
+
+```{r eval=T, include=T, warning=F, message=F}
+print(predModel)
+
+predictions1 <- predict(object=predModel, testesting, type='raw')
+predictions2 <- predict(object=predModel, testesting, type='prob')
+
+print(postResample(pred=predictions1, obs=testDiabetesCl))
+
+auc <- multiclass.roc(testDiabetesCl, predictions2[[2]])
+auc
+```
+
+When using `cross-validation` and `grid search`, Kappa is ~ 0.43 with accuracy ~ 0.74. 
+These are quite good results (a slight increase from using just classical holdout set). 
+Nonetheless, can we achieve better results?
+
+### Design Pattern #8: Assemblage in R
+
+Considering the same example from previous pattern, this one uses `caretEnsemble` package.
+
+```{r, eval=T, include=T, warning= F, message=F}
+library(caret)
+library(caretEnsemble)
+library(glmnet)
+library(pls)
+
+ctrlFunc2 <- trainControl(
+              method = "cv", number = 5,    # 5-fold cross validation
+              summaryFunction = twoClassSummary, 
+              savePredictions="final",
+              index = createResample(trainDiabetesCl, 10),
+              classProbs = T)
+
+model_list <- caretList(
+  y=trainDiabetesCl, x=training,
+  trControl=ctrlFunc2,
+  metric="ROC",             # the same metric from 'Grid #8'
+  methodList=c("pls", "nb") # Partial Least Squares + naive Bayes methods for ensemble
+)
+```
+
+```{r, eval=T, include=T, warning= F, message=F}
+print(model_list)
+```
+
+See for instance `pls` (partial least squares) model's performance (which is also quite high ~ kappa is about 0.47).
+
+```{r, eval=T, include=T, warning= F, message=F}
+predictions3 <- predict(object=model_list[1], testesting, type='raw')
+predictions4 <- predict(object=model_list[1], testesting, type='prob')
+
+print(postResample(pred=predictions3[[1]], obs=testDiabetesCl))
+
+auc <- pROC::multiclass.roc(testDiabetesCl, predictions4$pls$pos)
+auc
+```
+
+Check for correlation between models.
+
+```{r, eval=T, include=T, warning= F, message=F}
+xyplot(resamples(model_list))
+modelCor(resamples(model_list))
+```
+
+There is some correlation, but let's try to apply ensemble anyway to see if it is going to improve the performance. 
+We use here `stacking` approach where we combine `pls` (partial least squares) and `nb` (naive Bayes) through `generalized linear models` algorithm.
+
+```{r, eval=T, include=T, warning= F, message=F,strip.white=T}
+greedy_ensemble <- caretStack(
+  model_list, 
+  method="glmnet",
+  tuneLength=5,
+  metric="ROC",
+  trControl=trainControl(
+    method="cv",
+    number=5,  # 5-fold cross-validation
+    savePredictions="final",
+    summaryFunction=twoClassSummary,
+    classProbs=TRUE
+))
+
+greedy_ensemble
+```
+
+Now predict using an ensemble of two methods.
+
+```{r, eval=T, include=T, warning= F, message=F}
+library(caTools)
+model_predsStack <- lapply(model_list, predict, newdata=testesting, type="prob")
+model_predsStack <- lapply(model_predsStack, function(x) x[,"pos"])
+model_predsStack <- data.frame(model_predsStack)
+
+model_predsStack$ensemble <- predict(greedy_ensemble, newdata=testesting, type="prob")
+
+colAUC(model_predsStack, testDiabetesCl)
+
+auc2 <- pROC::multiclass.roc(testDiabetesCl, model_predsStack$ensemble)
+auc2
+```
+
+Indeed, it shows very modest improvement in prediction at round 0.83, which is better than individual predictions using naive Bayes and partial least squares.
+
+### Design Pattern #9: Interactive Application in R
+
+For seeing the `Interactive Application` using `Shiny` framework, the reader has to open `RStudio IDE` and its project `code_data.Rproj` from this folder.
+Then, once navigating to the `/dp_9/R-Shiny` folder within the application and opening the `app.R` file, a green button will be available to run the Shiny application on the local computer.  
+
+### Design Pattern #10: Cloud in R
+
+See `README.md` file in the `dp_10` folder, `R_DP_10.Rmd` respectively.

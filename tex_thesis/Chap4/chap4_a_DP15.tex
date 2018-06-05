@@ -1,0 +1,305 @@
+\lettrine[lines=2]{\color{BrickRed}H}{aving} outlined key concepts and methodology, and after literature studies were collected, inspected and coded using general inductive approach, this chapter constructs and formalizes ten data science design patterns. 
+It then establishes \acl{DSTM} too.
+
+%%%%%%%%%%%%%%%%%%%% 
+\section{Pattern 1: Notebook}
+
+\paragraph*{Context}
+An iterative, interdisciplinary \ac{DS} process, as illustratively seen on the \ac{CRISP-DM} methodology and Figure \ref{fig6}, consists of many different phases that are accomplished during a life-cycle of an analytical project.
+
+\paragraph*{Problem}
+To enable easier communication with stakeholders in the course of insights discovery from data large and small, it is necessary to document approaches to questions being asked and manage acquired knowledge in a systematic way.
+
+\paragraph*{Forces}
+\begin{compactitem}
+   \item \ac{DS} is an incremental procedure where exploratory analysis needs to be explicitly described alongside the information such as what are the business objectives to solve, who are the stakeholders involved, where do data come from and how are they treated.
+   \item Being related to the software engineering, the aim is to stay within a workflow of the centralized repository for source code management.
+   Thus, the document should be stored in an open format enabling tracking of changes in it by means of a version control system like \mintinline{bash}/Git/.
+\end{compactitem}
+
+\paragraph*{Solution}
+Initially, \ac{KDD} process may start from \ac{DS} \emph{notebooks} which support a lightweight markup language such as Markdown used to chronicle the progress and that in addition are accompanied by specifically marked code snippets. 
+Upon running this master file, results are printed in line with the other text rendered too.
+In short, it combines source code with readable description that is capable of recording not only small comments but also \ac{DS} project plan with gathered information from the stakeholders. 
+At the same time, \emph{notebooks} present data analysis in a visual and concise form as well \parencites{WilsonGred2017}{NatureBPDASNMRI2017}. 
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+Sharing \emph{notebooks} simplifies reproducibility due to publishing the source code with graphics \parencite{JakeVanderPlas2016PythonHandbook}.
+Likewise, by transparently communicating research activities that lead to achieved outcomes, they enhance organizational collaboration and memory through careful document management \parencites{JonJupyter2016}{CharlerSutton2012}.
+Moreover, they permit fast collection of the feedback from the \ac{DS} team by executing individually \emph{notebook's} code examples, thus promoting lean and interactive development style \parencites{EslamiAli2012}{CMACanada2003}.
+
+\textbf{Liability:}
+Being split into smaller code chunks instead of stored in cohesive files, source code becomes hard to orient in.
+Because of a tendency of having code snippets across multiple \emph{notebooks} (\enquote{here and there}), it creates a need for following a priori and well-defined structure with appropriate naming conventions for data, files and folders to minimize plausible disorganization \parencite{FieldCadyDSBook}.
+
+\paragraph*{Known uses}
+\begin{compactitem}
+   \item \emph{Notebooks} encourage quick prototyping and iteration on modelling and processing steps for the data analysis, see later \patternName{Prototyping Design Pattern}. 
+   \item Because of richness of supported presentation formats, they are used for storytelling of insights through an explanation of chosen approaches, conducted tasks and a discussion of actionable results.
+   \item Additionally, authors like \textcite{JakeVanderPlas2016PythonHandbook} utilize these to write tutorials, data dictionaries, technical reports and even books teaching computer science concepts or programming languages.
+\end{compactitem}
+
+\paragraph*{Related Patterns}
+\emph{Notebooks} can contain embedded interactive visualizations which enable users to interplay for instance with check boxes or sliders, see \patternName{Interactive Application Design Pattern}.
+
+Not having \ac{DS} project including \emph{notebooks} checked into the previously mentioned version control systems such as \mintinline{bash}/Git/ that supplement recording of a \emph{project history} culminates into lacking a holistic view of its past development and ability of restoring changes by going back in time. 
+
+\paragraph*{Sample Code}
+Practitioners and researchers can choose between \mintinline{R}/RMarkdown/ package (typically in conjunction with RStudio \ac{IDE}) and \mintinline{python}/Jupyter/, a browser-based application. 
+Both tools provide functionality for keeping a \ac{DS} journal and support many different output formats including \ac{HTML}. 
+Similarly, they are programming language independent whereby R, Python, Ruby and Haskell could all be used within the same file. 
+
+To organize the R and Python source code and simplify its reproducibility, where appropriate, all snippets in \textbf{this chapter} are presented by means of either instrument, see Figure \ref{lst:code_pattern1}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth, height=8cm, keepaspectratio]{images_dp/code_listing_1_notebook}
+\caption[Example for Notebook Design Pattern.]{The example for \patternName{Notebook Design Pattern} shows R Markdown file (\path{code_data/R_masterThesis.Rmd}) consisting of R snippet alongside the comments. 
+When this file is executed, \ac{HTML} page is rendered, part of which can be seen in Figure \ref{lst:code_pattern2} of the next design pattern.
+The alternative utilizing \mintinline{python}/Jupyter/ can be found in \path{code_data/Py_masterThesis.ipynb}.}
+\label{lst:code_pattern1}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 2: Data Frame}
+
+\paragraph*{Context}
+After stakeholders asking a set of questions that have a direct impact on company's sales, hypotheses together with an unambiguous project plan and well-defined objectives and scope are developed. 
+Next, right data sources are identified which is finally followed by their acquisition.
+
+\paragraph*{Problem}
+When using programming languages like R and Python, data scientists need to programmatically manipulate and query two-dimensional data by applying one common interface.
+
+\paragraph*{Forces}
+\begin{compactitem}
+   \item Data are stored in a variety of locations and formats which encumbers any further combined operations on them.
+   \item Providing wisdom about business operations by storing high-quality internal and external data in the centralized \ac{DW} (Figure \ref{fig-bi-dw-schema}) is significantly limited by the available \ac{SQL} functions which usually do not contain advanced statistical methods, thereby prohibiting their analysis.
+   \item These days, however, there is a need for flexible application of research's latest and cutting edge algorithms that are typically not immediately accessible even in the conventional \ac{BI} portals, \ac{ETL} and visualization tools.
+\end{compactitem}
+
+\paragraph*{Solution}
+Another fundamental principle on which \ac{DS} depends are \emph{data frames}. 
+These abstract and most commonly in-memory data structures allow engineers to store and process various types of raw information in a unifying fashion and without a reliance on other third-party applications, mainly the database management systems. 
+Being in a tabular form, \emph{data frames} consist of rows representing observations and which might be heterogeneous and columns describing variables with labels (these should be as a whole homogeneous; \cite{Mikut2011}). 
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+Taking an inspiration from the data warehousing, \emph{data frames} can be sliced and diced using operations such as \mintinline{R}/subset()/ or \mintinline{R}/aggregate()/ for further data manipulation, including their visualization \parencite{DWSlideDice}. 
+Besides treating missing data in a consistent matter, they can be also serialized into binary files, and thus easing the reproducibility and sharing of the results \parencite{JakeVanderPlas2016PythonHandbook}. 
+
+\textbf{Liability:}
+Storing a condensed \emph{data frame} is significantly restricted by the available \ac{RAM}, and therefore persistence of data, its velocity and volume being important properties have to be considered in advance \parencites{SimonBGDRAMR2016}{Fern2016}. 
+Additionally, because data structures vary by underlying implementations, any performance tuning and exposed operations and syntax through \ac{API}, it brings a gradual learning curve to known them thoroughly when working with multiple languages and tools offering similar functionality.
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+   \item A typical use case scenario is extracting and loading data for example from databases or spreadsheet files, see \textcites{NinaBookR2014}{PSDS2017}.
+   \item Principally, being essential in the end-to-end \ac{KDD} process, \emph{data frames} are used at all \ac{DS} stages for steps that include pre-processing, merging data with other datasets and transforming them for exploratory analysis and statistical modelling.
+\end{compactitem}
+
+\paragraph*{Related patterns}
+\emph{Data Matrix} is another two-dimensional data structure on top of which \emph{data frames} are build.
+Yet, its implementation details differ in the R and Python universe. 
+While R's natively offered \mintinline{R}/matrix()/ as well as \mintinline{R}/Matrix()/ from \mintinline{R}/Matrix/ package can only consist of data of the same type, for example only integers, \mintinline{python}/matrix()/ implemented in Python's \mintinline{python}/NumPy/ package may hold data of different types too \parencites{Numpy2011}{MatrixCran2017}. 
+Therefore, being more like \emph{data frames}.
+
+\paragraph*{Sample code}
+Two R (\mintinline{R}/tibble/ and \mintinline{R}/data.table/) and Python (\mintinline{python}/pandas/ and \mintinline{python}/blaze/) packages were identified providing a mechanism to store data in a tabular format, see Figure \ref{lst:code_pattern2}.  
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth+2cm,height=\textheight,keepaspectratio]{images_dp/code_listing_2_df}
+\caption[Example for Data Frame Design Pattern.]{The example for \patternName{Data Frame Design Pattern} demonstrates two \emph{data frames} being created. 
+While on the left \mintinline{R}/tibble/ is displayed when rendering the previous Figure \ref{lst:code_pattern1}, on the right Python's \mintinline{python}/pandas/ is shown.
+The source code for this pattern is located in \path{code_data/R_masterThesis.Rmd} file, \path{code_data/Py_masterThesis.ipynb} respectively.}
+\label{lst:code_pattern2}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 3: Tidy Data}
+
+\paragraph*{Context}
+While \ac{DW} may already store high-quality, rectangular tables in an easy to work with structure, externally captured information is organized in a variety of formats and diverse in their shapes.
+After importing it from different \ac{IT} systems and web services, data frames are formatted to facilitate knowledge discovery.
+Although processing has been argued to take the largest effort, depending on studies anywhere between 30\% and 80\%, the accurate and clean data stored in a right way make it simple to handle any \ac{DS} task \parencites{ThomasZeutschler2016ITAnalytics}{Taft2015}.
+
+\paragraph*{Problem}
+Most typically encountered are messy data which are usually organized in a \emph{wide} format where a table contains one observation (row) across many different variables (columns) for each subject that can be for example a person or a country \parencite{Boehmke2016DataR}. 
+Hence, they need to be efficiently changed to become ready for the subsequent analytical investigation. 
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item Modifying (big) data by hand may not be accomplished due to their sheer size, complexity and significant time effort leading to potentially introducing errors and having a non-agile \ac{DS} by being distracted from deriving the actionable business results.
+  \item At the same time, different \ac{KDD} steps, methods and tools expect one exact arrangement of data forcing professionals to reshape them frequently in the journey through the data pyramid. 
+  \item Working with data that may contain several variables \qcite{in one column} or \qcite{in both rows and columns} affects the inquiry on account of having difficulties in their understanding as well as conducting any exploratory operations \parencite[5]{TidyDataWickham2014}.
+\end{compactitem}
+
+\paragraph*{Solution}
+Spearheaded by \textcite[5]{TidyDataWickham2014}, the concept of \emph{tidy data} has been suggested to \qcite{provide a standard way of structuring a dataset}.
+Modelled after \citeauthor{Codd:1970:RMD:362384.362685}'s (\citeyear{Codd:1970:RMD:362384.362685}) third normal form, three core principles were specified, namely (a) each variable forming a column, (b) each observation forming a row and (c) each type of observational unit forming a final table.
+As such, this manifests into the \emph{long} data structure where a table spans each subject over multiple observations because of having a column (a key) with variable types such as land area or a population and another one for their corresponding values. 
+Being a part of a broader data management where metadata, data stewardship and security are of an importance, the technique of tidying the dataset into a particular layout has become a design convention for organizing analysis-friendly information \parencites{WilsonGred2017}{CMACanada2003}{DataBoK2017}. 
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+Having data in the \emph{long} format simplifies their manipulation and further transformation including filtering or ordering \parencite{NinaBookR2014}.
+In this matter, \emph{tidy data} increase users' overall experience by leveraging a consistent approach in coding style due to a potential availability of closely related tools that make the analysis flow easily together, for instance with a sequencing \enquote{\%>\%} pipe operator \parencites{Boehmke2016DataR}{GarrettGrolemund2017RData}.
+
+\textbf{Liability:}
+Contrarily, \emph{wide} data might be more straightforward to enter and inspect as they can have column names as values like \enquote{day1} or in ranges such as \enquote{\$10-20k} \parencites{WilsonGred2017}.
+Moreover, albeit language neutral, the concept is largely R centric where it stipulates a domain-specific language, a \qcite{sub-dialect of the R} called \emph{tidyverse} -- thus plausibly not directly replicable to other languages \parencite{Rickert2017}. 
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item Principally, the evidence stored in the \emph{long} style is most frequently imperative for the modelling and visualization purposes and corresponding packages that enable it, see \patternName{Prototyping} and \patternName{Interactive Application Design Pattern} \parencite{TidyDataWickham2014}. 
+  \item Within the R's \emph{tidyverse} sub-ecosystem, data in the corresponding shape play an integral role as they work hand in hand with complementary tools, including the previously mentioned \mintinline{r}/tibble/ \parencite{GarrettGrolemund2017RData}.
+\end{compactitem}
+
+\paragraph*{Sample code}
+For R, a variety of options exist that provide operations for \emph{tidy data}.
+When data frames are build using \mintinline{R}/data.table/, it also offers \mintinline{R}/melt()/ and \mintinline{R}/dcast()/ functions for their reshaping which are claimed to outperform the identically titled ones from the original \mintinline{R}/reshape2/ package \parencite{DataTable2017}.
+Additionally, within the tidyverse ecosystem, a dedicated application has been developed named \mintinline{R}/tidyr/ too, see its use in Figure \ref{lst:code_pattern4}.
+
+On the contrary, the previously mentioned \mintinline{python}/pandas/ is indispensable in the Python's \ac{DS} ecosystem due to being comprehensive in capabilities it provides, including for data transformation.
+Nonetheless, when data are in a more traditional shape of an array or a matrix, \mintinline{python}/NumPy/ library, being a part of the \emph{SciPy} sub-ecosystem, offers its own methods as well.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth+2cm,height=\textheight,keepaspectratio]{images_dp/code_listing_3_td_R}
+\caption[Example for Tidy Data Design Pattern.]{An example for \patternName{Tidy Data Design Pattern} shows how a data frame is created using R' \mintinline{R}/tibble/ and subsequently transformed from a \emph{wide} (messy) to a \emph{long} (tidy) format. 
+The source code for this pattern is located in \path{code_data/R_masterThesis.Rmd} file, \path{code_data/Py_masterThesis.ipynb} respectively.}
+\label{lst:code_pattern4}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 4: Leakage}
+
+\paragraph*{Context}
+After data cleaning and formatting, it is still rare that data sets are complete allowing the analysis and modelling to proceed further and make valid conclusions to stakeholders reflecting the stated objectives.
+Indeed, when some information is missing or not being in the right quality and quantity, among some not always available and preferred options, it can be crowdsourced from users or be acquired from third-party providers \parencites{Domino2017DS}.
+
+\paragraph*{Problem}
+Before \ac{ML} prototypes are created, data scientist need to solve table's missing data as their occurrence is undesirable for many algorithms which often simply omit potentially valuable observations with some lacking values. 
+Therefore, the analysis of incomplete facts might be misleading and absent data need to be predicted or otherwise \enquote{imputed}.
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item Dropping rows or columns which contain missing values is universally not advisable as it reduces a sample size and introduces a bias to parameter estimates like correlation or standard error \parencite{Gelman2007}. 
+  \item At the same time, replacing missingness with median, mode or mean can lead to biased estimates too due to outliers, not considering relationships between features and general uncertainty about the outcomes that is not reflected in the imputed data \parencite{Rubin2002}.
+  \item The other so-called \emph{single imputation method} may involve regression where missing values are predicted from complete observations using a regression model. 
+  Though, as described by \textcites[6]{ZhangSingleImput2016}{GarcijaGomez2010}, the \qcite{variability of missing values is underestimated} by this approach as only a single regression curve is created. 
+\end{compactitem}
+
+\paragraph*{Solution}
+In order for data scientists to appropriately handle missing data, one needs to answer an integral question, namely why are they missing.  
+According to \textcite[3]{DabneyAlanNormalization2012} three missing data mechanisms are distinguished and consequently the approach to a treatment \qcite{should ideally rely on the mechanism that caused the values to be missing} in the first place. 
+
+\textcite{Rubin2002} have talked about a concept named \emph{missing at random (MAR)} where missing data ($Y_{mis}$) are related to those observed ($Y_{obs}$) and can be predicted from them.
+A special case of MAR is when the nature of missing data is not related to input variables -- then data are said to be \emph{missing completely at random (MCAR)}.
+This usually happens when the equipment malfunctions or there is an error in data entry -- thus $Y_{mis}$ is neither related to $Y_{obs}$ nor to $Y_{mis}$. 
+Both cases are said to be \emph{ignorable} because the reasons for missingness are ignored and \qcite{it is appropriate to impute} such data \parencites[340]{Lynn2002}.
+At last, a \emph{nonignorable} situation named \emph{missing not at random (MNAR)} means that the probability of missingness depends on the missing variable itself, for example when a \qcite{sensor cannot acquire [statistics] outside a certain range} \parencites[266]{GarcijaGomez2010}{Grahama2002}{Gelman2007}.
+
+Even though, the best solution is not to have missing data, an advanced statistical model can be specified to predict missing values \parencite{Hasan2017}. 
+Particularly under the MAR condition, of a great interest to data scientists should be \emph{multiple imputation} where missing values are imputed $m$ (typically three to twenty) times creating $m$ complete but different datasets \parencite{Grahama2002}.
+Then, a study of such missing data is conducted and finally results are pooled (averaged) together by incorporating the \qcite{variability between [and within] the $m$ analyses} \parencite[340-341]{Lynn2002}.
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+If the underlying assumptions were met, \emph{multiple imputation} allows missing data to be accounted for in a statistically valid and unbiased way \parencite{Hasan2017}.
+Showing to be flexible and performing well under the different conditions, it reflects the uncertainty of true missing values due to having multiple sets of complete data which are combined to derive final results -- by preserving the sample size and using all available information \parencites{Lynn2002}{Grahama2002}.
+
+\textbf{Liability:}
+When data set is large and contains significant amount of missingness, \emph{multiple imputation} becomes complex to compute (due to creating a \enquote{right} model), analyse and combine together \parencite{HortonNickKen2007}.  
+Even though selecting a single best-looking imputation can be necessary for the \patternName{Prototyping} task, it is important to keep in mind that true values do not exists, and thus these proxies cannot be taken with absolute certainty \parencite{MittagNik2013}. 
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item The complete case analysis can be considered when only a very small amount of data is missing ($\leq 5\%$) and being under the MCAR condition \parencites{Grahama2002}{AzurMellissa2011}{imput2006}. 
+  \item The simplistic methods of mean and regression treat an imputed single value as a true point. 
+  Yet, both make biased estimates too as they fail to account for variability in the data and should not be generally used \parencites{Takahasi2012}{BaraldiCraig2010}.
+  \item \textcites{Grahama2002}{AzurMellissa2011} have recommended two state-of-the-art approaches which are aforementioned \emph{multiple imputation} and its a basic alternative called \emph{maximum likelihood with expectation-maximization (EM) algorithm} further described by \textcites{BaraldiCraig2010}{GarcijaGomez2010}.
+\end{compactitem}
+
+\paragraph*{Sample code}
+Given R's strong statistical foundations, a variety of packages exist that address imputation of missing data. 
+Notable of these are \mintinline{R}/mice/ and \mintinline{R}/VIM/. 
+On the other hand, for Python and exploration of missing data, data scientists can utilize \mintinline{python}/missingno/ package while for the actual imputation \mintinline{python}/fancyimpute/ library shown in Figure \ref{lst:code_pattern4Leak}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth+2cm,height=\textheight,keepaspectratio]{images_dp/code_listing_4_leakage}
+\caption[Example for Leakage Design Pattern.]{An example for \patternName{Leakage Design Pattern} shows how missing data can be imputed using Python's \mintinline{python}/fancyimpute/ package.
+The source code for this pattern is located in \path{code_data/Py_masterThesis.ipynb} file, \path{code_data/R_masterThesis.Rmd} respectively.}
+\label{lst:code_pattern4Leak}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%
+\section{Pattern 5: Prototyping}
+\paragraph*{Context}
+Executives have described in accordance with specific, measurable, assignable, realistic and time-related (SMART) criteria multiple deliverables that they want to receive with a goal of addressing their clients in a better way, and therefore increasing their value to the company.
+Such mapping of a business problem to \ac{DS} tasks might include data acquisition and mainly classifying clients into different segments, based on the past transactions predicting sales for the next month and developing simple association rules which might recommend them purchasing new products.
+
+\paragraph*{Problem}
+After understanding the nature of data through the exploratory analysis, their transformation, cleaning and potentially imputing missing values, clients need to be classified, sales be predicted and recommendations have to be provided.
+Therefore, data scientists need to experiment with simple and complex algorithms that permit them to gain useful insights.
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item Having a decisive impact on answering business relevant questions, a variety of statistical models and families exist from which professionals have to identify the right ones and evaluate their performance in line with stated intentions as they all differ in the purpose, interpretability, complexity and accuracy \parencite{SAS2016}.
+  \item Furthermore, numerous \ac{ML} applications have become influential as they are flexible for diverse sets of data, easily extensible accommodating new models and metrics and permitting to store intermediate modelling results as well -- all leading to lowering the \ac{DS} bar \parencites{GoebelMichGru1999}{ChenMinMao2014}{EslamiAli2012}.
+\end{compactitem}
+
+\paragraph*{Solution}
+\ac{KDD} professionals have to identify comprehensive and modular \acp{API} that offer appropriate algorithms for developing \ac{ML} \emph{prototypes}. 
+Subsequently, these shall be evaluated to understand how the predictive models perform on unseen data in the future.
+
+When collected information is labelled through attributes, (semi-)supervised learning methods such as \acp{SVM} or naive Bayes are used for predicting the output from input data. 
+Depending on different learners and the analytical problem dealt with, two groups of supervised tasks are distinguished -- a \emph{classification} where a target variable is a discrete category or a \emph{regression} where a prediction is a continues numerical value.
+On the other hand, when data are unlabelled with no response variable $Y$, more exploratory, unsupervised learning algorithms like $k$-means clustering or principal component analysis are employed to establish groups of similar objects or reduce dimensionality of data \parencites{SAS2016}{NinaBookR2014}.
+
+Continuing with supervised learning, using a \emph{holdout} approach, entire data are at first divided into training (typically about 75\%) and testing set (remaining 25\%; \cite{Kohavi:1995:SCB:1643031.1643047}).
+Then, chosen algorithms together with training data are applied for model building. 
+Because evaluating prototype's performance on the same data does not tell how well it generalizes, a model is taken with a holdout set to predict outputs and compare its forecast's capability with true data \parencites{FosterProvost2013DataThinking}{JakeVanderPlas2016PythonHandbook}.
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5pt} }
+\ac{ML} is applicable to diverse industries and use cases and when appropriately applied, a wisdom can be gained which helps decision makers to set right company's objectives and improve products and services to better serve their customers.
+Additionally, reflecting the goals, a variety of prototyping metrics can be used for assessing final prediction. 
+For example, for classification a confusion matrix is used which \qcite{summarizes the (\dots) predictions against the actual known} classes \parencite[94]{NinaBookR2014}.
+
+\textbf{Liability:}
+When complex models are applied, there is a danger of running into a lack of their interpretability \parencite{NadaML2004}. 
+Hence, they need to be justified in addition to being regularly updated, verified and improved reflecting changing business operations \parencite{SAS2016}.
+Building models may at times also lead to dead paths and accordingly it is necessary to learn quickly from mistakes, and thus maintaining a hub of the past work can support the organization in gaining the knowledge \parencites{Domino2017DS}{SASBP2007}{GoogleDebt1}.
+Insufficient quality and quantity of data has a significant impact on the model's predictive power too and for that reason data scientists have to constantly iterate on created prototypes and gather better information \parencites{Zinkevitch2016}{CarlShan2015TheScientists}.
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item In the unsupervised learning, typical tasks include segmenting (clustering) movies according to the user preferences or creating association rules where market basket analysis establishes customers' items that are frequently bought together \parencites{Trevor2017}{ClusteringAnil2010}{Movies2012}{MBAMR2012}. 
+  Furthermore, when data have many potentially redundant features, one may benefit from quicker computation by attempting to reduce $d$-dimensions into $m$ principal components that explain most of the variance in the data \parencites{FieldCadyDSBook}{Tillburg2009}.
+  \item In the supervised learning, in the case of regression, it has been attempted for example to predict forest's burned area based on the meteorological data \parencite{ForestFires2007}.
+  On the other hand, detecting spam emails has been extensively studied by many researchers as a conventional classification problem \parencite{Brylspam2008}.
+\end{compactitem}
+
+\paragraph*{Related patterns}
+The exposure to the \emph{bias-variance trade-off} has to be addressed as it can make \ac{ML} prototypes not generalizable beyond the training data, see next \patternName{Cross-validation Design Pattern}.
+In addition, \ac{ML} libraries and frameworks have support a range of other capabilities such as later described hyperparameter optimization using \patternName{Grid} or leveraging ensemble methods through \patternName{Assemblage Design Pattern}.
+
+\paragraph*{Sample code}
+Because of being in the context of a specific task, an illustrative \mintinline{bash}/Pima Indians Diabetes/ dataset is obtained from \textcite{Lichman:2013} to predict whether females of Pima Indian heritage have diabetes, being a binary classification task. 
+Consequently, this is used for illustration in the following three patterns as well. 
+
+In the R ecosystem, two prominent packages exist that provide comprehensive tools for building and evaluating models -- \mintinline{R}/caret/ and \mintinline{R}/mlr/. 
+For Python, multiple alternatives are available too, most notably well-established \mintinline{python}/scikit-learn/ for general-purpose \ac{ML}. 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth+2cm,height=\textheight,keepaspectratio]{images_dp/code_listing_5_prototype}
+\caption[Example for Prototyping Design Pattern.]{An example for \patternName{Prototyping Design Pattern} shows R's \mintinline{R}/caret/ library when applied for a classification task using a holdout approach.
+The source code for this pattern is located in \path{code_data/R_masterThesis.Rmd} file, \path{code_data/Py_masterThesis.ipynb} respectively.}
+\label{lst:code_pattern5}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Chap4/chap4_b_DP510}

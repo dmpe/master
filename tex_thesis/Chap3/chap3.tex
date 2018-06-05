@@ -1,0 +1,203 @@
+\lettrine[lines=2]{\color{BrickRed}T}{hus} far, the thesis has provided a fundamental understanding of key terms.
+Hence, this chapter continues by outlining a research design for a comprehensive synthesis of design patterns in the \ac{DS} context and applications from R and Python software ecosystem.
+
+%%%%%%%%%%%  Outlining Methodology
+\acused{SLR}
+\acused{3D2P}
+\acused{GTM}
+\acused{GIA}
+\section{Methodology}
+\label{outliningMethod}
+\marginnote{QUAN $\lor$ QUAL}
+To create \qcite{a good research strategy}, it is first necessary to talk about two principal schools of thoughts that have underpinned study designs \parencites{PasianBeverly2015}{Creswell2003}.
+Historically, academicians across disciplines have argued which research approach, qualitative or quantitative, is superior to the other one \parencite{SmallMario20111}. 
+These stem from different philosophical views on science of knowledge, particularly understandings of ontology dealing with researcher's position on a nature of reality and epistemology which investigates from where and how is information captured \parencites{Carson2001}{PasianBeverly2015}.
+
+Simplified, on the one hand, the \emph{positivist} ontology attempts to analyse outside world through formalized mathematical techniques, and therefore staying free of emotions and feelings, resulting into using \qcite{rational and logical approaches to research} \parencite{Prabash78}. 
+The quantitative methods of inquiry have been utilized to \qcite{discover objective truth} within a single reality independent from humans \parencites{SmallMario20111}{Carson2001}.
+On the other hand, \emph{interpretivism} believing that knowledge is socially constructed \qcite{adopt[s] a more personal and flexible} research structures to accommodate human interaction and stay \qcite{open to new knowledge throughout the study} \parencite{Prabash78}.
+Consequently, often \qcite{considered \enquote{softer} or \enquote{fuzzier} }, qualitative methods have been applied for interpreting multiple realities, \qcite{subjective experience[s]} and gaining a contextual understanding \parencites[558]{SeamanC1999}{SmallMario20111}{Carson2001}.
+
+Due to being confused and misused for stating that one scientific paradigm is \enquote{better} than the other one, it has been noted that qualitative methods refer to \qcite{any kind of research that produces findings not arrived at by means of statistical procedures or other means of quantification} -- where collected data are typically expressed through words or pictures \parencites[17]{CorbinStrauss1990}{Gorard2010}{Carson2001}. 
+On the contrary, the quantitative data are \qcite{represented as numbers or other discrete categories} \parencite[563]{SeamanC1999}.
+
+\marginnote{Mixed Methods}
+Attempting to address a long-standing debate between qualitative and quantitative proponents, scholars from psychology and sociology have as early as 1960s started to employ multiple methods in a single study with a motivation \qcite{that confidence in one's findings increases when different methods are in agreement} \parencites[61]{SmallMario20111}{Saunders2015}.
+Hence creating a \emph{mixed methods methodology} which has been underpinned by a \emph{pragmatic} research philosophy, a third approach to science.
+The stand-alone research technique attempts to meaningfully integrate qualitative and quantitative data and their analyses to \qcite{gain a more complete understanding of} questions and hypotheses -- exploiting \qcite{the strengths of both} styles \parencites[554]{Guetterman2015}{SmallMario20111}{Cameron2009}.
+
+Even though being capable of triangulating methods and data, taking into account multiple perspectives when building upon previous findings and providing better interferences, a clear drawback is a required time to implement this design and its resulting complexity for the audience \parencites{FoodRes2017}{Creswell2003}.
+Additionally, mixed methods need to fit research goals and scholars have to be skilled in using and incorporating both methodologies while at the same time managing any inconsistencies when collecting and analysing data \parencite{MalinaMary2011}.
+
+\marginnote{Interpretivist Ontology}
+When considering all three major approaches, due to a nature of the subject matter a decision was taken to carry out only a qualitative type of research. 
+Thus, \ac{DS} design patterns were discovered based on observations of collected literature and other sources \parencite{Stefan2017}.
+The qualitative way was here more suitable because it was not an objective to numerically develop such understanding from empirical data via structured interviews or quantitative surveys \parencite{Schmidt:1996:SP:236156.236164}.
+Moreover, the interpretative methods were more appropriate as design patterns are socially constructed by humans with their subjective views and understandings. 
+For that reason, arguably, no single objective and \enquote{correct} truth could be discovered. 
+
+%%%%%%%%%%%%%%%%%
+\subsection{Research Design}
+\label{MyApproachSection}
+Given that a clarification of overarching intentions was already made in \textbf{previous chapters}, a thesis protocol in Figure \ref{fig-database-research-protokol} was developed to serve as a gradual roadmap, demonstrating a dependable and coherent strategy and making the process clear throughout the whole reporting. 
+
+\textcite{Okoli2010} have presented eight rigorously defined steps that are required to adhere when conducting \ac{SLR} in order to provide a \qcite{background for subsequent research} in the field. 
+Even though this work did not administer \ac{SLR}, some of its principles were borrowed as well, for example transparently presenting the methodology \parencites{Hajimia2014}{JAN:JAN623}.
+Therefore, aiming to be \qcite{systematic in [accordance with] a methodological approach, explicit in explaining the procedures by which [the study] was conducted (\dots) [and] comprehensive in (\dots) including all relevant material} \parencite[1]{Okoli2010}. 
+
+To uncover design patterns, numerous techniques were already described in \ac{PLoP} journal articles and conference proceedings \parencite{InventadoPeter2015}.
+To illustrate, the \emph{introspective approach} has been used by \textcite{MinerDonald2012} who have relied on their own vast experiences and knowledge to identify and share domain-specific design patterns.
+Alternatively, this has been further combined with \emph{pattern mining workshops} that included brainstorming sessions.
+Others have created algorithms for \qcite{identif[ing] behavioural and structural patterns through static and dynamic analysis} of the source code \parencite{GoFDesignPatternsAmpatzoglou2013}.
+
+\marginnote{3D2P}
+This examination has followed \emph{data-driven design pattern production methodology} of \textcite{InventadoPeter2015}, see the adaptation of pattern discovery for this study in Figure \ref{figmmDesign}.
+With a goal to address the second research question and formalize \ac{DS} design pattern candidates, the inquiry began with a predominant collection of qualitative data to later meaningfully integrate their interpretation and further observations through a general inductive approach \parencites{InventadoPeter2015}{t06}.
+
+\subsubsection{Pattern Prospecting} 
+\label{pprospecting}
+The aim of \emph{pattern prospecting} stage is to gather available information that could lead to discovering \ac{DS} design patterns \parencite{InventadoPeter2015}.
+Therefore, in line with \textcites{Stefan2017}, this phase commenced with collecting a sample of relevant literature (\enquote{the data}) in order to reveal various dominant relationships and significant themes as they have been reported as well as being implicitly utilized.
+
+\marginnote{Searching Literature}
+To identify a set of pattern candidates that after being verified and evaluated might qualify to become practically used \emph{design patterns}, author's background knowledge from \ac{DS} field has guided the collection for both primary (original documents) and secondary literature resources (their interpretations; \cite{InventadoPeter2015}). 
+Correspondingly, a continues search was conducted in relation to frequently occurring issues and problems that data scientists often face and where solutions could be provided using tools from R and Python ecosystem.
+At first, it was looked for journal articles and conference proceedings in the Scopus and \emph{Web of Science} databases taking into consideration \ac{KDD} stages.
+Albeit not being fully reproducible, search queries combined keywords noted in Table \ref{tab:creteriaIncExclDocuments} with an objective to gather diverse set of information spanning different (sub-)fields of application.
+Additionally, due to a recency and nature of the subject matter, the collection was enhanced by searching Google (Scholar) for grey literature including working papers or reports from even unreliable internet sources.
+
+Before\marginnote{Practical Screen} recording them in the database, see Figure \ref{fit-excel-database-sourcedata}, documents were skimmed for their content and abstracts (if any) were read to decide for the inclusion and exclusion in this study.
+This resulted into twenty-six initial pieces of text -- some of which were also selected from \textbf{chapter \ref{chap:KeyTerms}} because of their promising relevancy for this study.
+To capture distinct data, while no restrictions were made to any specific scientific area (other than stated goals in relation to \ac{DS} field), time-frame or research design, only English documents were considered. 
+At this stage, the most significant criterion was the potential relevancy and soundness of information.
+If the identified resource was not deemed applicable to \ac{DS}, it was excluded due to research intentions \parencite{ChenMinMao2014}.
+
+Next, when scanning the literature work itself, references were inspected permitting a forward search by using aforementioned databases.
+Thus, the compilation was enriched using the \qcite{most widely employed method of sampling in qualitative research}, the \emph{snowballing} \parencites[330]{Noy2008SamplingResearch}{WebsterJaineWatson2002}. 
+Indeed, forty new samples were further collected which included books dealing with R and Python and their use for analytical purposes, \ac{DS}-oriented video presentations or seemingly relevant blog posts -- all of which are further referred to as \emph{literature works}.
+As a result of the conducted search, sixty-six information sources were gathered being empirical as well as theoretical, talking for instance about application of best practises in data mining, see Figure \ref{statisticsFig-literature} too.
+
+\marginnote{Data Extraction}
+Once all data have been inspected, it was necessary to systematically extract the relevant information \qcite{to serve as the raw material for the synthesis stage} \parencites[29]{Okoli2010}{InventadoPeter2015}.
+Hence, commonly known techniques from the information systems research, namely the \ac{GIA} and \emph{grounded theory methodology}, were considered to modify the data representation \qcite{for data analysis purposes} \parencite[119]{MatavireBrown2011}.
+While the goal of the latter one is to \qcite{build theory relevant to the discipline} which is grounded in the data, a more generic \ac{GIA} was selected because it attempts to identify most influential themes \qcite{to research objectives} that are evident in the text \parencites[241]{t06}[119]{MatavireBrown2011}.
+Being similar, both strategies are undergird by an inductive procedure of creating \emph{codes} where design patterns are essentially drown \qcite{from a number of [literature] observations} through multiple readings and interpretation of data \parencites{PasianBeverly2015}{t06}[119]{MatavireBrown2011}.
+
+\marginnote{Inductive Coding}
+Consequently, during close and iterative examination of sixty-six sources, parts of text or phrases that describe \ac{DS} reoccurring problems, tasks, applied methods, effective solutions with best practises or lessons learned were labelled using a \qcite{systematic procedure for analysing qualitative data} -- the \emph{open coding} \parencites[238]{t06}{InventadoPeter2015}. 
+The intention was to develop a scheme consisting of high-level and low-level categories and themes which were derived from the most frequent keywords and interpretation of \qcite{specific text segments}, see its outcome in Figure \ref{fit-excel-database-sourcedata} \parencites[241]{t06}{JansenHarrie2010}{Okoli2010}{DPSummarySMS2016}. 
+Therefore, labels were created for key meanings and associations found in the specific literature work according to the best efforts and being \qcite{shaped by the assumptions and experiences} of the evaluator \parencite[240]{t06}.
+At this stage no further links or relationships were established as this was planned to be realized next.
+
+\marginnote{Quality Appraisal}
+Unfortunately, a substantial amount of information originated from non-academic and unreliable internet sources where related best practises and solutions to frequently arising obstacles are shared for example in discussion forums. 
+Not surprisingly, during examination of all sources, twenty-five pieces were further excluded to increase the quality of a sample due to considering them too general in terms of relevancy or otherwise unfit for study objectives.
+
+\subsubsection{Pattern Mining} 
+According \marginnote{Synthesis}to \textcite[5]{InventadoPeter2015}, the objective of \emph{pattern mining} stage \qcite{aims to discover or explain patterns} that are gained through insights and uncovering interesting relationships in the data -- the coded documents.
+As a result of previous pattern prospecting phase, each resource was inspected and initial set of dominant topics were established in what \textcite{WebsterJaineWatson2002} have called a \emph{concept matrix}.
+
+Having read and\marginnote{Reducing Overlap} labelled all information sources, it was necessary to begin with structuring and continuous revision of labels as well as stepwise \qcite{reduc[ing their] overlap and redundancy among [the identified] categories} by determining relationships \parencites[242]{t06}{Okoli2010}.
+Indeed, the inductive coding -- as illustratively explained by \textcites[563]{SeamanC1999}{SeamanPresentation2013} in the context of empirical studies in the software engineering -- helped \qcite{transforming qualitative data into quantitative}. 
+Subsequently, the overarching high-level and low-level properties were organized to establish hierarchies that translated into plausible ideas for \ac{DS} design patterns \parencites{t06}{MatavireBrown2011}.
+Therefore, twenty-one \emph{axial codes} across dimensions were now created \qcite{presenting the key concepts} which linked multiple important pieces of text together utilizing \qcite{a logical approach to [their] grouping} \parencite[17]{WebsterJaineWatson2002}. 
+Through such iterative process of interpretation and evaluation, findings \qcite{emerge[d] from the frequent, dominant, or significant} thoughts which were presented in a brief and compact format \parencites[238]{t06}. 
+Ultimately \qcite{captur[ing] the [essential] aspects} in a vast, complex data by way of a smaller number of labels that suggested \qcite{effective solutions} or identified \qcite{recurring problems} \parencites[242]{t06}[5]{InventadoPeter2015}. 
+
+\textcite{WebsterJaineWatson2002} have also described Figure \ref{fit-excel-database-sourcedata} as an evolution from the author- to the concept-centric orientation where the goal is to \qcite{aggregate (\dots) and compare} information to make a comprehensive sense of it \parencites[30]{Okoli2010}.
+The \qcite{synthesis [of qualitative data] by interpretation and (\dots) explanation} led to analysing forty-one literature documents and other sources \qcite{by looking at what people do [and write about], observing things that work [and what happens in the field], and then looking for the \enquote{core of the solution} } \parencites[10]{Fowler2002}[30]{Okoli2010}. 
+While many potential pattern candidates could have been established, due to a limited scope of this work, a decision was taken to describe only ten \ac{DS} design patterns. 
+
+Once a broad outline of specific problem and solution was given, what followed next was a qualitative survey of R and Python tools in order to provide typical examples of how two formal systems with corresponding ecosystems can address a described issue. 
+Hence, for each pattern candidate and programming language, a review of \ac{DS} tools was conducted.
+
+\paragraph*{Qualitative Survey} 
+\label{collectionOfTools}
+Surveys have been usually associated with quantitative descriptions \qcite{of variables (\dots) in the population} by way of establishing frequencies that can be extracted, illustratively, from interviews \parencite{JansenHarrie2010}. 
+However, as it has been shown in section \ref{surveyofTools}, qualitative types were administered too. 
+In relation to them, \textcite{JansenHarrie2010} has broadly stated their purpose as \qcite{determining the diversity of some topic of interest within a given population}. 
+
+The objective of this work is not only to formalize \ac{DS} design patterns but supplement them with R and Python code examples that utilize tools from both ecosystems. 
+Therefore, through a gained knowledge of their landscapes, address a third research question leading to establishing \ac{DSTM} that helps both newcomers as well as experienced data scientists acquiring an overview of what the relevant tools are.
+Consequently, this open-ended investigation was answered in a qualitative matter as well.
+
+Once\marginnote{Searching for Tools} having a blueprint of a pattern candidate, a sample of tools addressing identified problem was \emph{purposefully} gathered.
+This was in line with stated delimitations and authors such as \textcites{PattonMQ1990}{MargSade1995} who have argued that all sampling in qualitative research is \qcite{based on a specific [objective] rather than [chosen] randomly} and for that reason \qcite{represent[ing] the diversity of the phenomenon under study within the target population} \parencites[80]{Charles2007}{JAN:JAN623}.
+Accordingly, while the \emph{target} population relates to all tools in the whole R and Python ecosystem, the smaller \emph{study} population is specifically linked to \ac{DS} where they provide technical solutions to described obstacles \parencite{Hajimia2014}.
+On these grounds, packages coming from two software repositories exhibit \emph{homogeneous} characteristics, allowing them to adequately fit into the surveyed \ac{DS} domain due to being of a similar kind in the scope and intentions \parencites{Hajimia2014}{SuriHarsh11}{Persson2004}.
+
+For compiling a sample of R and Python packages, suitable key words and phrases to each pattern were used for searching the web in addition to inspecting: 
+\begin{compactitem}
+    \item [(a)] forty-one information sources, 
+    \item [(b)] dedicated books including \textcite{Everitt:2006:HSA:1213890} or 
+    \item [(c)] websites of software organizations and foundations like \emph{NumFOCUS}.
+\end{compactitem}
+Relying on \qcite{data saturation in order to decide when to stop} searching for new applications, an attempt was made to cover only frequently described and suggested programs which are representative of the R and Python universe \parencites{Creswell2003}[13]{Pukhovskaya2014}.
+
+\marginnote{\ac{DSTM}}
+Once seemingly applicable library was identified from one of the previously mentioned sources, before recording it in the database (Figure \ref{fig11}), it was similarly screened and quality appraisal was administered according to the criteria listed in Table \ref{tab:creteriaIncExcl}.
+These principles had an objective to understand in-depth its aim and judge whether it provides a solution to a specific problem that was described by a pattern candidate.
+While preferring to be available on \ac{CRAN} or \ac{PyPI}, packages being in development for instance on \emph{GitHub} were also considered.
+Even though tools might have a clear data science-oriented purpose and are extensively documented, they were excluded due to not having a new release since January 2016.
+Therefore, all displayed packages and frameworks in the \ac{DSTM} shall demonstrate a strong community engagement that is manifested for example by developers helping other users in forum discussions.
+
+\subsubsection{Pattern Writing and Evaluation} 
+\label{patternWritEvalu}
+To coherently draft discovered \qcite{effective solutions and recurring problems}, a dedicated form needs to be followed \parencite[5]{InventadoPeter2015}. 
+Such \qcite{uniform structure to the information} makes \qcite{design patterns easier to learn, compare} and apply, resulting into communicating their essential set of information \parencites[16]{GoF2002}{DobleMeszaros1997}. 
+However, in section \ref{dp-intro} it was observed that authors' use of \emph{pattern templates} has differed, principally in naming conventions, order of appearance as well as in the mandatory and optional elements. 
+Nevertheless, through works of \textcites[1]{AndreseasWellhausenTim2011}{DobleMeszaros1997}{BruseDougals2002}, a pattern form was chosen consisting of nine items \qcite{enabl[ing] to write a pattern in a simple but complete format}, see Table \ref{tab:ChoosenElements} \parencites{Fowler2002}{FowlerBlog2006}.
+
+After\marginnote{Quality Validation} design patterns are practically implemented, \emph{pattern evaluation} is the last (stand-alone) stage in the \ac{3D2P} methodology, where their subsequent use is evaluated \parencite{InventadoPeter2015}. 
+Albeit not conducting any practical assessments or deliberations with experts in the field, it was nonetheless necessary to iteratively refine and adapt pattern candidates to strengthen their case for \ac{DS} domain. 
+The reason why from the beginning it was referred to them just as the \emph{candidates} is the fact that they were \qcite{interpreted from data containing partial, incomplete measures [and] therefore they are considered potential [ones] until verified} \parencite[5]{InventadoPeter2015}. 
+Consequently, a decision was taken that once each was sketched out, it was looked at whether one can find, implicitly or explicitly, its practical use.
+In fact, not only this was done before patterns were described in \textbf{chapter \ref{chap:DSDP}} (during \emph{pattern prospecting} and \emph{mining} stages) but also after each pattern was already finalized.
+All this in order to further increase their validity, quality and substance, resulting to be \qcite{shared more confidently with the community} of stakeholders and be \qcite{satisfied with [their] definition} \parencite[5]{InventadoPeter2015}. 
+Moreover, this step has allowed to better recognize a need when more data were necessary to gather and for that reason repeating the aforementioned research procedure. 
+
+\section{Summary}
+To summarize, \textbf{this chapter} has described the path to the discovery of design patterns in the context of an interdisciplinary field that combines deep domain understanding, expertise in the computer science and an informed use of scientific techniques to uncover valuable knowledge from data. 
+The research strategy, by adopting interpretivist approach to the study, was based on the qualitative methods of inquiry through analysis of data by interpretation \parencite{Okoli2010}.
+
+Indeed, the foundational element of this work -- by which ten design patterns were identified -- lied in gathering and synthesising information which was extracted from a sample of sixty-six documents that were published in journal articles or in books \parencite{Trochim2006}.
+Accordingly, after the quality appraisal, only forty-one sources were used to find \qcite{recurring [DS] problem[s]} that could lead to pinpointing \qcite{a solution, which might be drawn from background knowledge or literature} \parencite[5]{InventadoPeter2015}.
+Once sources were coded using the \ac{GIA}, the overarching labels were established helping to examine \qcite{relationships between data features that suggest (\dots) [DS] problems or effective solutions} \parencite[4]{InventadoPeter2015}. 
+Afterwards, an initial concept of ten design pattern was formulated which was constantly refined and further improved. 
+
+Simultaneously with formalizing design patterns, a qualitative survey of mainly \ac{CRAN} and \ac{PyPI} was made to recognize packages and frameworks that address a specific design issue.
+The provided illustrative examples dedicated to each \ac{DS} design pattern have allowed to develop \acl{DSTM} displaying tools from both ecosystems that can be used as a solution to a  problem. 
+At the same time, when put into a map, show an overview of two software landscapes.
+
+Overall, by following the outlined study approach, it has permitted to answer the second and third research question where, successively, \ac{DS} design patterns were developed and further combined with a view into R and Python software ecosystem.
+The results obtained by using this methodology are described in the \textbf{next chapter}.
+
+\noindent\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Presents pattern template sections.}
+\begin{tabular}{|L{8cm}|L{8cm}|}
+\hline
+\textbf{Name} of the pattern & \textbf{Context}, a \qcite{description of the world} and reality in which it can be applied \parencite{DelibasicBKirchnerK2008AApproach} \\ \hline
+\textbf{Problem} describing a faced issue and which is to be addressed & \textbf{Forces} examining considerations when choosing a solution to a problem and why it is hard to solve it \\ \hline
+\textbf{Solution} detailing approach to an obstacle taking forces into account & Positive and negative \textbf{consequences} arising from its use \\ \hline
+\textbf{Known uses} that illustrate application of a pattern, potentially including some specific variations & Where appropriate, \textbf{related patterns} that are in relationship with others or provide alternative solutions \\ \hline
+\multicolumn{2}{|c|}{R \& Python \textbf{code samples} to illustrate its use} \\ 
+\hline      
+\end{tabular}
+\label{tab:ChoosenElements}
+
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/Literature_Statistics}
+\captionof{figure}{Illustrates statistics of gathered information sources.}
+\label{statisticsFig-literature}
+\end{minipage} 
+
+\begin{landscape}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/BPMN_MDesign}
+\caption[Illustrates an adapted pattern mining approach based on 3D2P methodology.]{Illustrates an adapted and simplified pattern mining approach based on \acs{3D2P} methodology consisting of three main iterative stages, here \enquote{processes}, being modelled using \emph{Business Process Model and Notation 2.0}, see \path{BPMN_MDesign.pdf} \parencites{Okoli2010}{InventadoPeter2015}{t06}.}
+\label{figmmDesign}
+\end{figure}
+\end{landscape}
+
+

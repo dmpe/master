@@ -1,0 +1,340 @@
+\section{Pattern 6: Cross-validation}
+
+\paragraph*{Context}
+After initial understanding of preferably \emph{tidy} data and the domain being dealt with, a supervised learning algorithm was selected to plausibly satisfy stakeholders' objectives.
+Succeeding the \patternName{Prototyping Design Pattern}, the model has to be evaluated as it may not generalize beyond the data which have been used for its creation, causing \emph{overfitting}. 
+This means that while originally the learner scored highly on the training data, when previously unseen information arrives, prototype's high complexity leads to a very poor accuracy of a new prediction as it fits noisy data \parencite{NinaBookR2014}.
+
+\paragraph*{Problem}
+A major task for any data scientist is to balance the so-called \emph{bias-variance trade-off} where on the one hand \ac{ML} prototype has to account for relevant data features (have high accuracy; in statistical terms low bias) while on the other hand also avoid capturing meaningless data -- that is to have high precision, statistically low variance \parencite{JakeVanderPlas2016PythonHandbook}.
+Consequently, one needs to assess learner's predictive power with future data samples using a robust technique which could aid in selecting a model with the lowest bias and lowest variance \parencite{Kohavi:1995:SCB:1643031.1643047}.
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item If training and testing prototypes on the same data set, they \enquote{memorize} them very well but this is not representative of the general data trend \parencites{FosterProvost2013DataThinking}{SAS2016}.
+  \item Previously, a classical approach tackling overfitting was described where data are randomly split into two sets. 
+  This makes a fair approximation by holding back some of the data to validate the prototype with new information.
+  However, a portion of valuable data is not training the learner as the test set may be significantly influenced when a random split is not characteristic and balanced \parencites{NinaBookR2014}{FosterProvost2013DataThinking}. 
+  \item Although a frequently named alternative is partitioning data into three sets (training, validation and testing), because they are usually small in sample size, a number of examples for \ac{ML} is further reduced. 
+  Hence, either holdout approach excludes some information and prevents learning from complete data patterns \parencite{FieldCadyDSBook}.
+\end{compactitem}
+
+\paragraph*{Solution}
+\emph{Cross-validation} is a sophisticated method for \qcite{generat[ing] multiple performance measures} with an ability to tell what to expect from the forthcoming data by estimating test set (so-called generalization) error \parencite[140]{FosterProvost2013DataThinking}. 
+Enhancing the basic holdout technique, it repeats \qcite{the construction of the model on different subsets of the available training data and then evaluate[s it] only on data not seen during construction} \parencite[111]{NinaBookR2014}.
+
+The widely used \emph{k-fold cross validation} splits a data set into $k$, typically five or ten, folds with a goal of training and scoring the prototype $k$ times \parencite{FosterProvost2013DataThinking}.
+In each iteration of the cross-validation, $k-1$ different partitions are combined on which the learner is trained and finally its accuracy is estimated on the last fold deriving the overall test performance. 
+Having multiple results, these are united by mean for checking the bias and standard deviation for the variance \parencite{NinaBookR2014}.
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5pt} }
+Compared to the holdout technique described in the \patternName{Prototyping Design Pattern} or \emph{bootstrapping} outlined next, each sample created from cross-validation is certainly used for training and testing step, resulting into reducing the bias as the number of $k$ parts increases \parencite{Gutierrez-Osuna2002LECTURECross-validation}.
+Even though it has been sometimes argued that when cross-validation is repeated multiple times, model's variance decreases too, some researchers have not been able to confirm this hypothesis \parencites{Vanwinckelen2012OnCross-validation}{Kohavi:1995:SCB:1643031.1643047}. 
+
+\textbf{Liability:}
+Cross-validation is computationally (very) expensive as training and testing steps are rerun $k$ times, specifically with a variation called \emph{leave-one-out cross validation}. 
+Despite $k=n$ number of examples, results can still exhibit high variance as well \parencite{Gutierrez-Osuna2002LECTURECross-validation}.
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item When new data cannot be acquired, cross-validation often becomes \emph{the} method for model building and selection in \ac{DS} through its universality and simplicity \parencites{arlot2010}{CVStandart2008}.
+  \item Besides \emph{k-fold cross validation}, variations such as \emph{stratified} or \emph{repeatable cross-validation} have been proposed as well.
+  Whereas the objective of the former one is to address biased classes, thus balancing the distribution across each fold making it a good representative of the whole sample, the goal of the latter one is to repeat cross-validation $n$ times creating random data folds whereby subsequent predictions can all be averaged \parencites{KuhnMax2013}{Vanwinckelen2012OnCross-validation}. 
+\end{compactitem}
+
+\paragraph*{Related patterns}
+As seen next, \emph{cross-validation} is frequently used with the \patternName{Grid} and \patternName{Assemblage Design Pattern}, particularly with the latter one which has the capability of further reducing the overfitting \parencite{NinaBookR2014}. 
+
+An alternative method to cross-validation represents \emph{bootstrapping} which is mainly used for obtaining confidence intervals and where a random sample with replacement of the same size as the original data set is taken for the training step. 
+Then, the model is trained on each of them and before results are again averaged, it is also tested on the remaining \qcite{examples that were not selected for training} \parencites{Kohavi:1995:SCB:1643031.1643047}{BookCV201}{Gutierrez-Osuna2002LECTURECross-validation}.  
+
+\paragraph*{Sample code}
+Using previously identified R's \mintinline{r}/caret/ and Python's \mintinline{python}/scikit-learn/, a naive Bayes model is demonstrated next where it is applied to four data parts and tested on the fifth one, see Figure \ref{lst:code_pattern7}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images_dp/code_listing_6_cv}
+\caption[Example for Cross-validation Design Pattern.]{The example for \patternName{Cross-validation Design Pattern} shows application of \mintinline{python}/scikit-learn/ whereby data are first split using five-fold cross validation to which a \emph{multinomial naive Bayes} classifier is applied. 
+The complete source code for this pattern is located in \path{code_data/Py_masterThesis.ipynb}, \path{code_data/R_masterThesis.Rmd} respectively.}
+\label{lst:code_pattern7}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 7: Grid}
+
+\paragraph*{Context}
+\emph{Hyperparameters} are specified in the model before a training step can begin.
+While some algorithms have none and can be immediately used for a particular task, others like $k$-means clustering or random forest contain several that data scientists are required to set. 
+Typically, in the latter case, one has to decide on a number of trees to build before averaging their predictions \parencite{DL2016Mit}. 
+Overall, the importance of hyperparameters lies in having a significant influence on various costs of running the prototype as well as on its behaviour and final performance as seen for instance from \patternName{Prototyping Design Pattern}.
+
+\paragraph*{Problem}
+Instead of making (non-)educated guesses to find best hyperparameters by trial-and-error, it is desirable to have an automatic procedure that optimizes them and therefore can increase model's predictive power, its robustness and ultimately generalizability when facing new data.
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item Albeit most frequently applied, searching manually for hyperparameters is very time-consuming effort because of their number and having necessary understanding of what they do and what impact they have on the learner \parencite{DL2016Mit}. 
+  \item Moreover, retraining each time the prototype because of manually adjusting a large set of hyperparameters can probably lead to omitting some better values.
+\end{compactitem}
+
+\paragraph*{Solution}
+While designing \ac{DS} pipeline, professionals should employ \emph{grid search} which identifies hyperparameters that deliver best predictions. 
+At first, a finite set of values for each hyperparameter is specified in a \emph{grid} which can be in a matrix form through employing \patternName{Data Frame Design Pattern}, simplified for instance \mintinline{bash}/{'k':[2, 4, 6/, \dots, $j$\mintinline{bash}/]}/ and \mintinline{bash}/{'size':[10, 100, 1000/, \dots, $i$\mintinline{bash}/]}/.
+Subsequently, the \emph{grid search} algorithm takes the Cartesian product of previous sets $(i_{1...n} \times j_{1...n})$ with $n \in \mathbb{N}_{>0}$ and uses all combinations for training the model \parencite{JakeVanderPlas2016PythonHandbook}. 
+After evaluating its performance, typically, by means of \patternName{Cross-validation Design Pattern}, the outcome of such comprehensive search allows to find best settings that should be utilized \parencite{DL2016Mit}.
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5pt} }
+Even though not guaranteed, choosing a right set of hyperparameters can boost learner's predictive strength by easily parallelizing the computation across a cluster of machines \parencite{BreckMLTest2016}.
+Due to being a fairly general approach, one can optimize not only hyperparameters themselves but also finding out the most excellently performing \ac{ML} prototype as well.
+
+\textbf{Liability:}
+Searching for best hyperparameters is very \ac{CPU} intensive operation that increases modelling expenses exponentially, particularly when their number to fix is large.
+Besides being of $\mathcal{O}(n^c)$ time complexity with $c$ hyperparameters and $n$ number of their values, determining the optimal \emph{grid} to search in may be a task for itself, thus the reliance on experience and third-party resources where similar data or methods were applied \parencite{DL2016Mit}. 
+
+\paragraph*{Known Uses}
+Hyperparameter optimization may still lead to overfitting and therefore one ought to combine it with \patternName{Cross-validation Design Pattern} \parencites{JakeVanderPlas2016PythonHandbook}{minleegrid2005}. 
+In order to ensure forecast's high-quality, data are at first divided into the training and testing part.
+Then, cross-validation splits the training set into $k$-folds. 
+For each Cartesian product from the \emph{grid}, a model is trained $k-1$ times and tested on the subset that was left out, leading to record the highest average performance for a particular instance with specific settings.
+At last, the one with the best results would be selected for the final step of testing the data from their first separation \parencite{Olson2008}.
+
+\paragraph*{Related Pattern}
+Besides aforementioned \emph{grid} and \emph{manual search}, scientists such as \textcites{ReviewHyperOpt2015}{SAS2016} have described other techniques of tuning hyperparameters that have shown to be more convenient and efficient too. 
+One of the alternatives presented by \textcite{Bergstra2012RandomOptimization} is named \emph{random search} which takes an arbitrary sample of specified parameters from the \emph{grid} space using a probability distribution like Bernoulli. 
+This has proved to achieve very similar results compared to the exhaustive \emph{grid search} but much faster.
+
+\paragraph*{Sample code}
+Generally, the majority of comprehensive \ac{ML} packages like those from \patternName{Prototyping Design Pattern} already offer functionality for hyperparameter optimization, including \emph{grid} and \emph{random search}.
+Previously used applications \mintinline{r}/caret/ and \mintinline{python}/scikit-learn/ are examples of it.
+Consequently, in Figure \ref{lst:code_pattern8}, \mintinline{r}/caret/ package trains a naive Bayes model five times and evaluates it by applying a \patternName{Cross-validation Design Pattern}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images_dp/code_listing_7_grid}
+\caption[Example for Grid Design Pattern.]{The example for \patternName{Grid Design Pattern} show how naive Bayes model can be trained with \mintinline{r}/caret/ library. 
+More specifically, searching the grid with eight hyperparameters and applying five-fold cross-validation.
+The complete source code for this pattern is located in \path{code_data/R_masterThesis.Rmd}, \path{code_data/Py_masterThesis.ipynb} respectively.}
+\label{lst:code_pattern8}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 8: Assemblage}
+
+\paragraph*{Context}
+In the \patternName{Prototyping Design Pattern} it was noted that multiple different algorithms could be used for unsupervised and supervised learning. 
+Particularly in the latter case, after training a baseline model and even optimizing its hyperparameters, data scientists ought to judge its performance not only by distinct metrics but also see it in the context of other prototypes to better understand how they behave and compare to each other.
+All that in line with \ac{DS} premise of being an iterative process where several alternatives should be build and evaluated.
+
+\paragraph*{Problem}
+To further improve achieved results, besides increasing volume of data and their quality through extensive pre-processing, applying for instance \patternName{Leakage Design Pattern} and engineering new features, data scientists may need to intelligently combine outcomes of many diverse models for gaining a greater predictive accuracy in contrast to individual methods alone. 
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item A multitude of tested estimators display only mediocre conclusions that are just slightly above a random guess. 
+  \item Moreover, even though cross-validation and grid search were administered, it is still possible to observe overfitting that hinders model's practical use for business purposes.
+  \item The developed \ac{ML} prototypes carry a large variance due to randomness in hyperparameters, probabilistic nature and selection of data \parencite{NinaBookR2014}.
+\end{compactitem}
+
+\paragraph*{Solution}
+In the quest of designing high-quality model which is capable of \qcite{reduc[ing] the effect of (\dots) overfitting}, engineers may leverage the power of so-called \emph{ensemble methods} \parencite[426]{JakeVanderPlas2016PythonHandbook}.
+These integrate a collection of modelling instances from families such \ac{SVM} or naive Bayes that are diverse and likewise perform differently on the same data \parencite{NagiSajid2013}.
+Consequently, their \emph{assemblage} shall lead to improved outcomes and especially \emph{stacking} has been a prominent method. 
+This leverages an independent and simple meta-model that combines other prototypes where at first they are individually trained in order to acquire not only their original features but predicted outputs too. 
+Then, in the final step of meta learning, the base-level classifiers are basically \enquote{blended} by the super learner algorithm to possibly derive better results \parencites{EnsembleML2012}{Opitz1999}.
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+\emph{Assemblage} of methods attempts to address an instrumental trade-off in \ac{DS}, namely reducing both high variance while at the same time high bias as well \parencite{JakeVanderPlas2016PythonHandbook}. 
+Indeed, the accumulation of prototypes has shown to potentially improve final accuracy of prediction by lowering generalization error on unseen data, notably when they contain high amount of variables along with being small in the sample size \parencites{NinaBookR2014}{EnsambleBioinf2010}.
+
+\textbf{Liability:}
+Being frequently applied with the \patternName{Grid} and \patternName{Cross-validation Design Pattern}, all three add to the required computing resources \parencite{EnsembleML2012}. 
+Primarily, however, \emph{assemblage} further hampers conclusion's interpretability and understandability by the managers creating an undesirable black-box \parencite{PeterETHZ2012}.
+Furthermore, if predictions are strongly correlated, one will not be able to boost them with the \emph{ensemble} \parencite{FosterProvost2013DataThinking}. 
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item Due to universally claiming to improve returns on data of various quality and quantity, practical applications include winning \ac{DS} competitions like Netflix Prize in 2009 where \emph{Gradient Boosted Decision Trees} were applied on hundreds of individual learners to improve company's recommendation engine, see \textcite{Netflix2009}.
+  \item \textcites{GranaMichal2014}{NagiSajid2013} have described other use cases such as improved detection of cyber-attacks, prevention of financial fraud, avoiding credit risk or in the medicine for diagnosis of diseases.
+\end{compactitem}
+
+\paragraph*{Related Pattern}
+Although \emph{stacking} is one of the more advanced \emph{assemblage} techniques, other approaches exist as well \parencite{SAS2016}. 
+
+Considering random forests, these aggregate results from decision trees that are build using training subsets of data sampled with replacement and only with random features \parencite{NinaBookR2014}.
+By decreasing the variance, trees can be averaged in parallel to derive the best estimator -- the procedure of which is called \emph{bagging} \parencites{Opitz1999}{PeterETHZ2012}. 
+
+In contrast, \emph{boosting} algorithms like AdaBoost reduce the bias and variance by incrementally building in sequence several \enquote{weak} models that are often only barely better than a random guess \parencite{EnsambleBioinf2010}. 
+Aiming to build a combined \enquote{strong} classifier, the idea is to learn from misclassifications of a model instance which culminates into reweighting training data at each round to emphasize shortcomings that should be addressed with a new iteration \parencite{EnsembleML2012}.
+Though, not being a silver bullet, overfitting can still occur with outliers and other noise in the data \parencite{BauerErikChan1999}.
+
+\paragraph*{Sample code}
+For R, one can use an extension to the previously mentioned \mintinline{R}/caret/ library called \mintinline{R}/caretEnsemble/ or among others \mintinline{R}/SuperLearner/ package. 
+Contrarily, besides already shown Python's \mintinline{python}/scikit-learn/ that can be supplemented with \mintinline{python}/Mlxtend/, the example in Figure \ref{lst:code_pattern9} creates an ensemble of two methods using \mintinline{python}/ml-ensemble/ utility. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images_dp/code_listing_8_ensam}
+\caption[Example for Assemblage Design Pattern.]{The example for \patternName{Assemblage Design Pattern} displays how a \emph{stacking (logit classifier) ensemble} is constructed to use features from training data through \ac{SVM} and random forest in its resulting prediction.
+The complete source code for this pattern is located in \path{code_data/Py_masterThesis.ipynb}, \path{code_data/R_masterThesis.Rmd} respectively.}
+\label{lst:code_pattern9}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 9: Interactive Application}
+
+\paragraph*{Context}
+After acquiring information about business activities and having answers to questions asked, being one of the concluding steps is when findings are visually communicated in an effective and understandable manner to stakeholders. 
+This is done in order to add value to offered services and products and deliver return on \ac{DS} investment.
+
+\paragraph*{Problem}
+While the diversity of employee's background and roles manifests in seeking different perspectives to the same underlying data, this is not aligned with conventional reports and presentations which usually display static visualizations and are limited by their scope and a particular view presented -- hence the need for a better alternative.
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item Referencing big data properties, information changes rapidly and therefore static graphics may not be relevant in one-week time and so the conclusions based on them. 
+  \item Storytelling requires to visualize not only latest data but also enable audience to answer their questions by themselves through adjusting the way information is conveyed in an interactive fashion, for example by drilling it down, without unnecessary latency \parencite{TabPatriVisual2015}.
+  \item Business managers are usually not interested in pure numbers without a context and explanation, and thus interpretable results told through diverse means that can easily translate into a set of operational processes and actions are indispensable \parencite{FosterProvost2013DataThinking}.
+\end{compactitem} 
+
+\paragraph*{Solution}
+As an important part of the communication strategy, data scientists shall design and develop simple, web-based \emph{interactive applications} using the identical programming language applied for other \ac{DS} tasks to stay within the same workflow and avoid technological fragmentation.
+Indeed, such applications have to permit users to dynamically interact with presented tables or charts and customize them for their data journey by modifying various graphical and data attributes that reflect employees' own preferences, for instance filtering, zooming or changing the shapes \parencite{WardInteractiveApps2010}. 
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+Stakeholders are provided with a self-service tool that empowers further data exploration, gaining deeper insights by looking at information tooltips and understanding the story through animations and slideshows. 
+The information being updated in close to real time makes visualizations display latest available data and consequently fostering a trust and a deeper integration in the organization by allowing to proactively react to the changing environment \parencites{Domino2017DS}{FieldCadyDSBook}.
+
+\textbf{Liability:}
+Developing high-quality \emph{interactive application} carries an additional effort in its continuous maintenance due to ever evolving data sources, their granularity and employee desires \parencites{Clarke2013}{Fern2016}. 
+Furthermore, it is necessary to understand the targeted technology platform and learn tools for its development.
+Besides, when the application has been improperly designed displaying excessive details, technical jargon or having a misguides choice of colours, it ultimately contributes to information overload and never being looked at \parencites{InformaVisualiz}{Gershon1998}{Carr1999}{TabPatriVisual2015}. 
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item \textcites{DickInteractive2014}{SegelHeer2010} have indicated that interactive stories may possibly enhance a reading experience of a journalistic work on the web.
+  \item As already mentioned in the \patternName{Notebook Design Pattern}, dynamic visualizations can be embedded in the document making data analysis more visual from the beginning.
+  \item \ac{BI} portals, following best practises in the \ac{UI/UX} design, make available a standard set of core components like sliders for creating \ac{KPI} dashboards with interactive plots.
+\end{compactitem}
+
+\paragraph*{Related patterns}
+Besides having \emph{interactive applications} on-premise, organizations can take advantage of \emph{cloud computing} services run by providers like Microsoft (\emph{Azure}) or Amazon (\emph{Web Services}). 
+This in order to leverage features such as automatic scaling that ensures their uninterrupted availability, see next \patternName{Cloud Design Pattern}. 
+
+\paragraph*{Sample code}
+While \mintinline{R}/Shiny/ is almost certainly the most widely used package for developing analytical and interactive web application using R, for Python besides \mintinline{python}/Bokeh/ one can create them by utilizing \mintinline{python}/Plot.ly Dash/ framework too, see Figure \ref{lst:code_pattern10}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images_dp/code_listing_9_intApp}
+\caption[Example for Interactive Application Design Pattern.]{The example for \patternName{Interactive Application Design Pattern} shows exceptionally a result of R and Python source code located in \path{code_data/dp_9} folder. 
+A simple pie chart with a dropdown component where users can choose from a list of provinces is displayed. 
+This shows a distribution of religion in Switzerland based on the \emph{Swiss Fertility and Socioeconomic Indicators (1888)} data, obtained through R's \mintinline{R}/datasets/ library.
+Upon changing the region (the user interaction), the chart is immediately redrawn to reflect new values.}
+\label{lst:code_pattern10}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pattern 10: Cloud}
+
+\paragraph*{Context}
+After making available on a local machine a proof of concept which is subsequently validated first by peers in the \ac{DS} team and later by directly involved customers themselves, it is necessary to share the solution with all stakeholders of the organization by deploying it on the production system.
+
+\paragraph*{Problem}
+Data scientists need to utilize computing resources in a flexible and simple matter without being constrained by the available hardware and software at company's premises.
+The objective of this is to allow for instance quickly scaling up and down \ac{DS} interactive applications or integrating complex predictive models into firm's products and services.
+
+\paragraph*{Forces}
+\begin{compactitem}
+  \item Organization's core mission is often unrelated to administrating and configuring hardware and software infrastructure. 
+  To avoid facing various constrains and difficulties, it has been claimed of being beneficial to outsource the management of servers to experienced specialists \parencite{MarstonSean2011}.
+  \item Training \ac{ML} models as well as pre-processing (big) data requires significant computing resources which might impede fast prototyping of \ac{DS} solutions because of the unavailability of modern, on-premise \acp{CPU}, high-volume storage systems and \ac{RAM} in the necessary quantity. 
+\end{compactitem}
+
+\paragraph*{Solution}
+Instead of building and maintaining own infrastructure, companies and data scientists should learn to utilize \emph{cloud computing} made available by vendors like Google (\emph{Cloud}) or Microsoft (\emph{Azure}). 
+While many different types of \emph{cloud} services exist, see \textcite{Zhang2010CloudChallenges} for their overview, a core underlying feature is the ability of on-demand allocation of computing resources paid according to the pay-as-you-go pricing model.  
+As such, the \ac{IT} architecture including \ac{DS} workflow shall be designed around leveraging \emph{cloud} features where dedicated data mining virtual machines or enhanced applications for information storage and processing based on the \emph{Hadoop} toolbox might be employed.
+
+\paragraph*{Consequences} ~\\
+{\hspace*{14.5pt} \textbf{Benefits:} \hspace*{-5.5pt} }
+Perhaps the most important gain is avoiding managing on-premise infrastructure where instead a \emph{cloud} portal permits a rapid provisioning of resources as they are deemed necessary by engineers.
+Additionally, it allows to scale organization's \ac{IT} architecture organically and due to using a comprehensive platform which integrates with other offered functionalities, data scientists can focus on understanding the data by taking advantage of a full set of related services \parencites{DJ2013}{Fern2016}.
+
+\textbf{Liability}:
+Besides potentially expensive and hence necessity of monitoring used resources, selecting one provider can result into a vendor lock-in because of unique features that may not exist at competitors (or work in a similar matter; \cite{JusticeMartinis2015Cloud}). 
+Moreover, security and privacy concerns can put \emph{cloud computing} either in jeopardy or substantially increase technological and bureaucratic burdens due to legal compliance and regulations \parencite{StoneAdamPrivSecCloud2010}.
+Furthermore, companies may not be culturally and process-wise ready to take its advantages by reasons of lacking in-house expertise.
+
+\paragraph*{Known Uses}
+\begin{compactitem}
+  \item Typically, the power of \emph{cloud} complements natural language processing or object recognition in images and at the same time enables quicker training of predictive models and management of the whole \ac{DS} workflow and \ac{ETL} pipeline.
+  \item Likewise, third-party \emph{cloud} services can reinforce good software engineering practises such as continuous integration and platform agnostic development and deployment \parencite{GuhaSEngCloud2010}. 
+  \item \ac{KDD} newcomers without programming skills may use various \emph{\ac{ML} Studios} -- cloud-based web applications, often in conjunction with \patternName{Notebook Design Pattern} -- that offer a simple drag-and-drop functionality for building a visual pipeline that contains operations for importing data sources, their processing, model building and visualization.
+\end{compactitem}
+
+\paragraph*{Related Patterns}
+As previously mentioned, \emph{cloud computing} is applicable at many stages of \ac{KDD} process -- when both developing \ac{DS} solutions including \ac{ML} prototypes and interactive applications as well as during their subsequent final deployment.
+
+\paragraph*{Sample code}
+In the past decade, due to a variety of established \emph{cloud(-enhanced)} solutions by numerous providers, see \textcites{Durao2014AComputing}{Zhang2010CloudChallenges}, the availability of R and Python packages that connect to these services is depending on vendors to provide them and the community interest to develop them. 
+
+Some examples include R' \mintinline{R}/cloudml/ package that interacts with specific \acp{API} offered by Google's \emph{Cloud Machine Learning Engine}.  
+Alternatively, \mintinline{R}/doAzureParallel/ library supports parallel execution on Microsoft's \emph{Azure} virtual machines.
+Similarly, several software development kits for Python exist as well. 
+One of them is Amazon \emph{Web Services'} \mintinline{Python}/Boto3/ package that encompasses numerous \acp{API} which can access \ac{ML} capabilities including what the company calls \emph{vision} or \emph{language services}.
+
+For the simplicity of the illustration, previous examples from the \patternName{Interactive Application Design Pattern} can be deployed to two \emph{platform-as-a-service (PaaS) cloud computing} environments.
+These provide a complete \qcite{platform (\dots), including operating system support and software development frameworks} for the management of applications while at the same time giving no control over the infrastructure itself \parencites[10]{Zhang2010CloudChallenges}{Pahl2015ContainerizationCloud}. 
+Consequently, \mintinline{python}/Plot.ly Dash/ example is served by \mintinline{bash}/Heroku.com/\footnote{\href{https://designpattern10.herokuapp.com/}{https://designpattern10.herokuapp.com/}}, whereas R's alternative using \mintinline{R}/Shiny/ framework could be pushed to \mintinline{bash}/shinyapps.io/, see Listing \ref{lst:code_pattern11}. 
+
+\begin{listing}[H]
+  \begin{minted}[breaklines, linenos]{R}
+> library(rsconnect) # loads the package for shinyapps.io
+
+# set up the user account with complete API keys, omitted for brevity
+> setAccountInfo(name='dmpe',
+        token='820739C8B8B9DE...',
+        secret='gAHFGNCdDlUtzo...') 
+
+# once deployed, navigate the browser to it
+> deployApp(appDir = "/code_data/dp_9/R-Shiny", 
+          appName = "DesignPattern10-InteractiveApplicationOnCloud", 
+          launch.browser = TRUE)
+  \end{minted}
+\caption[Example for Cloud Design Pattern.]{The example for \patternName{Cloud Design Pattern} displays how \mintinline{R}/Shiny/ application can be deployed to a third-party PaaS hosting to leverage integrated features like automatic scaling and advanced monitoring.
+The source code for this pattern is located in \path{code_data/dp_10} folder.}
+\label{lst:code_pattern11}
+\end{listing}
+
+%%%%%% 			DSTM
+\section{Data Science R and Python Toolkit Matrix}
+As explained in the \textbf{chapter \ref{chap:Method}} and seen previously, during pattern discovery and description, R and Python code examples were provided for each pattern candidate, see likewise \path{code_data} folder in the supplement.  
+Indeed, thirty-two R and Python packages were identified having followed outlined criteria mentioned in Table \ref{tab:creteriaIncExcl} and subsequently they were recorded in the database shown in Figure \ref{fig11}. 
+In line with the third research question and once all design patterns were refined, libraries were finally visualized in a mind-map in Figure \ref{DTSMmindmapWithout}.
+Thus, allowing to enact a foundational perspective on the ecosystems of two languages and their available tools \parencite{SuriHarsh11}.
+
+Moreover and where applicable, an attempt was made to present native approaches which were integrated into the respective programming language. 
+Unfortunately, while four cases were identified in R, illustratively \mintinline{R}/reshape()/ function that is related to \patternName{Tidy Data Design Pattern}, for Python none were recognized in its \emph{standard library} that could directly interconnect with one of ten design patterns \parencite{PythonCoreStandartLib}.   
+
+%%%%%%%%%%%%%
+\section{Summary}
+Attempting to shed light on the second study question, after understanding key terms used in this work and presenting the methodology, \textbf{this chapter} was fundamental as ten data science design patterns candidates were formalized. 
+
+As stated in objectives of this work, it has been furthermore asked what R and Python tools from both ecosystems can be found solving common obstacles arising from the knowledge discovery process and being in relation to identified design patterns. 
+By purposefully surveying both landscapes, a sample of thirty-two packages was visualized in the \acl{DSTM} as well.
+
+In the \textbf{final chapter} and not being limited to, these core outcomes are individually discussed. 
+
+\begin{landscape}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth,height=\textheight,scale=0.9,keepaspectratio]{images/Data_Science_R_and_Python_Toolkit_Matrix.png}
+\caption[Illustrates \acl{DSTM}.]{Illustrates \acl{DSTM} that consists of thirty-two packages and where applicable also with (R) native approaches that were incorporated into the language itself.}
+\label{DTSMmindmapWithout}
+\end{figure}
+\end{landscape}
+
