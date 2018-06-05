@@ -2,7 +2,7 @@
 
 This repository contains source code & other data for my graduate thesis.
 
-All pictures are located in `Dmitrij_Petrov_Master_Thesis_Documents/source_code_files/tex_thesis/images` folder.
+All pictures are located in `tex_thesis/images` folder.
 
 ## 2. Ensure right software is installed on your PC
 
@@ -14,7 +14,7 @@ For Python 3, execute:
 ```
 sudo apt-get install python3-pip r-base r-base-dev 
 sudo pip3 install jupyter pandas scipy jupyterhub fancyimpute tensorflow networkx==1.11 scikit-learn numpy mlens
-sudo pip3 install -r Dmitrij_Petrov_Master_Thesis_Documents/source_code_files/code_data/dp_9/python-plotly/requirenments.txt
+sudo pip3 install -r code_data/dp_9/python-plotly/requirenments.txt
 ```
 
 For R, install packages below to cover most important ones -- others will be installed too. 
@@ -58,7 +58,7 @@ You will **not** find them here due to licensing but make sure to put them into 
 
 #### code_data -- main folder with design pattern examples
 
-In the `Dmitrij_Petrov_Master_Thesis_Documents/source_code_files/code_data` folder, execute `sudo ./create_pdf_thesis.sh` `bash` script.
+In the `code_data` folder, execute `sudo ./create_pdf_thesis.sh` `bash` script.
 Based on the content of the `tex_thesis` folder and **if fonts** are properly installed, this will ultimately create PDF (~ 300 seconds/5 minutes is minimum what it takes to compile). 
 
 #### tex-thesis -- for creating PDF thesis:
@@ -79,8 +79,12 @@ Source templates come from adjusting <https://www.sharelatex.com/templates/thesi
 
 ## 5. Sources
 
-<https://stackoverflow.com/a/3452888>, 
-<https://stackoverflow.com/a/15593865>,
-<https://gist.github.com/stevenworthington/3178163>, 
-<https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server>, 
+<https://stackoverflow.com/a/3452888>
+
+<https://stackoverflow.com/a/15593865>
+
+<https://gist.github.com/stevenworthington/3178163> 
+
+<https://github.com/jupyterhub/jupyterhub/wiki/Installation-of-Jupyterhub-on-remote-server> 
+
 <https://github.com/adobe-fonts/source-code-pro/issues/17#issuecomment-233178247>
